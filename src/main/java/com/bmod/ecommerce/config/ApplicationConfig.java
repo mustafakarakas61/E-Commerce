@@ -18,17 +18,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class ApplicationConfig {
 
-    @Value("${amazon.aws.access-key}")
+  /*  @Value("${amazon.aws.access-key}")
     private String awsAccessKey;
 
     @Value("${amazon.aws.secret-key}")
-    private String awsAccessSecret;
+    private String awsAccessSecret;*/
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder(8);
     }
-
+/*
     @Bean
     public AmazonS3 s3Client() {
         AWSCredentials credentials = new BasicAWSCredentials(awsAccessKey, awsAccessSecret);
@@ -36,7 +36,7 @@ public class ApplicationConfig {
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion(Regions.EU_CENTRAL_1)
                 .build();
-    }
+    }*/
 
     @Bean
     public ModelMapper modelMapper() {

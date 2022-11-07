@@ -10,3 +10,22 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate.ddl-auto: validate #Eğer Create olursa tabloyu baştan yaratır
+mail:
+  debug: 'false'
+amazon:
+  aws:
+    secret-key: 0BBRCJ0k1nQQtKUV36M2zTOq9qxzTLVNq/hbaUMr
+    access-key: AKIA2ONY4NV5PYJRY2NW
+  s3:
+    bucket:
+      name:
+hostname: localhost:3000
+logging:
+  level:
+    com:
+      bmod:
+        ecommerce:
+          controller: debug
+recaptcha:
+  url: https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s
+  secret: 6Ldt-OYiAAAAAP6NAMf9f_hFT0GLqMQAPc5yHZA8
