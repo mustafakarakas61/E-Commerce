@@ -1,24 +1,62 @@
 server:
   port: 8080
+jwt:
+  header: Authorization
+  expiration: '604800'
+  secret: dejavu
 spring:
-  datasource:
-    driver-class-name: "org.postgresql.Driver"
-    url: "jdbc:postgresql://localhost:5432/bcclip"
-    username: postgres
-    password: 180200
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: '4453217618039998'
+            scope: email,public_profile
+            client-secret: 8b3ef3edaec63d2905c50decd3db471e
+          github:
+            client-secret: c80297b73b6710455005bd5cfd4427fe7034b9ed
+            client-id: 95162f0ca4fbb8236c3d
+            scope: user:email,read:user
+          google:
+            client-id: 247464265015-astrh9vll11l22scpds7rdn6q8b8bbo7.apps.googleusercontent.com
+            client-secret: RZptmh1c6LEfNhYHDLqGLqAJ
+            scope: email,profile
+        provider:
+          facebook:
+            authorization-uri: https://www.facebook.com/v10.0/dialog/oauth
+            user-info-uri: https://graph.facebook.com/v10.0/me?fields=email,first_name,last_name,name
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate.ddl-auto: validate #Eğer Create olursa tabloyu baştan yaratır
+  mail:
+    username: webstore.deneme@gmail.com
+    port: '465'
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: 'true'
+          auth: 'true'
+    host: smtp.gmail.com
+    protocol: smtps
+    password: Fcnhfk-rbtd
+  servlet:
+    multipart:
+      enabled: 'true'
+      max-file-size: 5MB
+      max-request-size: 10MB
+      file-size-threshold: 2MB
+  datasource:
+    driver-class-name: "org.postgresql.Driver"
+    url: "jdbc:postgresql://localhost:5432/e-commerce"
+    username: postgres
+    password: 180200
 mail:
   debug: 'false'
-amazon:
-  aws:
-    secret-key: 0BBRCJ0k1nQQtKUV36M2zTOq9qxzTLVNq/hbaUMr
-    access-key: AKIA2ONY4NV5PYJRY2NW
-  s3:
-    bucket:
-      name:
 hostname: localhost:3000
 logging:
   level:

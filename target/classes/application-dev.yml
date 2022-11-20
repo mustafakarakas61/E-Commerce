@@ -29,7 +29,7 @@ spring:
       ddl-auto: validate
     show-sql: 'false'
   mail:
-    username: webstore.perfume@gmail.com
+    username: webstore.deneme@gmail.com
     port: '465'
     properties:
       mail:
@@ -40,8 +40,6 @@ spring:
     host: smtp.gmail.com
     protocol: smtps
     password: Fcnhfk-rbtd
-  flyway:
-    locations: classpath:db/migration
   servlet:
     multipart:
       enabled: 'true'
@@ -49,26 +47,25 @@ spring:
       max-request-size: 10MB
       file-size-threshold: 2MB
   datasource:
-    password: root
     username: postgres
+    password: root
     url: jdbc:postgresql://localhost:5432/perfume
 mail:
   debug: 'false'
 amazon:
   aws:
-    secret-key: etSYozkD2dpYabmoMoje4n5d/MjrMDYps65cXajz
-    access-key: AKIATP4TDBGPCTXUIXD2
+    secret-key: 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
+    access-key: AKIA2ONY4NV5PYJRY2NW
   s3:
     bucket:
-      name: perfumeswebstorage
+      name:
 hostname: localhost:3000
 logging:
   level:
     com:
-      gmail:
-        merikbest2015:
+      bmod:
           ecommerce:
             controller: debug
 recaptcha:
   url: https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s
-  secret: 6Lc5cLkZAAAAANUjd4--Jx6PioSC_N-9MFKT3PsA
+  secret: 6Ldt-OYiAAAAAP6NAMf9f_hFT0GLqMQAPc5yHZA8

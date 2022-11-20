@@ -29,7 +29,7 @@ spring:
       ddl-auto: validate
     show-sql: 'false'
   mail:
-    username: webstore.perfume@gmail.com
+    username: webstore.deneme@gmail.com
     port: '465'
     properties:
       mail:
@@ -40,8 +40,6 @@ spring:
     host: smtp.gmail.com
     protocol: smtps
     password: Fcnhfk-rbtd
-  flyway:
-    locations: classpath:db/migration
   servlet:
     multipart:
       enabled: 'true'

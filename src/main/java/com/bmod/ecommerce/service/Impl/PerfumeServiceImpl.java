@@ -1,7 +1,5 @@
 package com.bmod.ecommerce.service.Impl;
 
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.bmod.ecommerce.entity.PerfumeEntity;
 import com.bmod.ecommerce.entity.ReviewEntity;
 import com.bmod.ecommerce.enums.SearchPerfumeEnum;
@@ -11,7 +9,6 @@ import com.bmod.ecommerce.repository.projection.PerfumeProjection;
 import com.bmod.ecommerce.service.PerfumeService;
 import graphql.schema.DataFetcher;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -31,10 +28,7 @@ import java.util.stream.Collectors;
 public class PerfumeServiceImpl implements PerfumeService {
 
     private final PerfumeRepository perfumeRepository;
-    private final AmazonS3 amazonS3client;
 
-    @Value("${amazon.s3.bucket.name}")
-    private String bucketName;
 
     @Override
     public PerfumeEntity getPerfumeById(Long perfumeId) {
@@ -89,7 +83,6 @@ public class PerfumeServiceImpl implements PerfumeService {
     @Transactional
     public PerfumeEntity savePerfume(PerfumeEntity perfume, MultipartFile multipartFile) {
         if (multipartFile == null) {
-            perfume.setFilename(amazonS3client.getUrl(bucketName, "empty.jpg").toString());
         } else {
             File file = new File(multipartFile.getOriginalFilename());
             try (FileOutputStream fos = new FileOutputStream(file)) {
@@ -98,8 +91,6 @@ public class PerfumeServiceImpl implements PerfumeService {
                 e.printStackTrace();
             }
             String fileName = UUID.randomUUID().toString() + "." + multipartFile.getOriginalFilename();
-            amazonS3client.putObject(new PutObjectRequest(bucketName, fileName, file));
-            perfume.setFilename(amazonS3client.getUrl(bucketName, fileName).toString());
             file.delete();
         }
         return perfumeRepository.save(perfume);

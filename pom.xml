@@ -76,13 +76,6 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 
-		<!--flywaydb-->
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-			<version>5.2.4</version>
-		</dependency>
-
 		<!-- JAXB -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
@@ -148,11 +141,6 @@
 		<!-- Swagger -->
 		<dependency>
 			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-common</artifactId>
-			<version>2.9.2</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.9.2</version>
 		</dependency>
@@ -161,23 +149,11 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-bean-validators</artifactId>
-			<version>2.9.2</version>
-		</dependency>
 
 		<!-- websocket -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-websocket</artifactId>
-		</dependency>
-
-		<!-- AWS -->
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk</artifactId>
-			<version>1.11.133</version>
 		</dependency>
 
 		<!-- thymeleaf -->
