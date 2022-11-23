@@ -30,7 +30,8 @@ create table orders
 create table orders_order_items
 (
     order_id       int8 not null,
-    order_items_id int8 not null
+    order_items_id int8 not null,
+    order_entity_id int8 not null
 );
 
 create table perfume
@@ -56,7 +57,8 @@ create table perfume
 create table perfume_reviews
 (
     perfume_id int8 not null,
-    reviews_id int8 not null
+    reviews_id int8 not null,
+    perfume_entity_id int8 not null
 );
 
 create table review
