@@ -21,16 +21,15 @@ INSERT INTO order_item (id, amount, quantity, perfume_id) VALUES (9, 684, 4, 17)
 INSERT INTO order_item (id, amount, quantity, perfume_id) VALUES (10, 92, 2, 86);
 INSERT INTO order_item (id, amount, quantity, perfume_id) VALUES (11, 104, 2, 91);
 
-INSERT INTO orders_order_items (order_id, order_items_id) VALUES (1, 1);
-INSERT INTO orders_order_items (order_id, order_items_id) VALUES (1, 2);
-INSERT INTO orders_order_items (order_id, order_items_id) VALUES (2, 3);
-INSERT INTO orders_order_items (order_id, order_items_id) VALUES (2, 4);
-INSERT INTO orders_order_items (order_id, order_items_id) VALUES (3, 5);
-INSERT INTO orders_order_items (order_id, order_items_id) VALUES (3, 6);
-INSERT INTO orders_order_items (order_id, order_items_id) VALUES (3, 7);
-INSERT INTO orders_order_items (order_id, order_items_id) VALUES (4, 8);
-INSERT INTO orders_order_items (order_id, order_items_id) VALUES (4, 9);
-INSERT INTO orders_order_items (order_id, order_items_id) VALUES (5, 10);
-INSERT INTO orders_order_items (order_id, order_items_id) VALUES (5, 11);
-
+INSERT INTO orders_order_items (order_id, order_items_id, order_entity_id) VALUES (1, 1, 1);
+INSERT INTO orders_order_items (order_id, order_items_id, order_entity_id) VALUES (1, 2, 31);
+INSERT INTO orders_order_items (order_id, order_items_id, order_entity_id) VALUES (2, 3, 31);
+INSERT INTO orders_order_items (order_id, order_items_id, order_entity_id) VALUES (2, 4,31);
+INSERT INTO orders_order_items (order_id, order_items_id, order_entity_id) VALUES (3, 5, 31);
+INSERT INTO orders_order_items (order_id, order_items_id, order_entity_id) VALUES (3, 6, 31);
+INSERT INTO orders_order_items (order_id, order_items_id, order_entity_id) VALUES (3, 7, 31);
+INSERT INTO orders_order_items (order_id, order_items_id, order_entity_id) VALUES (4, 8, 31);
+INSERT INTO orders_order_items (order_id, order_items_id, order_entity_id) VALUES (4, 9, 31);
+INSERT INTO orders_order_items (order_id, order_items_id, order_entity_id) VALUES (5, 10, 31);
+INSERT INTO orders_order_items (order_id, order_items_id, order_entity_id) VALUES (5, 11, 31);
 
