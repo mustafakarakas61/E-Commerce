@@ -1,7 +1,7 @@
 import React, { FC, ReactElement, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import "antd/dist/antd.css";
+import 'antd/dist/antd.min.css'
 import { BackTop } from "antd";
 
 import {
