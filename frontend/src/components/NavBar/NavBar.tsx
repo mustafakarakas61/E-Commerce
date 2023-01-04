@@ -32,13 +32,13 @@ const NavBar: FC = (): ReactElement => {
                         <Col span={12}>
                             <ul>
                                 <Link to={BASE}>
-                                    <li>HOME</li>
+                                    <li>ANA SAYFA</li>
                                 </Link>
                                 <li>
-                                    <Link to={{ pathname: MENU, state: { id: "all" } }}>PERFUMES</Link>
+                                    <Link to={{ pathname: MENU, state: { id: "all" } }}>ÜRÜNLERİMİZ</Link>
                                 </li>
                                 <Link to={CONTACTS}>
-                                    <li>CONTACTS</li>
+                                    <li>İLETİŞİM</li>
                                 </Link>
                             </ul>
                         </Col>
@@ -56,13 +56,13 @@ const NavBar: FC = (): ReactElement => {
                                         <Link to={ACCOUNT}>
                                             <li>
                                                 <UserOutlined />
-                                                MY ACCOUNT
+                                                HESABIM
                                             </li>
                                         </Link>
                                         <Link id={"handleLogout"} to={BASE} onClick={handleLogout}>
                                             <li>
                                                 <LogoutOutlined />
-                                                EXIT
+                                                ÇIKIŞ
                                             </li>
                                         </Link>
                                     </>
@@ -72,14 +72,14 @@ const NavBar: FC = (): ReactElement => {
                                             <li>
                                                 <Space align={"baseline"}>
                                                     <LoginOutlined />
-                                                    SIGN IN
+                                                    GİRİŞ
                                                 </Space>
                                             </li>
                                         </Link>
                                         <Link to={REGISTRATION}>
                                             <li>
                                                 <UserAddOutlined />
-                                                SIGN UP
+                                                KAYIT OL
                                             </li>
                                         </Link>
                                     </>

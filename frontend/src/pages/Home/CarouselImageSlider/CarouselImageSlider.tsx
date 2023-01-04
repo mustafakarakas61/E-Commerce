@@ -11,6 +11,7 @@ export const sliderItems = [
         name: "Photo 1",
         url: "https://i.ibb.co/bXdDdB9/1920x900-px-40867-1495607-wallhere-com.jpg"
     },
+
     {
         id: "46",
         name: "Photo 2",

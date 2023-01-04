@@ -9,14 +9,14 @@ const Footer: FC = (): ReactElement => {
         <div className={"footer-wrapper"}>
             <Row >
                 <Col span={12}>
-                    <Typography.Title level={3}>Perfume</Typography.Title>
-                    <Typography.Text>(066) 696-66-23</Typography.Text>
-                    <Typography.Text className={"mt-12"}>from 08:00 to 20:00 without breaks and weekends</Typography.Text>
+                    <Typography.Title level={3}>BringToMe Ticaret</Typography.Title>
+                    <Typography.Text>(536) 650-11-39</Typography.Text>
+                    <Typography.Text className={"mt-12"}>12:00-20:00 arası müsaittir, haftasonu telefonlarımız açıktır </Typography.Text>
                 </Col>
                 <Col span={12} >
                     <div className={"footer-wrapper-social"}>
                         <Typography.Title level={3}>Social networks</Typography.Title>
-                        <a href="https://www.linkedin.com/in/merikbest/">
+                        <a href="https://tr.linkedin.com/in/doga-kupa-9a00341b9/tr">
                             <LinkedinOutlined />
                         </a>
                         <a href="#">
@@ -27,9 +27,6 @@ const Footer: FC = (): ReactElement => {
                         </a>
                     </div>
                 </Col>
-            </Row>
-            <Row className={"footer-wrapper-copyright"}>
-                <Typography.Text>© Copy right merikbest</Typography.Text>
             </Row>
         </div>
     );

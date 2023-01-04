@@ -9,7 +9,7 @@ const SliderBrands: FC = (): ReactElement => {
     return (
         <div className={"brands-wrapper"}>
             <Typography.Title level={3} className={"brands-wrapper-title"}>
-                BRANDS
+                KATEGORİLER
             </Typography.Title>
             <Carousel className={"brands-carousel"} autoplay>
                 <SliderBrandsItem brands={brandsItem.slice(0, 6)} />
