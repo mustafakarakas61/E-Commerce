@@ -8,3 +8,9 @@
     height: 80%;
     position: absolute;
 }
+.carousel-item-slider-title{
+    text-align: center;
+}
+.sliderItems{
+    align-self: center;
+}

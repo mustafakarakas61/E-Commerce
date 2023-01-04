@@ -126,7 +126,7 @@ const Menu: FC = (): ReactElement => {
                 <Row gutter={32}>
                     <Col span={6}>
                         <MenuCheckboxSection
-                            title={"Brand"}
+                            title={"Kategori"}
                             onChange={onChangeCheckbox}
                             data={perfumer}
                             category={CheckboxCategoryFilter.PERFUMERS}

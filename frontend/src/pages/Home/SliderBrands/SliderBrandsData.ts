@@ -4,9 +4,9 @@ export type BrandType = {
 };
 
 export const brandsItem: Array<BrandType> = [
-    { name: "Tom Ford", url: "https://i.ibb.co/s9MpxnG/o-139.jpg" },
-    { name: "Prada", url: "https://i.ibb.co/2Y5Lsvy/o-143.jpg" },
-    { name: "Dior", url: "https://i.ibb.co/wCkG15S/o-160.jpg" },
+    { name: "Elektronik", url: "https://i.ibb.co/Qr3sPwX/d100ebff-6233-4dd6-b157-0730f3618d30.jpg" },
+    { name: "Giyim", url: "https://i.ibb.co/PgMV9DQ/resim-2023-01-04-224546412.png" },
+    { name: "Dior", url: "https://i.ibb.co/30fpsvn/resim-2023-01-04-225732007.png" },
     { name: "Versace", url: "https://i.ibb.co/0mFhYdV/o-97.jpg" },
     { name: "Chanel", url: "https://i.ibb.co/QrNd9DL/o-30.jpg" },
     { name: "Dolce&Gabbana", url: "https://i.ibb.co/Sycbcbv/o-56.jpg" },
