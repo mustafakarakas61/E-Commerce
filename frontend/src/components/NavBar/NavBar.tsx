@@ -24,7 +24,7 @@ const NavBar: FC = (): ReactElement => {
     return (
         <>
             <div className={"navbar-logo-wrapper"}>
-                <img alt={"navbar-logo"} src="https://i.ibb.co/fqYvrL8/LOGO4.jpg" />
+                <img alt={"navbar-logo"} src="https://i.ibb.co/71WSSZh/main-Logo-fw.png" />
             </div>
             <Affix>
                 <div className={"navbar-wrapper"}>
