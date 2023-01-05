@@ -1,3 +1,5 @@
+server:
+  port: 8080
 jwt:
   header: Authorization
   expiration: '604800'
@@ -29,7 +31,7 @@ spring:
       ddl-auto: validate
     show-sql: 'false'
   mail:
-    username: webstore.deneme@gmail.com
+    username: inc.bringtome@gmail.com
     port: '465'
     properties:
       mail:
@@ -39,7 +41,7 @@ spring:
           auth: 'true'
     host: smtp.gmail.com
     protocol: smtps
-    password: Fcnhfk-rbtd
+    password: bringtome61
   servlet:
     multipart:
       enabled: 'true'
@@ -47,9 +49,10 @@ spring:
       max-request-size: 10MB
       file-size-threshold: 2MB
   datasource:
+    driver-class-name: "org.postgresql.Driver"
     username: postgres
     password: root
-    url: jdbc:postgresql://localhost:5432/perfume
+    url: "jdbc:postgresql://localhost:5432/bringtome"
 mail:
   debug: 'false'
 amazon:
