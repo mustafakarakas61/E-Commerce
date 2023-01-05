@@ -1,4 +1,4 @@
-# **_[Bring to Me]()_** _Online Alışveriş_
+# _Bring to Me_ _Online Alışveriş_
 
 Spring Boot ve React.js kullanılarak geliştirilen e-ticaret projesidir.
 
