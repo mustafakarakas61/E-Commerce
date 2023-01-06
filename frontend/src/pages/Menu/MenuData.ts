@@ -8,7 +8,7 @@ export const producer: Array<{ name: string }> = [
     { name: "Kozmetik" },
     { name: "Kitaplar" },
     { name: "Spor" },
-    { name: "Hedyelik" }
+    { name: "Hediyelik" }
 ];
 
 export const type: Array<{ name: string }> = [{ name: "Ayakkabı" },{ name: "Bilgisayar" }, { name: "Buzdolabı" }];

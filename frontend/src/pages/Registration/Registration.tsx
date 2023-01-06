@@ -105,7 +105,7 @@ const Registration: FC = (): ReactElement => {
                         >
                             <ReCAPTCHA
                                 onChange={onChangeRecaptcha}
-                                sitekey="6Lc5cLkZAAAAAN8mFk85HQieB9toPcWFoW0RXCNR"
+                                sitekey="6Ldt-OYiAAAAAGgPxUMRH6h_pggcyUWfXI13V1MH"
                             />
                         </Form.Item>
                     </Form>

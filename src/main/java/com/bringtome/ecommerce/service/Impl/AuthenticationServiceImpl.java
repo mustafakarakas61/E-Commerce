@@ -55,7 +55,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
             UserEntity user = userRepository.findByEmail(email)
-                    .orElseThrow(() -> new ApiRequestException("Email not found.", HttpStatus.NOT_FOUND));
+                    .orElseThrow(() -> new ApiRequestException("Email bulunamadı.", HttpStatus.NOT_FOUND));
             String userRole = user.getRoles().iterator().next().name();
             String token = jwtProvider.createToken(email, userRole);
             Map<String, Object> response = new HashMap<>();
@@ -63,7 +63,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             response.put("token", token);
             return response;
         } catch (AuthenticationException e) {
-            throw new ApiRequestException("Incorrect password or email", HttpStatus.FORBIDDEN);
+            throw new ApiRequestException("Geçersiz email veya şifre", HttpStatus.FORBIDDEN);
         }
     }
 
@@ -74,11 +74,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         restTemplate.postForObject(url, Collections.emptyList(), CaptchaResponse.class);
 
         if (user.getPassword() != null && !user.getPassword().equals(password2)) {
-            throw new PasswordException("Passwords do not match.");
+            throw new PasswordException("Şifre eşleşmiyor.");
         }
 
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new EmailException("Email is already used.");
+            throw new EmailException("Bu email zaten mevcut.");
         }
         user.setActive(false);
         user.setRoles(Collections.singleton(RoleEnum.USER));

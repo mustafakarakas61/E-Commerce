@@ -5,7 +5,7 @@ import { fetchProductsByIds } from "../../../redux-toolkit/products/products-thu
 import { resetProductsState } from "../../../redux-toolkit/products/products-slice";
 import "./ProductCardsSlider.css";
 
-export const productsIds = [26, 43, 46, 106, 34, 76, 82, 85, 27, 39, 79, 86];//todo product id kontrol et
+export const productsIds = [1, 2, 5, 3, 8, 7, 4, 9, 10, 12, 13];//todo product id kontrol et
 
 const ProductCardsSlider: FC = (): ReactElement => {
     const dispatch = useDispatch();

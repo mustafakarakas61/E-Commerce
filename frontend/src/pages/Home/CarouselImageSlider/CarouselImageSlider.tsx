@@ -7,13 +7,13 @@ import "./CarouselImageSlider.css";
 
 export const sliderItems = [
     {
-        id: "85",
+        id: "4",//todo bu idyi verdiğimde ona gidiyor
         name: "Photo 1",
         url: "https://i.ibb.co/bXdDdB9/1920x900-px-40867-1495607-wallhere-com.jpg"
     },
 
     {
-        id: "46",
+        id: "2",
         name: "Photo 2",
         url: "https://i.ibb.co/C0vbNcy/dior-ENG.jpg"
     }
