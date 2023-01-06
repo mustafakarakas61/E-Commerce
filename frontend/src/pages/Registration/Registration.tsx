@@ -60,44 +60,44 @@ const Registration: FC = (): ReactElement => {
                             placeholder={"E-mail"}
                         />
                         <FormInput
-                            title={"First name:"}
+                            title={"Ad:"}
                             icon={<UserOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
                             name={"firstName"}
                             error={errors.firstNameError}
-                            placeholder={"First name"}
+                            placeholder={"Ad"}
                         />
                         <FormInput
-                            title={"Last name:"}
+                            title={"Soyad:"}
                             icon={<UserOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
                             name={"lastName"}
                             error={errors.lastNameError}
-                            placeholder={"Last name"}
+                            placeholder={"Soyad"}
                         />
                         <FormInput
-                            title={"Password:"}
+                            title={"Şifre:"}
                             icon={<LockOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
                             name={"password"}
                             error={errors.passwordError}
-                            placeholder={"Password"}
+                            placeholder={"Şifre"}
                             inputPassword
                         />
                         <FormInput
-                            title={"Confirm password:"}
+                            title={"Şifreyi onayla:"}
                             icon={<LockOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
                             name={"password2"}
                             error={errors.password2Error}
-                            placeholder={"Confirm password"}
+                            placeholder={"Şifreyi onayla"}
                             inputPassword
                         />
-                        <IconButton disabled={isLoading} title={"Sign up"} icon={<UserAddOutlined />} />
+                        <IconButton disabled={isLoading} title={"Kayıt ol"} icon={<UserAddOutlined />} />
                         <Form.Item
                             help={errors.captchaError}
                             validateStatus={errors.captchaError ? "error" : "validating"}

@@ -1,21 +1,18 @@
-export interface PerfumeResponse {
+export interface ProductResponse {
     id: number;
-    perfumeTitle: string;
-    perfumer: string;
+    productTitle: string;
+    producer: string;
     price: number;
-    perfumeRating: number;
+    productRating: number;
     filename: string;
     reviewsCount: number;
-    volume: string;
 }
 
-export interface FullPerfumeResponse extends PerfumeResponse {
+export interface FullProductResponse extends ProductResponse {
     year: number;
-    country: string;
-    perfumeGender: string;
-    fragranceTopNotes: string;
-    fragranceMiddleNotes: string;
-    fragranceBaseNotes: string;
+    city: string;
+    productType: string;
+    colors: string;
     description: string;
     type: string;
     file: any;
@@ -32,23 +29,20 @@ export interface UserOrdersRequest {
     page: number;
 }
 
-export interface PerfumesSearchRequest {
-    searchType: SearchPerfume;
+export interface ProductsSearchRequest {
+    searchType: SearchProduct;
     text: string;
     currentPage: number;
 }
 
-export interface PerfumeErrors {
-    perfumeTitleError: string;
-    perfumerError: string;
+export interface ProductErrors {
+    productTitleError: string;
+    producerError: string;
     yearError: string;
-    countryError: string;
+    cityError: string;
     typeError: string;
-    volumeError: string;
-    perfumeGenderError: string;
-    fragranceTopNotesError: string;
-    fragranceMiddleNotesError: string;
-    fragranceBaseNotesError: string;
+    productTypeError: string;
+    colorsError: string;
     priceError: string;
 }
 
@@ -61,7 +55,7 @@ export interface ReviewResponse {
 }
 
 export interface ReviewRequest {
-    perfumeId: number | string;
+    productId: number | string;
     author: string;
     message: string;
     rating: number;
@@ -90,7 +84,7 @@ export interface OrderItemResponse {
     id: number;
     amount: number;
     quantity: number;
-    perfume: PerfumeResponse;
+    product: ProductResponse;
 }
 
 export interface OrderError {
@@ -105,7 +99,7 @@ export interface OrderError {
 
 export interface OrderRequest {
     totalPrice?: number;
-    perfumesId?: any;
+    productsId?: any;
     firstName?: string;
     lastName?: string;
     city?: string;
@@ -179,14 +173,14 @@ export interface AuthErrors {
 }
 
 export interface FilterParamsType {
-    perfumers: Array<string>;
-    genders: Array<string>;
+    producers: Array<string>;
+    types: Array<string>;
     prices: Array<number>;
     currentPage?: number;
     sortByPrice?: boolean;
 }
 
-export interface PerfumePrice {
+export interface ProductPrice {
     id: number;
     name: string;
     array: Array<number>;
@@ -205,8 +199,8 @@ export enum LoadingStatus {
     SUCCESS = "SUCCESS"
 }
 
-export enum SearchPerfume {
+export enum SearchProduct {
     BRAND = "BRAND",
-    PERFUME_TITLE = "PERFUME_TITLE",
-    COUNTRY = "COUNTRY"
+    PRODUCT_TITLE = "PRODUCT_TITLE",
+    CITY = "CITY"
 }

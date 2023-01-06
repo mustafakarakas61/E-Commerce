@@ -5,34 +5,34 @@ import { CheckboxValueType } from "antd/lib/checkbox/Group";
 import { useLocation } from "react-router-dom";
 
 import MenuCheckboxSection from "./MenuSection/MenuCheckboxSection";
-import { selectIsPerfumesLoading, selectPerfumes } from "../../redux-toolkit/perfumes/perfumes-selector";
+import { selectIsProductsLoading, selectProducts } from "../../redux-toolkit/products/products-selector";
 import { FilterParamsType } from "../../types/types";
-import { fetchPerfumesByFilterParams, fetchPerfumesByInputText } from "../../redux-toolkit/perfumes/perfumes-thunks";
-import { resetPerfumesState } from "../../redux-toolkit/perfumes/perfumes-slice";
+import { fetchProductsByFilterParams, fetchProductsByInputText } from "../../redux-toolkit/products/products-thunks";
+import { resetProductsState } from "../../redux-toolkit/products/products-slice";
 import MenuRadioSection from "./MenuSection/MenuRadioSection";
 import MenuSorter from "./MenuSorter/MenuSorter";
-import PerfumeCard from "../../components/PerfumeCard/PerfumeCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
 import SelectSearchData from "../../components/SelectSearchData/SelectSearchData";
 import InputSearch from "../../components/InputSearch/InputSearch";
 import Spinner from "../../components/Spinner/Spinner";
 import { MAX_PAGE_VALUE, usePagination } from "../../hooks/usePagination";
-import { gender, perfumer, price } from "./MenuData";
+import { type, producer, price } from "./MenuData";
 import { useSearch } from "../../hooks/useSearch";
 import "./Menu.css";
 
 export enum CheckboxCategoryFilter {
-    PERFUMERS = "PERFUMERS",
-    GENDERS = "GENDERS"
+    PRODUCERS = "PRODUCERS",
+    TYPES = "TYPES"
 }
 
 const Menu: FC = (): ReactElement => {
     const dispatch = useDispatch();
-    const perfumes = useSelector(selectPerfumes);
-    const isPerfumesLoading = useSelector(selectIsPerfumesLoading);
+    const products = useSelector(selectProducts);
+    const isProductsLoading = useSelector(selectIsProductsLoading);
     const location = useLocation<{ id: string }>();
     const [filterParams, setFilterParams] = useState<FilterParamsType>({
-        perfumers: [],
-        genders: [],
+        producers: [],
+        types: [],
         prices: [1, 999]
     });
     const [sortByPrice, setSortByPrice] = useState<boolean>(false);
@@ -40,35 +40,35 @@ const Menu: FC = (): ReactElement => {
     const { searchValue, searchTypeValue, resetFields, form, onSearch, handleChangeSelect } = useSearch();
 
     useEffect(() => {
-        const perfumeData = location.state.id;
+        const productData = location.state.id;
 
-        if (perfumeData === "female" || perfumeData === "male") {
+        if (productData === "female" || productData === "male") {
             dispatch(
-                fetchPerfumesByFilterParams({
+                fetchProductsByFilterParams({
                     ...filterParams,
-                    genders: [...filterParams.genders, perfumeData],
+                    types: [...filterParams.types, productData],
                     sortByPrice,
                     currentPage: 0
                 })
             );
-            setFilterParams((prevState) => ({ ...prevState, genders: [...prevState.genders, perfumeData] }));
-        } else if (perfumeData === "all") {
-            dispatch(fetchPerfumesByFilterParams({ ...filterParams, sortByPrice, currentPage: 0 }));
+            setFilterParams((prevState) => ({ ...prevState, genders: [...prevState.types, productData] }));
+        } else if (productData === "all") {
+            dispatch(fetchProductsByFilterParams({ ...filterParams, sortByPrice, currentPage: 0 }));
         } else {
             dispatch(
-                fetchPerfumesByFilterParams({
+                fetchProductsByFilterParams({
                     ...filterParams,
-                    perfumers: [...filterParams.perfumers, perfumeData],
+                    producers: [...filterParams.producers, productData],
                     sortByPrice,
                     currentPage: 0
                 })
             );
-            setFilterParams((prevState) => ({ ...prevState, perfumers: [...prevState.perfumers, perfumeData] }));
+            setFilterParams((prevState) => ({ ...prevState, producers: [...prevState.producers, productData] }));
         }
         window.scrollTo(0, 0);
 
         return () => {
-            dispatch(resetPerfumesState());
+            dispatch(resetProductsState());
         };
     }, []);
 
@@ -77,16 +77,16 @@ const Menu: FC = (): ReactElement => {
     }, [filterParams, sortByPrice]);
 
     const onChangeCheckbox = (checkedValues: CheckboxValueType[], category: CheckboxCategoryFilter): void => {
-        if (CheckboxCategoryFilter.PERFUMERS === category) {
+        if (CheckboxCategoryFilter.PRODUCERS === category) {
             setFilterParams((prevState) => {
-                const filter = { ...prevState, perfumers: [...(checkedValues as string[])] };
-                dispatch(fetchPerfumesByFilterParams({ ...filter, sortByPrice, currentPage: 0 }));
+                const filter = { ...prevState, producers: [...(checkedValues as string[])] };
+                dispatch(fetchProductsByFilterParams({ ...filter, sortByPrice, currentPage: 0 }));
                 return filter;
             });
-        } else if (CheckboxCategoryFilter.GENDERS === category) {
+        } else if (CheckboxCategoryFilter.TYPES === category) {
             setFilterParams((prevState) => {
                 const filter = { ...prevState, genders: [...(checkedValues as string[])] };
-                dispatch(fetchPerfumesByFilterParams({ ...filter, sortByPrice, currentPage: 0 }));
+                dispatch(fetchProductsByFilterParams({ ...filter, sortByPrice, currentPage: 0 }));
                 return filter;
             });
         }
@@ -96,14 +96,14 @@ const Menu: FC = (): ReactElement => {
     const onChangeRadio = (event: RadioChangeEvent): void => {
         setFilterParams((prevState) => {
             const filter = { ...prevState, prices: event.target.value };
-            dispatch(fetchPerfumesByFilterParams({ ...filter, sortByPrice, currentPage: 0 }));
+            dispatch(fetchProductsByFilterParams({ ...filter, sortByPrice, currentPage: 0 }));
             return filter;
         });
         resetFields();
     };
 
     const handleChangeSortPrice = (event: RadioChangeEvent): void => {
-        dispatch(fetchPerfumesByFilterParams({ ...filterParams, sortByPrice: event.target.value, currentPage: 0 }));
+        dispatch(fetchProductsByFilterParams({ ...filterParams, sortByPrice: event.target.value, currentPage: 0 }));
         setSortByPrice(event.target.value);
         resetFields();
     };
@@ -111,10 +111,10 @@ const Menu: FC = (): ReactElement => {
     const changePagination = (page: number, pageSize: number): void => {
         if (searchValue) {
             dispatch(
-                fetchPerfumesByInputText({ searchType: searchTypeValue, text: searchValue, currentPage: page - 1 })
+                fetchProductsByInputText({ searchType: searchTypeValue, text: searchValue, currentPage: page - 1 })
             );
         } else {
-            dispatch(fetchPerfumesByFilterParams({ ...filterParams, sortByPrice, currentPage: page - 1 }));
+            dispatch(fetchProductsByFilterParams({ ...filterParams, sortByPrice, currentPage: page - 1 }));
         }
         handleChangePagination(page, pageSize);
     };
@@ -122,24 +122,24 @@ const Menu: FC = (): ReactElement => {
     return (
         <Layout>
             <Layout.Content className={"login-content"}>
-                <Typography.Title level={2}>Perfumes</Typography.Title>
+                <Typography.Title level={2}>Ürünler</Typography.Title>
                 <Row gutter={32}>
                     <Col span={6}>
                         <MenuCheckboxSection
-                            title={"Kategori"}
+                            title={"Üretici"}
                             onChange={onChangeCheckbox}
-                            data={perfumer}
-                            category={CheckboxCategoryFilter.PERFUMERS}
-                            selectedValues={filterParams.perfumers}
+                            data={producer}
+                            category={CheckboxCategoryFilter.PRODUCERS}
+                            selectedValues={filterParams.producers}
                         />
                         <MenuCheckboxSection
-                            title={"Gender"}
+                            title={"Ürün tipi"}
                             onChange={onChangeCheckbox}
-                            data={gender}
-                            category={CheckboxCategoryFilter.GENDERS}
-                            selectedValues={filterParams.genders}
+                            data={type}
+                            category={CheckboxCategoryFilter.TYPES}
+                            selectedValues={filterParams.types}
                         />
-                        <MenuRadioSection title={"Price"} onChange={onChangeRadio} data={price} />
+                        <MenuRadioSection title={"Fiyat"} onChange={onChangeRadio} data={price} />
                     </Col>
                     <Col span={18}>
                         <Row>
@@ -165,11 +165,11 @@ const Menu: FC = (): ReactElement => {
                             </Col>
                         </Row>
                         <Row gutter={[32, 32]}>
-                            {isPerfumesLoading ? (
+                            {isProductsLoading ? (
                                 <Spinner />
                             ) : (
-                                perfumes.map((perfume) => (
-                                    <PerfumeCard key={perfume.id} perfume={perfume} colSpan={8} />
+                                products.map((product) => (
+                                    <ProductCard key={product.id} product={product} colSpan={8} />
                                 ))
                             )}
                         </Row>

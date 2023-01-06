@@ -48,8 +48,8 @@ export const updateUserPassword = createAsyncThunk<string, UserResetPasswordRequ
     }
 );
 
-export const addReviewToPerfume = createAsyncThunk<{}, ReviewRequest, { rejectValue: ReviewError }>(
-    "user/addReviewToPerfume",
+export const addReviewToProduct = createAsyncThunk<{}, ReviewRequest, { rejectValue: ReviewError }>(
+    "user/addReviewToProduct",
     async (request, thunkApi) => {
         try {
             return await RequestService.post(USERS_REVIEW, request);

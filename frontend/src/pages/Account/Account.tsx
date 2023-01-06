@@ -14,7 +14,7 @@ import {
     ACCOUNT,
     ACCOUNT_ADMIN_ADD,
     ACCOUNT_ADMIN_ORDERS,
-    ACCOUNT_ADMIN_PERFUMES,
+    ACCOUNT_ADMIN_PRODUCTS,
     ACCOUNT_ADMIN_USERS,
     ACCOUNT_USER_EDIT,
     ACCOUNT_USER_INFO,
@@ -23,9 +23,9 @@ import {
 import AccountLink from "./AccountLink/AccountLink";
 import AccountItem from "./AccountItem/AccountItem";
 import PersonalData from "./PersonalData/PersonalData";
-import AddPerfume from "./AddPerfume/AddPerfume";
-import PerfumeList from "./PerfumeList/PerfumeList";
-import EditPerfume from "./EditPerfume/EditPerfume";
+import AddProduct from "./AddProduct/AddProduct";
+import ProductList from "./ProductList/ProductList";
+import EditProduct from "./EditProduct/EditProduct";
 import OrdersList from "./OrdersList/OrdersList";
 import ManageUserOrder from "./ManageUserOrder/ManageUserOrder";
 import UsersList from "./UsersList/UsersList";
@@ -57,15 +57,15 @@ const Account: FC = (): ReactElement => {
                     <AccountLink link={ACCOUNT_USER_INFO} title={"Personal data"} />
                     {isAdmin ? (
                         <>
-                            <AccountLink link={ACCOUNT_ADMIN_ADD} title={"Add perfume"} />
-                            <AccountLink link={ACCOUNT_ADMIN_PERFUMES} title={"List of perfumes"} />
-                            <AccountLink link={ACCOUNT_ADMIN_ORDERS} title={"List of all orders"} />
-                            <AccountLink link={ACCOUNT_ADMIN_USERS} title={"List of all users"} />
+                            <AccountLink link={ACCOUNT_ADMIN_ADD} title={"Ürün ekle"} />
+                            <AccountLink link={ACCOUNT_ADMIN_PRODUCTS} title={"Ürün listesi"} />
+                            <AccountLink link={ACCOUNT_ADMIN_ORDERS} title={"Siparişlerin listesi"} />
+                            <AccountLink link={ACCOUNT_ADMIN_USERS} title={"Kullanıcıların listesi"} />
                         </>
                     ) : (
                         <>
-                            <AccountLink link={ACCOUNT_USER_EDIT} title={"Change password"} />
-                            <AccountLink link={ACCOUNT_USER_ORDERS} title={"List of orders"} />
+                            <AccountLink link={ACCOUNT_USER_EDIT} title={"Şifreyi değiştir"} />
+                            <AccountLink link={ACCOUNT_USER_ORDERS} title={"Siparişlerim"} />
                         </>
                     )}
                 </Col>
@@ -77,9 +77,9 @@ const Account: FC = (): ReactElement => {
                     <Route exact path={`${ACCOUNT_USER_ORDERS}/:id`} component={ManageUserOrder} />
                     {isAdmin ? (
                         <>
-                            <Route path={ACCOUNT_ADMIN_ADD} component={AddPerfume} />
-                            <Route exact path={ACCOUNT_ADMIN_PERFUMES} component={PerfumeList} />
-                            <Route exact path={`${ACCOUNT_ADMIN_PERFUMES}/:id`} component={EditPerfume} />
+                            <Route path={ACCOUNT_ADMIN_ADD} component={AddProduct} />
+                            <Route exact path={ACCOUNT_ADMIN_PRODUCTS} component={ProductList} />
+                            <Route exact path={`${ACCOUNT_ADMIN_PRODUCTS}/:id`} component={EditProduct} />
                             <Route exact path={ACCOUNT_ADMIN_ORDERS} component={OrdersList} />
                             <Route exact path={ACCOUNT_ADMIN_USERS} component={UsersList} />
                             <Route exact path={`${ACCOUNT_ADMIN_USERS}/:id`} component={ManageUser} />

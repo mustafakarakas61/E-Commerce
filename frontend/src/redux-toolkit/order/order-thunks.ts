@@ -34,7 +34,7 @@ export const addOrder = createAsyncThunk<
     try {
         const response = await RequestService.post(USERS_ORDER, order);
         history.push(ORDER_FINALIZE);
-        localStorage.removeItem("perfumes");
+        localStorage.removeItem("products");
         return response.data;
     } catch (error) {
         return thunkApi.rejectWithValue(error.response.data);

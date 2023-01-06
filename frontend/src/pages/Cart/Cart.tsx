@@ -10,7 +10,7 @@ import { selectCartItems, selectIsCartLoading } from "../../redux-toolkit/cart/c
 import { fetchCart } from "../../redux-toolkit/cart/cart-thunks";
 import {
     calculateCartPrice,
-    removePerfumeById,
+    removeProductById,
     resetCartState,
     setCartItemsCount
 } from "../../redux-toolkit/cart/cart-slice";
@@ -22,19 +22,19 @@ import "./Cart.css";
 
 const Cart: FC = (): ReactElement => {
     const dispatch = useDispatch();
-    const perfumes = useSelector(selectCartItems);
+    const products = useSelector(selectCartItems);
     const isCartLoading = useSelector(selectIsCartLoading);
-    const [perfumeInCart, setPerfumeInCart] = useState(() => new Map());
+    const [productInCart, setProductInCart] = useState(() => new Map());
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        const perfumesFromLocalStorage: Map<number, number> = new Map(
-            JSON.parse(localStorage.getItem("perfumes") as string)
+        const productsFromLocalStorage: Map<number, number> = new Map(
+            JSON.parse(localStorage.getItem("products") as string)
         );
 
-        dispatch(fetchCart(Array.from(perfumesFromLocalStorage.keys())));
-        perfumesFromLocalStorage.forEach((value: number, key: number) => {
-            setPerfumeInCart(perfumeInCart.set(key, value));
+        dispatch(fetchCart(Array.from(productsFromLocalStorage.keys())));
+        productsFromLocalStorage.forEach((value: number, key: number) => {
+            setProductInCart(productInCart.set(key, value));
         });
 
         return () => {
@@ -42,27 +42,27 @@ const Cart: FC = (): ReactElement => {
         };
     }, []);
 
-    const deleteFromCart = (perfumeId: number): void => {
-        perfumeInCart.delete(perfumeId);
+    const deleteFromCart = (productId: number): void => {
+        productInCart.delete(productId);
 
-        if (perfumeInCart.size === 0) {
-            localStorage.removeItem("perfumes");
-            setPerfumeInCart(new Map());
+        if (productInCart.size === 0) {
+            localStorage.removeItem("products");
+            setProductInCart(new Map());
         } else {
-            localStorage.setItem("perfumes", JSON.stringify(Array.from(perfumeInCart.entries())));
+            localStorage.setItem("products", JSON.stringify(Array.from(productInCart.entries())));
         }
-        dispatch(removePerfumeById(perfumeId));
-        dispatch(setCartItemsCount(perfumeInCart.size));
+        dispatch(removeProductById(productId));
+        dispatch(setCartItemsCount(productInCart.size));
     };
 
-    const onChangePerfumeItemCount = (perfumeId: number, inputValue: number): void => {
-        setPerfumes(perfumeId, inputValue);
-        dispatch(calculateCartPrice(perfumes));
+    const onChangeProductItemCount = (productId: number, inputValue: number): void => {
+        setProducts(productId, inputValue);
+        dispatch(calculateCartPrice(products));
     };
 
-    const setPerfumes = (perfumeId: number, perfumeCount: number): void => {
-        setPerfumeInCart(perfumeInCart.set(perfumeId, perfumeCount));
-        localStorage.setItem("perfumes", JSON.stringify(Array.from(perfumeInCart.entries())));
+    const setProducts = (productId: number, productCount: number): void => {
+        setProductInCart(productInCart.set(productId, productCount));
+        localStorage.setItem("products", JSON.stringify(Array.from(productInCart.entries())));
     };
 
     return (
@@ -75,7 +75,7 @@ const Cart: FC = (): ReactElement => {
                         <ContentTitle icon={<ShoppingCartOutlined />} title={"Cart"} />
                     </div>
                     <Row gutter={32}>
-                        {perfumes.length === 0 ? (
+                        {products.length === 0 ? (
                             <Col span={24}>
                                 <Typography.Title level={3} style={{ textAlign: "center" }}>
                                     Cart is empty
@@ -84,12 +84,12 @@ const Cart: FC = (): ReactElement => {
                         ) : (
                             <>
                                 <Col span={16}>
-                                    {perfumes.map((perfume) => (
+                                    {products.map((product) => (
                                         <CartItem
-                                            key={perfume.id}
-                                            perfume={perfume}
-                                            perfumeInCart={perfumeInCart.get(perfume.id)}
-                                            onChangePerfumeItemCount={onChangePerfumeItemCount}
+                                            key={product.id}
+                                            product={product}
+                                            productInCart={productInCart.get(product.id)}
+                                            onChangeProductItemCount={onChangeProductItemCount}
                                             deleteFromCart={deleteFromCart}
                                         />
                                     ))}

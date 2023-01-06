@@ -15,21 +15,18 @@ export const ordersByQuery = `
                 id
                 amount
                 quantity
-                perfume {
+                product {
                     id
-                    perfumeTitle
-                    perfumer
+                    productTitle
+                    producer
                     year
                     country
-                    perfumeGender
-                    fragranceTopNotes
-                    fragranceMiddleNotes
-                    fragranceBaseNotes
+                    productType
+                    colors
                     filename
                     price
-                    volume
                     type
-                    perfumeRating
+                    productRating
                     reviews {
                         id
                         author
@@ -60,21 +57,18 @@ export const ordersByEmailQuery = (email: string | undefined) => `
                 id
                 amount
                 quantity
-                perfume {
+                product {
                     id
-                    perfumeTitle
-                    perfumer
+                    productTitle
+                    producer
                     year
                     country
-                    perfumeGender
-                    fragranceTopNotes
-                    fragranceMiddleNotes
-                    fragranceBaseNotes
+                    productType
+                    colors
                     filename
                     price
-                    volume
                     type
-                    perfumeRating
+                    productRating
                     reviews {
                         id
                         author

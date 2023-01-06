@@ -1,12 +1,12 @@
 import React, { FC, ReactElement } from "react";
 import { Radio, RadioChangeEvent, Row, Typography } from "antd";
 
-import { PerfumePrice } from "../../../types/types";
+import { ProductPrice } from "../../../types/types";
 
 type PropsType = {
     title: string;
     onChange: (event: RadioChangeEvent) => void;
-    data: Array<PerfumePrice>;
+    data: Array<ProductPrice>;
 };
 
 const MenuRadioSection: FC<PropsType> = ({ title, onChange, data }): ReactElement => {

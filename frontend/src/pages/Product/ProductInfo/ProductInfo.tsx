@@ -3,31 +3,31 @@ import { Button, Col, Divider, Rate, Row, Space, Typography } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
 import Description from "./Description/Description";
-import { FullPerfumeResponse } from "../../../types/types";
+import { FullProductResponse } from "../../../types/types";
 
 type PropsType = {
-    perfume?: Partial<FullPerfumeResponse>;
+    product?: Partial<FullProductResponse>;
     reviewsLength: number;
     addToCart: () => void;
 };
 
-const ProductInfo: FC<PropsType> = ({ perfume, reviewsLength, addToCart }): ReactElement => {
+const ProductInfo: FC<PropsType> = ({ product, reviewsLength, addToCart }): ReactElement => {
     return (
         <Row>
             <Col span={12} className={"product-image-wrapper"}>
-                <img src={perfume?.filename} alt={perfume?.perfumeTitle} className={"product-image"} />
+                <img src={product?.filename} alt={product?.productTitle} className={"product-image"} />
             </Col>
             <Col span={12}>
                 <Row className={"product-header"}>
                     <Col>
-                        <Typography.Title level={3}>{perfume?.perfumeTitle}</Typography.Title>
-                        <Typography.Title level={4}>{perfume?.perfumer}</Typography.Title>
-                        <Typography.Text>{perfume?.type}</Typography.Text>
+                        <Typography.Title level={3}>{product?.productTitle}</Typography.Title>
+                        <Typography.Title level={4}>{product?.producer}</Typography.Title>
+                        <Typography.Text>{product?.type}</Typography.Text>
                     </Col>
                 </Row>
                 <Row>
                     <Col className={"product-rate"} span={8}>
-                        <Rate allowHalf disabled value={perfume?.perfumeRating} />
+                        <Rate allowHalf disabled value={product?.productRating} />
                         <Typography.Text>{reviewsLength} reviews</Typography.Text>
                     </Col>
                 </Row>
@@ -37,7 +37,7 @@ const ProductInfo: FC<PropsType> = ({ perfume, reviewsLength, addToCart }): Reac
                 <Row style={{ marginTop: 16 }}>
                     <Col span={5}>
                         <Space align={"baseline"}>
-                            <Typography.Text>${perfume?.price}.00</Typography.Text>
+                            <Typography.Text>${product?.price}.00</Typography.Text>
                         </Space>
                     </Col>
                     <Col span={4}>
@@ -49,22 +49,16 @@ const ProductInfo: FC<PropsType> = ({ perfume, reviewsLength, addToCart }): Reac
                 <Divider />
                 <Row>
                     <Col span={8}>
-                        <Description title={"Gender:"} />
-                        <Description title={"Volume:"} />
-                        <Description title={"Release year:"} />
-                        <Description title={"Manufacturer country:"} />
-                        <Description title={"Top notes:"} />
-                        <Description title={"Heart notes:"} />
-                        <Description title={"Base notes:"} />
+                        <Description title={"Ürün tipi:"} />
+                        <Description title={"Üretim yılı:"} />
+                        <Description title={"Şehir:"} />
+                        <Description title={"Renkler:"} />
                     </Col>
                     <Col span={16}>
-                        <Description title={perfume?.perfumeGender} />
-                        <Description title={`${perfume?.volume} ml.`} />
-                        <Description title={perfume?.year} />
-                        <Description title={perfume?.country} />
-                        <Description title={perfume?.fragranceTopNotes} />
-                        <Description title={perfume?.fragranceMiddleNotes} />
-                        <Description title={perfume?.fragranceBaseNotes} />
+                        <Description title={product?.productType} />
+                        <Description title={product?.year} />
+                        <Description title={product?.city} />
+                        <Description title={product?.colors} />
                     </Col>
                 </Row>
             </Col>

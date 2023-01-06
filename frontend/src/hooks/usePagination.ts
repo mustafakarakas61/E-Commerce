@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import { selectTotalElements } from "../redux-toolkit/perfumes/perfumes-selector";
+import { selectTotalElements } from "../redux-toolkit/products/products-selector";
 
 interface UsePagination {
     currentPage: number,

@@ -18,6 +18,6 @@ export const ACCOUNT_USER_EDIT = "/account/user/edit";
 export const ACCOUNT_USER_ORDERS = "/account/user/orders";
 
 export const ACCOUNT_ADMIN_ADD = "/account/admin/add";
-export const ACCOUNT_ADMIN_PERFUMES = "/account/admin/perfumes";
+export const ACCOUNT_ADMIN_PRODUCTS = "/account/admin/products";
 export const ACCOUNT_ADMIN_ORDERS = "/account/admin/orders";
 export const ACCOUNT_ADMIN_USERS = "/account/admin/users";

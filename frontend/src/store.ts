@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import perfumesSlice, { PerfumesState } from "./redux-toolkit/perfumes/perfumes-slice";
-import perfumeSlice, { PerfumeState } from "./redux-toolkit/perfume/perfume-slice";
+import productsSlice, { ProductsState } from "./redux-toolkit/products/products-slice";
+import productSlice, { ProductState } from "./redux-toolkit/product/product-slice";
 import userSlice, { UserState } from "./redux-toolkit/user/user-slice";
 import ordersSlice, { OrdersState } from "./redux-toolkit/orders/orders-slice";
 import orderSlice, { OrderState } from "./redux-toolkit/order/order-slice";
@@ -15,8 +15,8 @@ export interface RootState {
     cart: CartState;
     order: OrderState;
     orders: OrdersState;
-    perfume: PerfumeState;
-    perfumes: PerfumesState;
+    product: ProductState;
+    products: ProductsState;
     user: UserState;
 }
 
@@ -26,8 +26,8 @@ export const storeReducer = {
     cart: cartSlice,
     order: orderSlice,
     orders: ordersSlice,
-    perfume: perfumeSlice,
-    perfumes: perfumesSlice,
+    product: productSlice,
+    products: productsSlice,
     user: userSlice,
 };
 

@@ -3,7 +3,7 @@ import React, {FC, ReactElement, useEffect} from "react";
 import CarouselImageSlider from "./CarouselImageSlider/CarouselImageSlider";
 import SliderBrands from "./SliderBrands/SliderBrands";
 import HomePageTheme from "./HomePageTheme/HomePageTheme";
-import PerfumeCardsSlider from "./PerfumeCardsSlider/PerfumeCardsSlider";
+import ProductCardsSlider from "./ProductCardsSlider/ProductCardsSlider";
 
 const Home: FC = (): ReactElement => {
     
@@ -16,7 +16,7 @@ const Home: FC = (): ReactElement => {
             <CarouselImageSlider />
             <SliderBrands />
             <HomePageTheme />
-            <PerfumeCardsSlider />
+            <ProductCardsSlider />
         </div>
     );
 };

@@ -3,14 +3,14 @@ import { CloseOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 
 type PropsType = {
-    perfumeId: number;
-    deleteFromCart: (perfumeId: number) => void;
+    productId: number;
+    deleteFromCart: (productId: number) => void;
 };
 
-const RemoveButton: FC<PropsType> = memo(({ perfumeId, deleteFromCart }): ReactElement => {
+const RemoveButton: FC<PropsType> = memo(({ productId, deleteFromCart }): ReactElement => {
 
     return (
-        <Button onClick={() => deleteFromCart(perfumeId)} icon={<CloseOutlined />}>
+        <Button onClick={() => deleteFromCart(productId)} icon={<CloseOutlined />}>
             Remove
         </Button>
     );

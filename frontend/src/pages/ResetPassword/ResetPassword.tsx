@@ -53,13 +53,13 @@ const ResetPassword: FC = (): ReactElement => {
                             inputPassword
                         />
                         <FormInput
-                            title={"Confirm password:"}
+                            title={"Şifreyi onayla:"}
                             icon={<LockOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
                             error={password2Error}
                             name={"password2"}
-                            placeholder={"Confirm password"}
+                            placeholder={"Şifreyi onayla"}
                             inputPassword
                         />
                         <IconButton title={"Reset"} icon={<ReloadOutlined />} />

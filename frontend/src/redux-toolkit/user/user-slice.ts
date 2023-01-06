@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { AuthErrors, LoadingStatus, ReviewError, UserResponse, UserEditErrors } from "../../types/types";
 import {
-    addReviewToPerfume,
+    addReviewToProduct,
     fetchUserInfo,
     fetchUserInfoByQuery,
     updateUserInfo,
@@ -69,11 +69,11 @@ export const userSlice = createSlice({
         builder.addCase(updateUserPassword.rejected, (state, action) => {
             state.userResetPasswordErrors = action.payload!;
         });
-        builder.addCase(addReviewToPerfume.fulfilled, (state) => {
+        builder.addCase(addReviewToProduct.fulfilled, (state) => {
             state.reviewErrors = {};
             state.isReviewAdded = true;
         });
-        builder.addCase(addReviewToPerfume.rejected, (state, action) => {
+        builder.addCase(addReviewToProduct.rejected, (state, action) => {
             state.reviewErrors = action.payload!;
             state.isReviewAdded = false;
         });

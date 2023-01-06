@@ -33,7 +33,7 @@ const ChangePassword: FC = (): ReactElement => {
 
     return (
         <>
-            <ContentTitle title={"Change Password"} titleLevel={4} icon={<KeyOutlined />} />
+            <ContentTitle title={"Şifreyi değiştir"} titleLevel={4} icon={<KeyOutlined />} />
             <Form onFinish={onFormSubmit} form={form}>
                 <Row>
                     <Col span={12}>
@@ -41,24 +41,24 @@ const ChangePassword: FC = (): ReactElement => {
                             <Alert type="success" message={successMessage} style={{ marginBottom: 16 }} />
                         )}
                         <FormInput
-                            title={"Enter a new password"}
+                            title={"Bir şifre giriniz"}
                             titleSpan={10}
                             wrapperSpan={14}
                             name={"password"}
                             error={passwordError}
-                            placeholder={"Password"}
+                            placeholder={"Şifre"}
                             inputPassword
                         />
                         <FormInput
-                            title={"Confirm password"}
+                            title={"Şifreyi onaylayınız"}
                             titleSpan={10}
                             wrapperSpan={14}
                             name={"password2"}
                             error={password2Error}
-                            placeholder={"Password"}
+                            placeholder={"Şifre"}
                             inputPassword
                         />
-                        <IconButton title={"Change"} icon={<UndoOutlined />} />
+                        <IconButton title={"Değiştir"} icon={<UndoOutlined />} />
                     </Col>
                 </Row>
             </Form>

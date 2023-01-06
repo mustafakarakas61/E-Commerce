@@ -48,7 +48,7 @@ const ManageUserOrder: FC = (): ReactElement => {
             ) : (
                 <>
                     <div style={{ textAlign: "center" }}>
-                        <ContentTitle title={`Order #${id}`} titleLevel={4} icon={<ShoppingOutlined />} />
+                        <ContentTitle title={`Sipariş #${id}`} titleLevel={4} icon={<ShoppingOutlined />} />
                     </div>
                     <Row>
                         <Col span={24}>
@@ -81,38 +81,38 @@ const ManageUserOrder: FC = (): ReactElement => {
                                             dataSource={orderItems}
                                             columns={[
                                                 {
-                                                    title: "Perfume Id",
+                                                    title: "Ürün id",
                                                     dataIndex: "id",
                                                     key: "id"
                                                 },
                                                 {
-                                                    title: "Perfume Brand",
-                                                    dataIndex: "perfumer",
-                                                    key: "perfumer",
-                                                    render: (_, order: OrderItemResponse) => order.perfume.perfumer
+                                                    title: "Üretici",
+                                                    dataIndex: "producer",
+                                                    key: "producer",
+                                                    render: (_, order: OrderItemResponse) => order.product.producer
                                                 },
                                                 {
-                                                    title: "Perfume Name",
-                                                    dataIndex: "perfumeTitle",
-                                                    key: "perfumeTitle",
-                                                    render: (_, order: OrderItemResponse) => order.perfume.perfumeTitle
+                                                    title: "Ürün ismi",
+                                                    dataIndex: "productTitle",
+                                                    key: "productTitle",
+                                                    render: (_, order: OrderItemResponse) => order.product.productTitle
                                                 },
                                                 {
-                                                    title: "Quantity",
+                                                    title: "Adet",
                                                     dataIndex: "quantity",
                                                     key: "quantity"
                                                 },
                                                 {
-                                                    title: "Price",
+                                                    title: "Fiyat",
                                                     dataIndex: "price",
                                                     key: "price",
-                                                    render: (_, order: OrderItemResponse) => `${order.perfume.price}.0 $`
+                                                    render: (_, order: OrderItemResponse) => `${order.product.price}.0 ₺`
                                                 },
                                                 {
-                                                    title: "Amount",
+                                                    title: "Miktar",
                                                     dataIndex: "amount",
                                                     key: "amount",
-                                                    render: (_, order: OrderItemResponse) => `${order.amount}.0 $`
+                                                    render: (_, order: OrderItemResponse) => `${order.amount}.0 ₺`
                                                 }
                                             ]}
                                         />

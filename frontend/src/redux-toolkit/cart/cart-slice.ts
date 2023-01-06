@@ -1,34 +1,34 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { LoadingStatus, PerfumeResponse } from "../../types/types";
+import { LoadingStatus, ProductResponse } from "../../types/types";
 import { fetchCart } from "./cart-thunks";
 
 export interface CartState {
     loadingState: LoadingStatus;
     totalPrice: number;
     cartItemsCount: number;
-    perfumes: Array<PerfumeResponse>;
+    products: Array<ProductResponse>;
 }
 
 export const initialState: CartState = {
     loadingState: LoadingStatus.LOADING,
     totalPrice: 0,
     cartItemsCount: 0,
-    perfumes: []
+    products: []
 };
 
 export const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        calculateCartPrice(state, action: PayloadAction<Array<PerfumeResponse>>) {
+        calculateCartPrice(state, action: PayloadAction<Array<ProductResponse>>) {
             state.totalPrice = calculatePrice(action.payload);
             state.loadingState = LoadingStatus.LOADED;
         },
-        removePerfumeById(state, action: PayloadAction<number>) {
-            const perfumes = state.perfumes.filter((perfume) => perfume.id !== action.payload);
-            state.perfumes = perfumes;
-            state.totalPrice = calculatePrice(perfumes);
+        removeProductById(state, action: PayloadAction<number>) {
+            const products = state.products.filter((product) => product.id !== action.payload);
+            state.products = products;
+            state.totalPrice = calculatePrice(products);
             state.loadingState = LoadingStatus.LOADED;
         },
         setCartItemsCount(state, action: PayloadAction<number>) {
@@ -45,24 +45,24 @@ export const cartSlice = createSlice({
         builder.addCase(fetchCart.fulfilled, (state, action) => {
             state.totalPrice = calculatePrice(action.payload);
             state.cartItemsCount = action.payload.length;
-            state.perfumes = action.payload;
+            state.products = action.payload;
             state.loadingState = LoadingStatus.LOADED;
         });
     }
 });
 
-export const { calculateCartPrice, removePerfumeById, setCartItemsCount, resetCartState } = cartSlice.actions;
+export const { calculateCartPrice, removeProductById, setCartItemsCount, resetCartState } = cartSlice.actions;
 export default cartSlice.reducer;
 
-const calculatePrice = (perfumes: Array<PerfumeResponse>): number => {
-    const perfumesFromLocalStorage: Map<number, number> = new Map(JSON.parse(<string>localStorage.getItem("perfumes")));
+const calculatePrice = (products: Array<ProductResponse>): number => {
+    const productsFromLocalStorage: Map<number, number> = new Map(JSON.parse(<string>localStorage.getItem("products")));
     let total = 0;
 
-    perfumesFromLocalStorage.forEach((value, key) => {
-        const perfume = perfumes.find((perfume) => perfume.id === key);
+    productsFromLocalStorage.forEach((value, key) => {
+        const product = products.find((product) => product.id === key);
 
-        if (perfume) {
-            total += perfume.price * value;
+        if (product) {
+            total += product.price * value;
         }
     });
     return total;

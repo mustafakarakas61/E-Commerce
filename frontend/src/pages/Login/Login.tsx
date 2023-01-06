@@ -44,7 +44,7 @@ const Login: FC = (): ReactElement => {
 
     return (
         <ContentWrapper>
-            <ContentTitle icon={<LoginOutlined />} title={"SIGN IN"} />
+            <ContentTitle icon={<LoginOutlined />} title={"Giriş Yap"} />
             <Row gutter={32}>
                 <Col span={12}>
                     <Form onFinish={onClickSignIn}>
@@ -60,17 +60,17 @@ const Login: FC = (): ReactElement => {
                             placeholder={"E-mail"}
                         />
                         <FormInput
-                            title={"Password:"}
+                            title={"Şifre:"}
                             icon={<LockOutlined />}
                             titleSpan={6}
                             wrapperSpan={18}
                             name={"password"}
-                            placeholder={"Password"}
+                            placeholder={"Şifre"}
                             inputPassword
                         />
                         <Space align={"baseline"} size={13}>
-                            <IconButton title={"Sign in"} icon={<LoginOutlined />} />
-                            <Link to={FORGOT}>Forgot password?</Link>
+                            <IconButton title={"Giriş Yap"} icon={<LoginOutlined />} />
+                            <Link to={FORGOT}>Şifrenizi mi unuttunuz?</Link>
                         </Space>
                     </Form>
                 </Col>

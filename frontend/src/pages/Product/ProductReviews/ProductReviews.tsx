@@ -27,7 +27,7 @@ const ProductReviews: FC<PropType> = ({ reviews, reviewErrors, addReview, form }
             <Row>
                 {reviews.length === 0 ? (
                     <Col span={24} className={"product-reviews-title"}>
-                        <Typography.Text>There are no reviews for this perfume.</Typography.Text>
+                        <Typography.Text>Bu ürün için yorum bulunmamaktadır.</Typography.Text>
                     </Col>
                 ) : (
                     <Col span={24}>

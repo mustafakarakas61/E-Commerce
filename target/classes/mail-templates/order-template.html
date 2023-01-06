@@ -42,18 +42,18 @@
                 </tr>
             </table>
             <hr/>
-            <h3 style="text-align: center">Hello <span th:text="${order.getFirstName()}" th:remove="tag"></span>!</h3>
-            <p style="text-align: center">Thank you for your order in Perfume online store.</p>
+            <h3 style="text-align: center">Merhaba <span th:text="${order.getFirstName()}" th:remove="tag"></span>!</h3>
+            <p style="text-align: center">Bring to Me online mağazasındaki siparişiniz için teşekkür ederiz.</p>
             <hr/>
             <div class="text-left">
-                <p><b>Your order number is: <span th:text="${order.getId()}" th:remove="tag"></span></b></p>
-                <p><b>Date:</b> <span th:text="${order.getDate()}" th:remove="tag"></span></p>
-                <p><b>Name:</b> <span th:text="${order.getFirstName() + ' ' + order.getLastName()}"
+                <p><b>Sipariş numaran: <span th:text="${order.getId()}" th:remove="tag"></span></b></p>
+                <p><b>Tarih:</b> <span th:text="${order.getDate()}" th:remove="tag"></span></p>
+                <p><b>İsim:</b> <span th:text="${order.getFirstName() + ' ' + order.getLastName()}"
                                       th:remove="tag"></span></p>
-                <p><b>Address:</b> <span th:text="${order.getCity() + ' ' + order.getAddress()}" th:remove="tag"></span>
+                <p><b>Adres:</b> <span th:text="${order.getCity() + ' ' + order.getAddress()}" th:remove="tag"></span>
                 </p>
-                <p><b>Post index:</b> <span th:text="${order.getPostIndex()}" th:remove="tag"></span></p>
-                <p><b>Phone:</b> <span th:text="${order.getPhoneNumber()}" th:remove="tag"></span></p>
+                <p><b>Posta kodu:</b> <span th:text="${order.getPostIndex()}" th:remove="tag"></span></p>
+                <p><b>Telefon:</b> <span th:text="${order.getPhoneNumber()}" th:remove="tag"></span></p>
             </div>
             <th:block th:each="orderItem : ${order.getOrderItems()}">
                 <hr/>
@@ -61,28 +61,28 @@
                     <tr>
                         <td style="width: 95px;" class="content">
                             <img style="width: 100%; height: auto"
-                                 th:src="@{{path} (path = ${orderItem.getPerfume().getFilename()})}"/>
+                                 th:src="@{{path} (path = ${orderItem.getProduct().getFilename()})}"/>
                         </td>
                         <td style="width: 179px;" class="content">
-                            <p><b th:text="${orderItem.getPerfume().getPerfumer()}"></b><br/>
+                            <p><b th:text="${orderItem.getProduct().getProducer()}"></b><br/>
                                 <span style="font-size: 14px">
-                                    <span th:text="${orderItem.getPerfume().getPerfumeTitle()}"
+                                    <span th:text="${orderItem.getProduct().getProductTitle()}"
                                           th:remove="tag"></span><br/>
-                            <span th:text="${orderItem.getPerfume().getType()}" th:remove="tag"></span><br/>
-                            <span th:text="${orderItem.getPerfume().getVolume()}" th:remove="tag"></span> ml.</span>
+                            <span th:text="${orderItem.getProduct().getType()}" th:remove="tag"></span><br/>
+                            </span>
                             </p>
                         </td>
                         <td style="width: 54px;" class="content">
                             <span th:text="${orderItem.getQuantity()}" th:remove="tag"></span> pcs.
                         </td>
                         <td style="width: 54px;" class="content">
-                            <span th:text="${orderItem.getPerfume().getPrice()}" th:remove="tag"></span> $
+                            <span th:text="${orderItem.getProduct().getPrice()}" th:remove="tag"></span> $
                         </td>
                     </tr>
                 </table>
             </th:block>
             <hr/>
-            <h3>Total price: $ <span th:text="${order.getTotalPrice()}" th:remove="tag"></span></h3>
+            <h3>Toplam fiyat: ₺ <span th:text="${order.getTotalPrice()}" th:remove="tag"></span></h3>
         </td>
     </tr>
 </table>

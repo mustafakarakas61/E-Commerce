@@ -43,10 +43,10 @@ const App: FC = (): ReactElement => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const perfumesFromLocalStorage: Map<number, number> = new Map(
-            JSON.parse(localStorage.getItem("perfumes") as string)
+        const productsFromLocalStorage: Map<number, number> = new Map(
+            JSON.parse(localStorage.getItem("products") as string)
         );
-        dispatch(fetchCart(Array.from(perfumesFromLocalStorage.keys())));
+        dispatch(fetchCart(Array.from(productsFromLocalStorage.keys())));
 
         if (localStorage.getItem("token")) {
             dispatch(fetchUserInfo());

@@ -15,7 +15,7 @@ const Footer: FC = (): ReactElement => {
                 </Col>
                 <Col span={12} >
                     <div className={"footer-wrapper-social"}>
-                        <Typography.Title level={3}>Social networks</Typography.Title>
+                        <Typography.Title level={3}>Sosyal Ağlar</Typography.Title>
                         <a href="https://tr.linkedin.com/in/doga-kupa-9a00341b9/tr">
                             <LinkedinOutlined />
                         </a>

@@ -1,0 +1,21 @@
+.Bottom-padding {
+    margin: 32px 400px 85px;
+}
+
+.product-cards-slider-title {
+    text-align: center;
+}
+
+.product-cards-slider .ant-carousel .slick-dots li button {
+    background: #000000;
+    opacity: 0.4;
+}
+
+.product-cards-slider .ant-carousel .slick-dots li.slick-active button {
+    opacity: 1;
+    background: #000000;
+}
+
+.product-cards-slider .ant-carousel .slick-dots-bottom {
+    bottom: -50px;
+}

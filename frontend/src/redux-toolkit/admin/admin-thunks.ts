@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { BaseUserResponse, HeaderResponse, PerfumeErrors, UserResponse } from "../../types/types";
+import { BaseUserResponse, HeaderResponse, ProductErrors, UserResponse } from "../../types/types";
 import RequestService from "../../utils/request-service";
 import {
     ADMIN_ADD,
@@ -11,12 +11,12 @@ import {
     ADMIN_USER,
     ADMIN_USER_ALL
 } from "../../constants/urlConstants";
-import { setPerfume } from "../perfume/perfume-slice";
-import { removePerfumeById } from "../perfumes/perfumes-slice";
+import { setProduct } from "../product/product-slice";
+import { removeProductById } from "../products/products-slice";
 import { userByQuery, usersByQuery } from "../../utils/graphql-query/users-query";
 
-export const addPerfume = createAsyncThunk<{}, FormData, { rejectValue: PerfumeErrors }>(
-    "admin/addPerfume",
+export const addProduct = createAsyncThunk<{}, FormData, { rejectValue: ProductErrors }>(
+    "admin/addProduct",
     async (data, thunkApi) => {
         try {
             const response = await RequestService.post(ADMIN_ADD, data, true, "multipart/form-data");
@@ -27,12 +27,12 @@ export const addPerfume = createAsyncThunk<{}, FormData, { rejectValue: PerfumeE
     }
 );
 
-export const updatePerfume = createAsyncThunk<{}, FormData, { rejectValue: PerfumeErrors }>(
-    "admin/updatePerfume",
+export const updateProduct = createAsyncThunk<{}, FormData, { rejectValue: ProductErrors }>(
+    "admin/updateProduct",
     async (data, thunkApi) => {
         try {
             const response = await RequestService.post(ADMIN_EDIT, data, true, "multipart/form-data");
-            thunkApi.dispatch(setPerfume(response.data));
+            thunkApi.dispatch(setProduct(response.data));
             return response.data;
         } catch (error) {
             return thunkApi.rejectWithValue(error.response.data);
@@ -40,9 +40,9 @@ export const updatePerfume = createAsyncThunk<{}, FormData, { rejectValue: Perfu
     }
 );
 
-export const deletePerfume = createAsyncThunk<{}, number>("admin/deletePerfume", async (perfumeId, thunkApi) => {
-    const response = await RequestService.delete(`${ADMIN_DELETE}/${perfumeId}`, true);
-    thunkApi.dispatch(removePerfumeById(perfumeId));
+export const deleteProduct = createAsyncThunk<{}, number>("admin/deleteProduct", async (productId, thunkApi) => {
+    const response = await RequestService.delete(`${ADMIN_DELETE}/${productId}`, true);
+    thunkApi.dispatch(removeProductById(productId));
     return response.data;
 });
 

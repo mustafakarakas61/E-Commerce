@@ -1,25 +1,25 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { BaseUserResponse, LoadingStatus, PerfumeErrors, UserResponse } from "../../types/types";
+import { BaseUserResponse, LoadingStatus, ProductErrors, UserResponse } from "../../types/types";
 import {
-    addPerfume,
-    deletePerfume,
+    addProduct,
+    deleteProduct,
     fetchAllUsers,
     fetchAllUsersByQuery,
     fetchUserInfo,
     fetchUserInfoByQuery,
-    updatePerfume
+    updateProduct
 } from "./admin-thunks";
 
 export interface AdminState {
     users: Array<BaseUserResponse>;
     user: Partial<UserResponse>;
-    errors: Partial<PerfumeErrors>;
+    errors: Partial<ProductErrors>;
     pagesCount: number;
     totalElements: number;
-    isPerfumeAdded: boolean;
-    isPerfumeEdited: boolean;
-    isPerfumeDeleted: boolean;
+    isProductAdded: boolean;
+    isProductEdited: boolean;
+    isProductDeleted: boolean;
     loadingState: LoadingStatus;
 }
 
@@ -29,9 +29,9 @@ export const initialState: AdminState = {
     errors: {},
     pagesCount: 1,
     totalElements: 0,
-    isPerfumeAdded: false,
-    isPerfumeEdited: false,
-    isPerfumeDeleted: false,
+    isProductAdded: false,
+    isProductEdited: false,
+    isProductDeleted: false,
     loadingState: LoadingStatus.LOADING
 };
 
@@ -46,43 +46,43 @@ export const adminSlice = createSlice({
             state.users = [];
             state.user = {};
             state.errors = {};
-            state.isPerfumeAdded = false;
-            state.isPerfumeEdited = false;
-            state.isPerfumeDeleted = false;
+            state.isProductAdded = false;
+            state.isProductEdited = false;
+            state.isProductDeleted = false;
             state.pagesCount = 1;
             state.totalElements = 0;
             state.loadingState = action.payload;
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(addPerfume.pending, (state) => {
+        builder.addCase(addProduct.pending, (state) => {
             state.loadingState = LoadingStatus.LOADING;
         });
-        builder.addCase(addPerfume.fulfilled, (state) => {
-            state.isPerfumeAdded = true;
+        builder.addCase(addProduct.fulfilled, (state) => {
+            state.isProductAdded = true;
             state.errors = {};
             state.loadingState = LoadingStatus.LOADED;
         });
-        builder.addCase(addPerfume.rejected, (state, action) => {
-            state.isPerfumeAdded = false;
+        builder.addCase(addProduct.rejected, (state, action) => {
+            state.isProductAdded = false;
             state.errors = action.payload!;
             state.loadingState = LoadingStatus.LOADED;
         });
-        builder.addCase(updatePerfume.pending, (state) => {
+        builder.addCase(updateProduct.pending, (state) => {
             state.loadingState = LoadingStatus.LOADING;
         });
-        builder.addCase(updatePerfume.fulfilled, (state) => {
-            state.isPerfumeEdited = true;
+        builder.addCase(updateProduct.fulfilled, (state) => {
+            state.isProductEdited = true;
             state.errors = {};
             state.loadingState = LoadingStatus.LOADED;
         });
-        builder.addCase(updatePerfume.rejected, (state, action) => {
-            state.isPerfumeEdited = false;
+        builder.addCase(updateProduct.rejected, (state, action) => {
+            state.isProductEdited = false;
             state.errors = action.payload!;
             state.loadingState = LoadingStatus.LOADED;
         });
-        builder.addCase(deletePerfume.fulfilled, (state) => {
-            state.isPerfumeDeleted = true;
+        builder.addCase(deleteProduct.fulfilled, (state) => {
+            state.isProductDeleted = true;
             state.errors = {};
             state.loadingState = LoadingStatus.LOADED;
         });
