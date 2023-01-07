@@ -7,15 +7,19 @@ import "./CarouselImageSlider.css";
 
 export const sliderItems = [
     {
-        id: "4",//todo bu idyi verdiğimde ona gidiyor
-        name: "Photo 1",
-        url: "https://i.ibb.co/bXdDdB9/1920x900-px-40867-1495607-wallhere-com.jpg"
-    },
-
-    {
         id: "2",
         name: "Photo 2",
-        url: "https://i.ibb.co/C0vbNcy/dior-ENG.jpg"
+        url: "https://www.asus.com/media/Odin/Websites/global/Series/10/P_setting_xxx_0_90_end_185.png?webp"
+    },
+    {
+        id: "14",
+        name: "Photo 14",
+        url: "https://cdn.akakce.com/bose/bose-quietcomfort-35-ii-gurultu-onleyici-kablosuz-kulak-ustu-z.jpg"
+    },
+    {
+        id: "7",
+        name: "Photo 7",
+        url: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-finish-unselect-gallery-1-202207_GEO_US?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1662129048006"
     }
 ];
 
