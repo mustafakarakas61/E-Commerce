@@ -15,7 +15,7 @@ const AccountItem: FC = (): ReactElement => {
                 <Spinner />
             ) : (
                 <Typography.Title level={5} style={{ textAlign: "center" }}>
-                    Hello {usersData?.firstName} {usersData?.lastName}!
+                    Hoşgeldin {usersData?.firstName} {usersData?.lastName} ! &#128526;
                 </Typography.Title>
             )}
         </>

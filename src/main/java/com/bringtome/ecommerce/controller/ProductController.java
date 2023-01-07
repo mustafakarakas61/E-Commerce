@@ -11,6 +11,7 @@ import com.bringtome.ecommerce.mapper.ProductMapper;
 import com.bringtome.ecommerce.service.graphql.GraphQLProvider;
 import graphql.ExecutionResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +21,17 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/v1/products")
 public class ProductController {
 
     private final ProductMapper productMapper;
     private final GraphQLProvider graphQLProvider;
+
+    @Autowired
+    public ProductController(ProductMapper productMapper, GraphQLProvider graphQLProvider) {
+        this.productMapper = productMapper;
+        this.graphQLProvider = graphQLProvider;
+    }
 
     @GetMapping
     public ResponseEntity<List<ProductResponse>> getAllProducts(@PageableDefault(size = 15) Pageable pageable) {

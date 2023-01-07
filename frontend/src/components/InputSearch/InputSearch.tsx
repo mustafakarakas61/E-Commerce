@@ -14,9 +14,9 @@ const InputSearch: FC<PropsType> = ({ onSearch, form }): ReactElement => {
         <Form onFinish={onSearch} form={form}>
             <Input.Group compact>
                 <Form.Item name={"searchValue"}>
-                    <Input placeholder={"Search..."} />
+                    <Input placeholder={"Ara..."} />
                 </Form.Item>
-                <IconButton title={"Search"} icon={<SearchOutlined />} />
+                <IconButton title={"Ara"} icon={<SearchOutlined />} />
             </Input.Group>
         </Form>
     );

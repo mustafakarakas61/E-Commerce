@@ -31,18 +31,18 @@ const OrdersTable: FC<PropsType> = ({ orders, loading, fetchOrders }): ReactElem
             dataSource={orders}
             columns={[
                 {
-                    title: "Order №",
+                    title: "Sipariş No",
                     dataIndex: "id",
                     key: "id"
                 },
                 {
-                    title: "Date",
+                    title: "Tarih",
                     dataIndex: "date",
                     key: "date",
                     sorter: (a, b) => a.date.localeCompare(b.date)
                 },
                 {
-                    title: "Customer",
+                    title: "Alıcı",
                     dataIndex: "firstName",
                     key: "firstName",
                     render: (_, order: OrderResponse) => `${order.firstName} ${order.lastName}`
@@ -53,16 +53,16 @@ const OrdersTable: FC<PropsType> = ({ orders, loading, fetchOrders }): ReactElem
                     key: "email"
                 },
                 {
-                    title: "Sum, $",
+                    title: "Toplam, ₺",
                     dataIndex: "totalPrice",
                     key: "totalPrice",
                     sorter: (a, b) => a.totalPrice - b.totalPrice
                 },
                 {
-                    title: "Actions",
+                    title: "Alışveriş",
                     dataIndex: "operations",
                     key: "operations",
-                    render: (_, order: OrderResponse) => <Link to={`${ACCOUNT_USER_ORDERS}/${order.id}`}>Show more</Link>
+                    render: (_, order: OrderResponse) => <Link to={`${ACCOUNT_USER_ORDERS}/${order.id}`}>Daha fazla</Link>
                 }
             ]}
         />

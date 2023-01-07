@@ -72,7 +72,7 @@ const AddProduct: FC = (): ReactElement => {
 
     return (
         <>
-            <ContentTitle title={"Add product"} titleLevel={4} icon={<PlusSquareOutlined />} />
+            <ContentTitle title={"Ürün ekle"} titleLevel={4} icon={<PlusSquareOutlined />} />
             <Form onFinish={onFormSubmit}>
                 <Row gutter={32}>
                     <Col span={12}>
@@ -130,7 +130,7 @@ const AddProduct: FC = (): ReactElement => {
                             disabled={ispProductLoading}
                         />
                         <AddFormInput
-                            title={"Manufacturer city"}
+                            title={"Şehir"}
                             name={"city"}
                             error={productErrors.cityError}
                             placeholder={"Şehir giriniz"}
