@@ -8,6 +8,7 @@ import com.bringtome.ecommerce.dto.review.ReviewResponse;
 import com.bringtome.ecommerce.enums.SearchProductEnum;
 import com.bringtome.ecommerce.exception.InputFieldException;
 import com.bringtome.ecommerce.repository.projection.ProductProjection;
+import com.bringtome.ecommerce.service.Impl.MyPageable;
 import com.bringtome.ecommerce.service.ProductService;
 import com.bringtome.ecommerce.dto.product.AllProductResponse;
 import com.bringtome.ecommerce.dto.product.ProductRequest;
@@ -41,7 +42,7 @@ public class ProductMapper {
         return commonMapper.convertToResponseList(productService.getProductsByIds(productsId), ProductResponse.class);
     }
 
-    public HeaderResponse<ProductResponse> getAllProducts(Pageable pageable) {
+    public HeaderResponse<ProductResponse> getAllProducts(MyPageable pageable) {
         Page<ProductProjection> products = productService.getAllProducts(pageable);
         return commonMapper.getHeaderResponse(products.getContent(), products.getTotalPages(), products.getTotalElements(), ProductResponse.class);
     }
