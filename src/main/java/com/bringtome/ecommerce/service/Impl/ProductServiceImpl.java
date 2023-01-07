@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductProjection> getAllProducts(Pageable pageable) {
+    public Page<ProductProjection> getAllProducts(MyPageable pageable) {
         return productRepository.findAllByOrderByIdAsc(pageable);
     }
 

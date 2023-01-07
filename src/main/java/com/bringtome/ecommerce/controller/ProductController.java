@@ -8,6 +8,7 @@ import com.bringtome.ecommerce.dto.product.ProductSearchRequest;
 import com.bringtome.ecommerce.dto.product.SearchTypeRequest;
 import com.bringtome.ecommerce.dto.review.ReviewResponse;
 import com.bringtome.ecommerce.mapper.ProductMapper;
+import com.bringtome.ecommerce.service.Impl.MyPageable;
 import com.bringtome.ecommerce.service.graphql.GraphQLProvider;
 import graphql.ExecutionResult;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductResponse>> getAllProducts(@PageableDefault(size = 15) Pageable pageable) {
+    public ResponseEntity<List<ProductResponse>> getAllProducts(@PageableDefault(size = 15) MyPageable pageable) {
         HeaderResponse<ProductResponse> response = productMapper.getAllProducts(pageable);
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }

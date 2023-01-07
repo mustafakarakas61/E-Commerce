@@ -4,6 +4,7 @@ import com.bringtome.ecommerce.entity.ProductEntity;
 import com.bringtome.ecommerce.entity.ReviewEntity;
 import com.bringtome.ecommerce.enums.SearchProductEnum;
 import com.bringtome.ecommerce.repository.projection.ProductProjection;
+import com.bringtome.ecommerce.service.Impl.MyPageable;
 import graphql.schema.DataFetcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +18,7 @@ public interface ProductService {
 
     ProductEntity getProductById(Long productId);
 
-    Page<ProductProjection> getAllProducts(Pageable pageable);
+    Page<ProductProjection> getAllProducts(MyPageable pageable);
 
     List<ProductProjection> getProductsByIds(List<Long> productsId);
 
