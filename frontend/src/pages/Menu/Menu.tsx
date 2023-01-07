@@ -16,12 +16,12 @@ import SelectSearchData from "../../components/SelectSearchData/SelectSearchData
 import InputSearch from "../../components/InputSearch/InputSearch";
 import Spinner from "../../components/Spinner/Spinner";
 import { MAX_PAGE_VALUE, usePagination } from "../../hooks/usePagination";
-import { type, producer, price } from "./MenuData";
+import { types, productTypes, price } from "./MenuData";
 import { useSearch } from "../../hooks/useSearch";
 import "./Menu.css";
 
 export enum CheckboxCategoryFilter {
-    PRODUCERS = "PRODUCERS",
+    PRODUCTTYPES = "PRODUCTTYPES",
     TYPES = "TYPES"
 }
 
@@ -31,8 +31,8 @@ const Menu: FC = (): ReactElement => {
     const isProductsLoading = useSelector(selectIsProductsLoading);
     const location = useLocation<{ id: string }>();
     const [filterParams, setFilterParams] = useState<FilterParamsType>({
-        producers: [],
         types: [],
+        productTypes: [],
         prices: [1, 999]
     });
     const [sortByPrice, setSortByPrice] = useState<boolean>(false);
@@ -58,12 +58,12 @@ const Menu: FC = (): ReactElement => {
             dispatch(
                 fetchProductsByFilterParams({
                     ...filterParams,
-                    producers: [...filterParams.producers, productData],
+                    productTypes: [...filterParams.productTypes, productData],
                     sortByPrice,
                     currentPage: 0
                 })
             );
-            setFilterParams((prevState) => ({ ...prevState, producers: [...prevState.producers, productData] }));
+            setFilterParams((prevState) => ({ ...prevState, producers: [...prevState.productTypes, productData] }));
         }
         window.scrollTo(0, 0);
 
@@ -77,15 +77,15 @@ const Menu: FC = (): ReactElement => {
     }, [filterParams, sortByPrice]);
 
     const onChangeCheckbox = (checkedValues: CheckboxValueType[], category: CheckboxCategoryFilter): void => {
-        if (CheckboxCategoryFilter.PRODUCERS === category) {
+        if (CheckboxCategoryFilter.PRODUCTTYPES === category) {
             setFilterParams((prevState) => {
-                const filter = { ...prevState, producers: [...(checkedValues as string[])] };
+                const filter = { ...prevState, productTypes: [...(checkedValues as string[])] };
                 dispatch(fetchProductsByFilterParams({ ...filter, sortByPrice, currentPage: 0 }));
                 return filter;
             });
         } else if (CheckboxCategoryFilter.TYPES === category) {
             setFilterParams((prevState) => {
-                const filter = { ...prevState, genders: [...(checkedValues as string[])] };
+                const filter = { ...prevState, types: [...(checkedValues as string[])] };
                 dispatch(fetchProductsByFilterParams({ ...filter, sortByPrice, currentPage: 0 }));
                 return filter;
             });
@@ -126,18 +126,18 @@ const Menu: FC = (): ReactElement => {
                 <Row gutter={32}>
                     <Col span={6}>
                         <MenuCheckboxSection
-                            title={"Üretici"}
+                            title={"Kategori"}
                             onChange={onChangeCheckbox}
-                            data={producer}
-                            category={CheckboxCategoryFilter.PRODUCERS}
-                            selectedValues={filterParams.producers}
-                        />
-                        <MenuCheckboxSection
-                            title={"Ürün tipi"}
-                            onChange={onChangeCheckbox}
-                            data={type}
+                            data={types}
                             category={CheckboxCategoryFilter.TYPES}
                             selectedValues={filterParams.types}
+                        />
+                        <MenuCheckboxSection
+                            title={"Ürün Tipi"}
+                            onChange={onChangeCheckbox}
+                            data={productTypes}
+                            category={CheckboxCategoryFilter.PRODUCTTYPES}
+                            selectedValues={filterParams.productTypes}
                         />
                         <MenuRadioSection title={"Fiyat"} onChange={onChangeRadio} data={price} />
                     </Col>

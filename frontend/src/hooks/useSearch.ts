@@ -17,7 +17,7 @@ interface UseSearch {
 export const useSearch = (): UseSearch => {
     const dispatch = useDispatch();
     const [form] = Form.useForm();
-    const [searchTypeValue, setSearchTypeValue] = useState<SearchProduct>(SearchProduct.BRAND);
+    const [searchTypeValue, setSearchTypeValue] = useState<SearchProduct>(SearchProduct.TYPE);
     const [searchValue, setSearchValue] = useState<string>("");
 
     const handleChangeSelect = (value: SearchProduct): void => {

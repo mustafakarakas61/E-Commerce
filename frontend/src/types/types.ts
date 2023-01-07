@@ -173,7 +173,7 @@ export interface AuthErrors {
 }
 
 export interface FilterParamsType {
-    producers: Array<string>;
+    productTypes: Array<string>;
     types: Array<string>;
     prices: Array<number>;
     currentPage?: number;
@@ -200,7 +200,7 @@ export enum LoadingStatus {
 }
 
 export enum SearchProduct {
-    BRAND = "BRAND",
+    TYPE = "TYPE",
     PRODUCT_TITLE = "PRODUCT_TITLE",
-    CITY = "CITY"
+    PRODUCT_TYPE = "PRODUCT_TYPE"
 }

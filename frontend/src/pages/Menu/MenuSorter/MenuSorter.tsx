@@ -13,7 +13,7 @@ const MenuSorter: FC<PropsType> = ({ onChange, sortByPrice }): ReactElement => {
     return (
         <Radio.Group value={sortByPrice} onChange={onChange} style={{ float: "right" }}>
             <Radio.Button disabled className={"price-button"}>
-                Sort by price
+                Fiyata göre sırala
             </Radio.Button>
             <Radio.Button value={false}>
                 <ArrowDownOutlined />
