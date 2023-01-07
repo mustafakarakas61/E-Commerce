@@ -16,6 +16,7 @@ import com.bringtome.ecommerce.security.UserPrincipal;
 import com.bringtome.ecommerce.service.graphql.GraphQLProvider;
 import graphql.ExecutionResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,6 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/v1/users")
 public class UserController {
 
@@ -37,6 +37,14 @@ public class UserController {
     private final OrderMapper orderMapper;
     private final GraphQLProvider graphQLProvider;
     private final SimpMessagingTemplate messagingTemplate;
+
+    @Autowired
+    public UserController(UserMapper userMapper, OrderMapper orderMapper, GraphQLProvider graphQLProvider, SimpMessagingTemplate messagingTemplate) {
+        this.userMapper = userMapper;
+        this.orderMapper = orderMapper;
+        this.graphQLProvider = graphQLProvider;
+        this.messagingTemplate = messagingTemplate;
+    }
 
     @GetMapping("/info")
     public ResponseEntity<UserResponse> getUserInfo(@AuthenticationPrincipal UserPrincipal user) {

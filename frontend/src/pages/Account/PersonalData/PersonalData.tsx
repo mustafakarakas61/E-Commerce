@@ -46,72 +46,72 @@ const PersonalData: FC = (): ReactElement => {
 
     return (
         <>
-            <ContentTitle title={"My Account"} titleLevel={4} icon={<ProfileOutlined />} />
+            <ContentTitle title={"Hesap Bilgileri"} titleLevel={4} icon={<ProfileOutlined />} />
             <Row>
                 <Col span={12}>
                     <AccountDataItem title={"Email"} text={usersData?.email} />
-                    <AccountDataItem title={"First name"} text={usersData?.firstName} />
-                    <AccountDataItem title={"Last name"} text={usersData?.lastName} />
-                    <AccountDataItem title={"City"} text={usersData?.city} />
-                    <AccountDataItem title={"Address"} text={usersData?.address} />
-                    <AccountDataItem title={"Phone number"} text={usersData?.phoneNumber} />
-                    <AccountDataItem title={"Post index"} text={usersData?.postIndex} />
+                    <AccountDataItem title={"Ad"} text={usersData?.firstName} />
+                    <AccountDataItem title={"Soyad"} text={usersData?.lastName} />
+                    <AccountDataItem title={"Şehir"} text={usersData?.city} />
+                    <AccountDataItem title={"Adres"} text={usersData?.address} />
+                    <AccountDataItem title={"Telefon"} text={usersData?.phoneNumber} />
+                    <AccountDataItem title={"Posta kodu"} text={usersData?.postIndex} />
                     <Button
                         type={"primary"}
                         onClick={onClickShowUserData}
                         icon={showUserData ? <EyeInvisibleOutlined /> : <EditOutlined />}
                     >
-                        {showUserData ? "Hide" : "Edit"}
+                        {showUserData ? "Gizle" : "Düzenle"}
                     </Button>
                 </Col>
                 <Col span={12}>
                     {showUserData && (
                         <Form onFinish={onFormSubmit} form={form}>
                             <FormInput
-                                title={"First name:"}
+                                title={"Ad:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"firstName"}
                                 error={firstNameError}
-                                placeholder={"First name"}
+                                placeholder={"Ad"}
                             />
                             <FormInput
-                                title={"Last name:"}
+                                title={"Soyad:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"lastName"}
                                 error={lastNameError}
-                                placeholder={"Last name"}
+                                placeholder={"Soyad"}
                             />
                             <FormInput
-                                title={"City:"}
+                                title={"Şehir:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"city"}
-                                placeholder={"City"}
+                                placeholder={"Şehir"}
                             />
                             <FormInput
-                                title={"Address:"}
+                                title={"Adres:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"address"}
-                                placeholder={"Address"}
+                                placeholder={"Adres"}
                             />
                             <FormInput
-                                title={"Phone number:"}
+                                title={"Telefon:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"phoneNumber"}
-                                placeholder={"Phone number"}
+                                placeholder={"Telefon"}
                             />
                             <FormInput
-                                title={"Post index:"}
+                                title={"Posta kodu:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"postIndex"}
-                                placeholder={"Post index"}
+                                placeholder={"Posta kodu"}
                             />
-                            <IconButton title={"Save"} icon={<CheckOutlined />} />
+                            <IconButton title={"Kaydet"} icon={<CheckOutlined />} />
                         </Form>
                     )}
                 </Col>

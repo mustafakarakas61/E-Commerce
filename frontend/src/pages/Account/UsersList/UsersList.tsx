@@ -33,7 +33,7 @@ const UsersList: FC = (): ReactElement => {
 
     return (
         <div>
-            <ContentTitle title={"List of all users"} titleLevel={4} icon={<TeamOutlined />} />
+            <ContentTitle title={"Kullanıcılar"} titleLevel={4} icon={<TeamOutlined />} />
             <Table
                 rowKey={"id"}
                 onChange={handleTableChange}
@@ -50,7 +50,7 @@ const UsersList: FC = (): ReactElement => {
                         key: "id"
                     },
                     {
-                        title: "First name",
+                        title: "Adı",
                         dataIndex: "firstName",
                         key: "firstName"
                     },
@@ -60,22 +60,22 @@ const UsersList: FC = (): ReactElement => {
                         key: "email"
                     },
                     {
-                        title: "Role",
+                        title: "Rolü",
                         dataIndex: "roles",
                         key: "roles",
                         render: (_, user: BaseUserResponse) => user.roles[0]
                     },
                     {
-                        title: "Provider",
+                        title: "Sağlayıcı",
                         dataIndex: "provider",
                         key: "provider"
                     },
                     {
-                        title: "Action",
+                        title: "Miktar",
                         dataIndex: "amount",
                         key: "amount",
                         render: (_, user: BaseUserResponse) => (
-                            <Link to={`${ACCOUNT_ADMIN_USERS}/${user.id}`}>Show more</Link>
+                            <Link to={`${ACCOUNT_ADMIN_USERS}/${user.id}`}>Daha fazla</Link>
                         )
                     }
                 ]}

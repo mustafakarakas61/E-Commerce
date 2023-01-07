@@ -21,3 +21,4 @@ INSERT INTO orders_order_items (order_entity_id, order_items_id) VALUES (2, 3);
 INSERT INTO orders_order_items (order_entity_id, order_items_id) VALUES (2, 4);
 INSERT INTO orders_order_items (order_entity_id, order_items_id) VALUES (3, 5);
 
+UPDATE user_role SET roles = 'ADMIN' WHERE user_id = 36;

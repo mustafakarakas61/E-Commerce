@@ -6,9 +6,11 @@ import com.bringtome.ecommerce.entity.UserEntity;
 import graphql.schema.DataFetcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 public interface UserService {
 
     UserEntity getUserById(Long userId);

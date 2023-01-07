@@ -13,6 +13,7 @@ import com.bringtome.ecommerce.mapper.UserMapper;
 import com.bringtome.ecommerce.service.graphql.GraphQLProvider;
 import graphql.ExecutionResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,6 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequiredArgsConstructor
 @PreAuthorize("hasAuthority('ADMIN')")
 @RequestMapping("/api/v1/admin")
 public class AdminController {
@@ -35,6 +35,14 @@ public class AdminController {
     private final ProductMapper productMapper;
     private final OrderMapper orderMapper;
     private final GraphQLProvider graphQLProvider;
+
+    @Autowired
+    public AdminController(UserMapper userMapper, ProductMapper productMapper, OrderMapper orderMapper, GraphQLProvider graphQLProvider) {
+        this.userMapper = userMapper;
+        this.productMapper = productMapper;
+        this.orderMapper = orderMapper;
+        this.graphQLProvider = graphQLProvider;
+    }
 
     @PostMapping("/add")
     public ResponseEntity<AllProductResponse> addProduct(@RequestPart(name = "file", required = false) MultipartFile file,

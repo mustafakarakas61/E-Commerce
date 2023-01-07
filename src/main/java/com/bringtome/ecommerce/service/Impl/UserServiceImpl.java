@@ -15,9 +15,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -29,13 +31,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity getUserById(Long userId) {
         return userRepository.findById(userId)
-                .orElseThrow(() -> new ApiRequestException("User not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Kullanıcı bulunamadı.", HttpStatus.NOT_FOUND));
     }
 
     @Override
     public UserEntity getUserInfo(String email) {
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new ApiRequestException("Email not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Email bulunamadı.", HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -52,7 +54,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserEntity updateUserInfo(String email, UserEntity user) {
         UserEntity userFromDb = userRepository.findByEmail(email)
-                .orElseThrow(() -> new ApiRequestException("Email not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Email bulunamadı.", HttpStatus.NOT_FOUND));
         userFromDb.setFirstName(user.getFirstName());
         userFromDb.setLastName(user.getLastName());
         userFromDb.setCity(user.getCity());
@@ -66,7 +68,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public ReviewEntity addReviewToProduct(ReviewEntity review, Long productId) {
         ProductEntity product = productRepository.findById(productId)
-                .orElseThrow(() -> new ApiRequestException("Product not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Ürün bulunamadı.", HttpStatus.NOT_FOUND));
         List<ReviewEntity> reviews = product.getReviews();
         reviews.add(review);
         double totalReviews = reviews.size();
