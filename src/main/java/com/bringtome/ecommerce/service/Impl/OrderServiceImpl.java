@@ -1,5 +1,6 @@
 package com.bringtome.ecommerce.service.Impl;
 
+import com.bringtome.ecommerce.config.EmailConfig;
 import com.bringtome.ecommerce.entity.OrderEntity;
 import com.bringtome.ecommerce.entity.OrderItemEntity;
 import com.bringtome.ecommerce.entity.ProductEntity;
@@ -11,6 +12,7 @@ import com.bringtome.ecommerce.service.OrderService;
 import com.bringtome.ecommerce.service.email.MailSender;
 import graphql.schema.DataFetcher;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -23,7 +25,6 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
@@ -31,10 +32,18 @@ public class OrderServiceImpl implements OrderService {
     private final ProductRepository productRepository;
     private final MailSender mailSender;
 
+    @Autowired
+    public OrderServiceImpl(OrderRepository orderRepository, OrderItemRepository orderItemRepository, ProductRepository productRepository, MailSender mailSender) {
+        this.orderRepository = orderRepository;
+        this.orderItemRepository = orderItemRepository;
+        this.productRepository = productRepository;
+        this.mailSender = mailSender;
+    }
+
     @Override
     public OrderEntity getOrderById(Long orderId) {
         return orderRepository.findById(orderId)
-                .orElseThrow(() -> new ApiRequestException("Order not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Sipariş Bulunamadı.", HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -79,7 +88,7 @@ public class OrderServiceImpl implements OrderService {
         order.setPhoneNumber(validOrder.getPhoneNumber());
         orderRepository.save(order);
 
-        String subject = "Order #" + order.getId();
+        String subject = "Sipariş #" + order.getId();
         String template = "order-template";
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("order", order);

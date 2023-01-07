@@ -1,18 +1,29 @@
 package com.bringtome.ecommerce.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.thymeleaf.context.Context;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import java.util.Map;
 import java.util.Properties;
 
 @Configuration
 public class EmailConfig {
+
+   /* private final SpringTemplateEngine thymeleafTemplateEngine;
+
+    @Autowired
+    public EmailConfig(SpringTemplateEngine thymeleafTemplateEngine) {
+        this.thymeleafTemplateEngine = thymeleafTemplateEngine;
+    }*/
 
     @Value("${spring.mail.host}")
     private String host;
@@ -26,7 +37,7 @@ public class EmailConfig {
     @Value("${spring.mail.port}")
     private int port;
 
-    @Value("${spring.mail.protocol}")
+    @Value("${spring.mail.properties.mail.transport.protocol}")
     private String protocol;
 
     @Value("${spring.mail.properties.mail.smtp.auth}")
@@ -35,8 +46,58 @@ public class EmailConfig {
     @Value("${spring.mail.properties.mail.smtp.starttls.enable}")
     private String enable;
 
-    @Value("${mail.debug}")
+    @Value("${spring.mail.properties.mail.smtp.debug}")
     private String debug;
+/*
+    public void sendEmail(String to, String subject, Map<String, Object> attributes) {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost(host);
+        mailSender.setPort(port);
+        mailSender.setUsername(username);
+        mailSender.setPassword(password);
+
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", protocol);
+        props.put("mail.smtp.auth", auth);
+        props.put("mail.smtp.starttls.enable", enable);
+        props.put("mail.debug", debug);
+
+        Context thymeleafContext = new Context();
+        thymeleafContext.setVariables(attributes);
+       // String body = thymeleafTemplateEngine.process(template, thymeleafContext);
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(username);
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(String.valueOf(attributes));
+        mailSender.send(message);
+
+    }*/
+
+    /*public void sendEmail(String to, String subject, String body) {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost(host);
+        mailSender.setPort(port);
+        mailSender.setUsername(username);
+        mailSender.setPassword(password);
+
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", protocol);
+        props.put("mail.smtp.auth", auth);
+        props.put("mail.smtp.starttls.enable", enable);
+        props.put("mail.debug", debug);
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(body);
+
+        mailSender.send(message);
+
+        System.out.println("E-posta başarıyla gönderildi!");
+    }*/
+
 
     @Bean
     public JavaMailSender getMailSender() {

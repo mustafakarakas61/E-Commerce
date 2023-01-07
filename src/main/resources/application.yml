@@ -2,8 +2,8 @@ server:
   port: 8080
 jwt:
   header: Authorization
-  expiration: '604800'
-  secret: dejavu
+  expiration: '86400'
+  secret: rhodex
 spring:
   mvc:
     pathmatch:
@@ -33,17 +33,19 @@ spring:
     show-sql: true
     hibernate.ddl-auto: validate #Eğer Create olursa tabloyu baştan yaratır
   mail:
+    host: smtp.gmail.com
+    port: 587
     username: inc.bringtome@gmail.com
-    port: '465'
+    password: aksacslqtatfxibx
     properties:
       mail:
+        transport:
+          protocol: smtp
         smtp:
+          auth: true
           starttls:
-            enable: 'true'
-          auth: 'true'
-    host: smtp.gmail.com
-    protocol: smtps
-    password: bringtome61
+            enable: true
+          debug: true
   servlet:
     multipart:
       enabled: 'true'

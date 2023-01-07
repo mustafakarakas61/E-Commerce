@@ -1,5 +1,6 @@
 package com.bringtome.ecommerce.service.Impl;
 
+import com.bringtome.ecommerce.config.EmailConfig;
 import com.bringtome.ecommerce.entity.UserEntity;
 import com.bringtome.ecommerce.dto.CaptchaResponse;
 import com.bringtome.ecommerce.enums.AuthProviderEnum;
@@ -14,6 +15,7 @@ import com.bringtome.ecommerce.security.oauth2.OAuth2UserInfo;
 import com.bringtome.ecommerce.service.AuthenticationService;
 import com.bringtome.ecommerce.service.email.MailSender;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,7 +33,6 @@ import java.util.Map;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
@@ -40,6 +41,16 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final MailSender mailSender;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+
+    @Autowired
+    public AuthenticationServiceImpl(AuthenticationManager authenticationManager, RestTemplate restTemplate, JwtProvider jwtProvider, MailSender mailSender, PasswordEncoder passwordEncoder, UserRepository userRepository) {
+        this.authenticationManager = authenticationManager;
+        this.restTemplate = restTemplate;
+        this.jwtProvider = jwtProvider;
+        this.mailSender = mailSender;
+        this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
+    }
 
     @Value("${hostname}")
     private String hostname;
@@ -156,13 +167,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setActivationCode(null);
         user.setActive(true);
         userRepository.save(user);
-        return "User successfully activated.";
+        return "Kullanıcı başarıyla aktif oldu.";
     }
 
     private void sendEmail(UserEntity user, String subject, String template, String urlAttribute, String urlPath) {
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("firstName", user.getFirstName());
         attributes.put(urlAttribute, "http://" + hostname + urlPath);
-        mailSender.sendMessageHtml(user.getEmail(), subject, template, attributes);
+        mailSender.sendMessageHtml(user.getEmail(), subject,template, attributes);
     }
 }
