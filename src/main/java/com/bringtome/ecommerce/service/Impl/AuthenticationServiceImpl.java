@@ -88,7 +88,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         userRepository.save(user);
 
         sendEmail(user, "Activation code", "registration-template", "registrationUrl", "/activate/" + user.getActivationCode());
-        return "User successfully registered.";
+        return "Kullanıcı başarıyla kayıt oldu.";
     }
 
     @Override
@@ -116,36 +116,36 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public String getEmailByPasswordResetCode(String code) {
         return userRepository.getEmailByPasswordResetCode(code)
-                .orElseThrow(() -> new ApiRequestException("Password reset code is invalid!", HttpStatus.BAD_REQUEST));
+                .orElseThrow(() -> new ApiRequestException("Şifre değiştirme kodu geçersiz!", HttpStatus.BAD_REQUEST));
     }
 
     @Override
     @Transactional
     public String sendPasswordResetCode(String email) {
         UserEntity user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new ApiRequestException("Email not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Email bulunamadı.", HttpStatus.NOT_FOUND));
         user.setPasswordResetCode(UUID.randomUUID().toString());
         userRepository.save(user);
 
         sendEmail(user, "Password reset", "password-reset-template", "resetUrl", "/reset/" + user.getPasswordResetCode());
-        return "Reset password code is send to your E-mail";
+        return "Şifre değiştirme kodunuz mailinize gönderildi.";
     }
 
     @Override
     @Transactional
     public String passwordReset(String email, String password, String password2) {
         if (StringUtils.isEmpty(password2)) {
-            throw new PasswordConfirmationException("Password confirmation cannot be empty.");
+            throw new PasswordConfirmationException("Şifre onaylama kısmı boş olamaz.");
         }
         if (password != null && !password.equals(password2)) {
-            throw new PasswordException("Passwords do not match.");
+            throw new PasswordException("Şifreniz uyuşmuyor.");
         }
         UserEntity user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new ApiRequestException("Email not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Email bulunamadı.", HttpStatus.NOT_FOUND));
         user.setPassword(passwordEncoder.encode(password));
         user.setPasswordResetCode(null);
         userRepository.save(user);
-        return "Password successfully changed!";
+        return "Şifreniz başarıyla değiştirildi!";
     }
 
     @Override

@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.bmod.e-commerce' is invalid and this project uses 'com.bmod.ecommerce' instead.
+* The original package name 'com.bringtome.e-commerce' is invalid and this project uses 'com.bringtome.ecommerce' instead.
 
 # Getting Started
 

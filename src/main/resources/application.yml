@@ -13,16 +13,16 @@ spring:
       client:
         registration:
           facebook:
-            client-id: '4453217618039998'
+            client-id: '576120233850127'
             scope: email,public_profile
-            client-secret: 8b3ef3edaec63d2905c50decd3db471e
+            client-secret: 1d382f3be570af6340fe53dde6cc3ba1
           github:
-            client-secret: c80297b73b6710455005bd5cfd4427fe7034b9ed
-            client-id: 95162f0ca4fbb8236c3d
+            client-secret: 58eceb619b5f9e7826116eececa9fdfdde3bb028
+            client-id: d7bf23b2dc5a4f9ebef5
             scope: user:email,read:user
           google:
-            client-id: 247464265015-astrh9vll11l22scpds7rdn6q8b8bbo7.apps.googleusercontent.com
-            client-secret: RZptmh1c6LEfNhYHDLqGLqAJ
+            client-id: 231038597470-jlvplv4aa79dskqnlldunorp7gpqmo0u.apps.googleusercontent.com
+            client-secret: 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
             scope: email,profile
         provider:
           facebook:
@@ -61,7 +61,7 @@ hostname: localhost:3000
 logging:
   level:
     com:
-      bmod:
+      bringtome:
         ecommerce:
           controller: debug
 recaptcha:
