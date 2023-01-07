@@ -72,13 +72,13 @@ const Cart: FC = (): ReactElement => {
             ) : (
                 <>
                     <div style={{ textAlign: "center" }}>
-                        <ContentTitle icon={<ShoppingCartOutlined />} title={"Cart"} />
+                        <ContentTitle icon={<ShoppingCartOutlined />} title={"Sepet"} />
                     </div>
                     <Row gutter={32}>
                         {products.length === 0 ? (
                             <Col span={24}>
                                 <Typography.Title level={3} style={{ textAlign: "center" }}>
-                                    Cart is empty
+                                    Sepetiniz boş &#128542;
                                 </Typography.Title>
                             </Col>
                         ) : (
@@ -102,7 +102,7 @@ const Cart: FC = (): ReactElement => {
                                         <Col span={12}>
                                             <Link to={ORDER}>
                                                 <Button type="primary" icon={<ShoppingOutlined />} size="large">
-                                                    Checkout
+                                                    Onayla
                                                 </Button>
                                             </Link>
                                         </Col>

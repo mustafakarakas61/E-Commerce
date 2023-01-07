@@ -64,7 +64,7 @@ const Order: FC = (): ReactElement => {
     return (
         <ContentWrapper>
             <div style={{ textAlign: "center" }}>
-                <ContentTitle icon={<ShoppingOutlined />} title={"Ordering"} />
+                <ContentTitle icon={<ShoppingOutlined />} title={"Siparişi Tamamla"} />
             </div>
             <Form onFinish={onFormSubmit} form={form}>
                 <Row gutter={32}>
@@ -79,7 +79,7 @@ const Order: FC = (): ReactElement => {
                             placeholder={"Adınızı giriniz"}
                         />
                         <FormInput
-                            title={"Soyadınızı giriniz:"}
+                            title={"Soyadınız:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"lastName"}
@@ -88,34 +88,34 @@ const Order: FC = (): ReactElement => {
                             placeholder={"Soyadınızı giriniz"}
                         />
                         <FormInput
-                            title={"City:"}
+                            title={"Şehir:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"city"}
                             error={errors.cityError}
                             disabled={isOrderLoading}
-                            placeholder={"Enter the city"}
+                            placeholder={"Şehir"}
                         />
                         <FormInput
-                            title={"Address:"}
+                            title={"Adres:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"address"}
                             error={errors.addressError}
                             disabled={isOrderLoading}
-                            placeholder={"Enter the address"}
+                            placeholder={"Adresiniz"}
                         />
                         <FormInput
-                            title={"Index:"}
+                            title={"Posta kodu:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"postIndex"}
                             error={errors.postIndexError}
                             disabled={isOrderLoading}
-                            placeholder={"Enter the index"}
+                            placeholder={"Posta kodunuz giriniz"}
                         />
                         <FormInput
-                            title={"Mobile:"}
+                            title={"Telefon:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"phoneNumber"}
@@ -130,7 +130,7 @@ const Order: FC = (): ReactElement => {
                             name={"email"}
                             error={errors.emailError}
                             disabled={isOrderLoading}
-                            placeholder={"example@gmail.com"}
+                            placeholder={"Mail adresiniz"}
                         />
                     </Col>
                     <Col span={12}>
@@ -145,7 +145,7 @@ const Order: FC = (): ReactElement => {
                         </Row>
                         <Row gutter={[32, 32]} style={{ marginTop: 16 }}>
                             <Col span={12}>
-                                <Typography.Title level={3}>To pay : $ {totalPrice}.00</Typography.Title>
+                                <Typography.Title level={3}>Tutar : {totalPrice}.00₺</Typography.Title>
                             </Col>
                             <Col>
                                 <Button
@@ -155,7 +155,7 @@ const Order: FC = (): ReactElement => {
                                     size="large"
                                     icon={<CheckCircleOutlined />}
                                 >
-                                    Validate order
+                                    Siparişi onayla
                                 </Button>
                             </Col>
                         </Row>

@@ -34,19 +34,19 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
                 <tr>
                     <td class="header" align="center">
-                        <h3>Order # <span th:text="${order.getId()}" th:remove="tag"></span></h3>
+                        <h3>Sipariş # <span th:text="${order.getId()}" th:remove="tag"></span></h3>
                     </td>
                     <td class="header" align="center">
-                        <img src="https://i.ibb.co/6YNPHCd/LOGO3.jpg" style="width: 180px; border-radius: 5px;"/>
+                        <img src="https://i.ibb.co/71WSSZh/main-Logo-fw.png" style="width: 180px; border-radius: 5px;"/>
                     </td>
                 </tr>
             </table>
             <hr/>
             <h3 style="text-align: center">Merhaba <span th:text="${order.getFirstName()}" th:remove="tag"></span>!</h3>
-            <p style="text-align: center">Bring to Me online mağazasındaki siparişiniz için teşekkür ederiz.</p>
+            <p style="text-align: center">Bring to Me Incorporated'den alışveriş yaptığınız için teşekkürler.</p>
             <hr/>
             <div class="text-left">
-                <p><b>Sipariş numaran: <span th:text="${order.getId()}" th:remove="tag"></span></b></p>
+                <p><b>Sipariş numarası: <span th:text="${order.getId()}" th:remove="tag"></span></b></p>
                 <p><b>Tarih:</b> <span th:text="${order.getDate()}" th:remove="tag"></span></p>
                 <p><b>İsim:</b> <span th:text="${order.getFirstName() + ' ' + order.getLastName()}"
                                       th:remove="tag"></span></p>
@@ -73,16 +73,16 @@
                             </p>
                         </td>
                         <td style="width: 54px;" class="content">
-                            <span th:text="${orderItem.getQuantity()}" th:remove="tag"></span> pcs.
+                            <span th:text="${orderItem.getQuantity()}" th:remove="tag"></span> adet
                         </td>
                         <td style="width: 54px;" class="content">
-                            <span th:text="${orderItem.getProduct().getPrice()}" th:remove="tag"></span> $
+                            <span th:text="${orderItem.getProduct().getPrice()}" th:remove="tag"></span> ₺
                         </td>
                     </tr>
                 </table>
             </th:block>
             <hr/>
-            <h3>Toplam fiyat: ₺ <span th:text="${order.getTotalPrice()}" th:remove="tag"></span></h3>
+            <h3>Toplam fiyat:  <span th:text="${order.getTotalPrice()}" th:remove="tag"></span> ₺</h3>
         </td>
     </tr>
 </table>

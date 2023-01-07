@@ -100,9 +100,9 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public String deleteOrder(Long orderId) {
         OrderEntity order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new ApiRequestException("Order not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Sipariş bulunamadı.", HttpStatus.NOT_FOUND));
         orderRepository.delete(order);
-        return "Order deleted successfully";
+        return "Sipariş başarıyla silindi!";
     }
 
     @Override
