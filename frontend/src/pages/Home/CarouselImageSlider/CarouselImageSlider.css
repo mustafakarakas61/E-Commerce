@@ -1,7 +1,10 @@
 .carousel-item-wrapper {
     position: relative;
 }
-
+.slick-slide img{
+    height: 100%;
+    width: 100%;
+}
 .carousel-link {
     display: block;
     width: 100%;
@@ -10,7 +13,4 @@
 }
 .carousel-item-slider-title{
     text-align: center;
-}
-.sliderItems{
-    align-self: center;
 }
