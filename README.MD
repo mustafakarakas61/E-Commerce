@@ -34,7 +34,7 @@ Password: admin
 2. Postgresql'i ve pgAdmin'i bilgisayarınıza kurun.
 3. pgAdmin'i açın ve "bringtome" adında bir veritabanı oluşturun.
 4. postgresql için application.yml ve application-dev.yml'de ayarlarınızı yapın.
-5. node.js and npm'i bilgisayarınıza kurun
+5. node.js ve npm'i bilgisayarınıza kurun
 6. Projeyi açtıktan sonra terminale `cd .\frontend\` yazıp frontend dosyaların bulunduğu alt klasöre inin. 
 6. Terminale `npm install` komutunu çalıştırarak gerekli bağımlılıkları yükleyin.
 7. Spring boot uygulamasını (port 8080) ayağa kaldırın ve `npm start` komutunu çalıştırarak frontend'i çalıştırın ve http://localhost:3000 adresine gidin.
