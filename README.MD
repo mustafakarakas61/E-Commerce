@@ -1,11 +1,12 @@
-# _Bring to Me_ _Online Alışveriş_
+![](https://i.ibb.co/71WSSZh/main-Logo-fw.png)
+# Bring to Me Incorporated Online Alışveriş
 
 Spring Boot ve React.js kullanılarak geliştirilen e-ticaret projesidir.
 
 #### Admin girişi:
 
-Login: admin@gmail.com <br>
-Password: admin
+Login: mail.m.karakas@gmail.com <br>
+Password: ****** (Şifre Özel)
 
 ## Kullanılan Teknolojiler:
 
@@ -44,22 +45,22 @@ Password: admin
 http://localhost:8080/swagger-ui.html
 
 ## Screenshots
-Menu page  |  Product page
+Anasayfa  |  Ürünler
 :------------------------:|:-------------------------:
-![Menu page](https://i.ibb.co/VT4RzYj/1menu.jpg)  |  ![Product page](https://i.ibb.co/HtnKp0W/2-Product-page.jpg)
+![](https://i.ibb.co/jgdgPXf/menu.png)  |  ![](https://i.ibb.co/Y7v6756/urunler.png)
 
-Cart  |  Ordering
+Sepet  |  Boş Sepet
 :------------------------:|:-------------------------:
-![Email template](https://i.ibb.co/8Y8bfSG/3-Cart.jpg)  |  ![List of users](https://i.ibb.co/tLmY8y2/4-Ordering.jpg)
+![](https://i.ibb.co/Jn99fr2/sepet.png)  |  ![](https://i.ibb.co/Jn8CBJ7/sepetbo.png)
 
-Email template  |  List of orders
+Email  |  Email şifre doğrulama
 :------------------------:|:-------------------------:
-![Email template](https://i.ibb.co/bmKTLPJ/email-template.jpg)  |  ![List of users](https://i.ibb.co/pLTyF25/6-List-of-orders.jpg)
+![]()  |  ![]()
 
-User profile page  |  Add product page
+Admin ekranı  |  Kullanıcı ekranı
 :------------------------:|:-------------------------:
-![User profile page](https://i.ibb.co/qx1Csc8/7-User-profile-page.jpg)  |  ![Add product page](https://i.ibb.co/XbsJPQH/8-Add-perfume-page.jpg)
+![]()  |  ![]()
 
-Edit product list  |  Edit product page
+ürün ekleme  |  Ürün listeleme
 :------------------------:|:-------------------------:
-![Edit product list](https://i.ibb.co/HFb9wfR/9-Edit-perfume-list.jpg)  |  ![Edit product page](https://i.ibb.co/jH8R8xL/10-Edit-perfume-page.jpg)
+![]()  |  ![]()
