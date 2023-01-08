@@ -9,17 +9,17 @@ export const sliderItems = [
     {
         id: "2",
         name: "Photo 2",
-        url: "https://i.ibb.co/J3r2jW5/laptop.png"
+        url: "https://i.ibb.co/zfpWQgB/resim-2023-01-08-210418848.png"
     },
     {
         id: "14",
         name: "Photo 14",
-        url: "https://cdn.akakce.com/bose/bose-quietcomfort-35-ii-gurultu-onleyici-kablosuz-kulak-ustu-z.jpg"
+        url: "https://i.ibb.co/myYpy9n/image.png"
     },
     {
-        id: "7",
-        name: "Photo 7",
-        url: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-finish-unselect-gallery-1-202207_GEO_US?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1662129048006"
+        id: "1",
+        name: "Photo 1",
+        url: "https://i.ibb.co/ChDRfps/resim-2023-01-08-212027801.png"
     }
 ];
 

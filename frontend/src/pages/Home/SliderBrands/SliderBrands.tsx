@@ -11,8 +11,8 @@ const SliderBrands: FC = (): ReactElement => {
             <Typography.Title level={3} className={"brands-wrapper-title"}>
                 KATEGORİLER
             </Typography.Title>
-            <Carousel className={"brands-carousel"} autoplay>
-                <SliderBrandsItem brands={brandsItem.slice(0, 6)} />
+            <Carousel className={"ant-row2"} autoplay>
+                <SliderBrandsItem brands={brandsItem.slice(0, 4)} />
                 <SliderBrandsItem brands={brandsItem.slice(4, 8)} />
             </Carousel>
         </div>

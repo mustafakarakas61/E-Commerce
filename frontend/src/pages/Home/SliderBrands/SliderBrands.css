@@ -5,9 +5,13 @@
 .brands-wrapper {
     margin-top: 32px;
 }
+.ant-row2{
+    display: flex;
+    margin-left: 24%;
+}
 
 .brands-wrapper-title {
-    text-align: center;
+    margin-left: 46%;
 }
 
 .brands-wrapper .ant-carousel .slick-dots li button {
@@ -22,4 +26,5 @@
 
 .brands-wrapper .ant-carousel .slick-dots-bottom {
     bottom: -50px;
+    margin-left: -280px;
 }
