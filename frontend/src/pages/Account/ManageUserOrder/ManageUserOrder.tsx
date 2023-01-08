@@ -67,10 +67,10 @@ const ManageUserOrder: FC = (): ReactElement => {
                                     </Col>
                                     <Col span={12}>
                                         <InfoCircleOutlined className={"manage-user-icon"} />
-                                        <ContentTitle title={"Order information"} titleLevel={5} />
-                                        <AccountDataItem title={"Order id"} text={id} />
-                                        <AccountDataItem title={"Date"} text={date} />
-                                        <ContentTitle title={`Order summary: ${totalPrice}.0 $`} titleLevel={4} />
+                                        <ContentTitle title={"Sipariş bilgisi"} titleLevel={5} />
+                                        <AccountDataItem title={"Sipariş id"} text={id} />
+                                        <AccountDataItem title={"Tarih"} text={date} />
+                                        <ContentTitle title={`Sipariş Özeti: ${totalPrice}.0₺`} titleLevel={4} />
                                     </Col>
                                 </Row>
                                 <Row style={{ marginTop: 16 }}>
@@ -106,7 +106,7 @@ const ManageUserOrder: FC = (): ReactElement => {
                                                     title: "Fiyat",
                                                     dataIndex: "price",
                                                     key: "price",
-                                                    render: (_, order: OrderItemResponse) => `${order.product.price}.0 ₺`
+                                                    render: (_, order: OrderItemResponse) => `${order.product.price}.0₺`
                                                 },
                                                 {
                                                     title: "Miktar",

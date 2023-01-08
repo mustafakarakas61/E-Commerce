@@ -10,13 +10,13 @@ const HomePageTheme: FC = (): ReactElement => {
         <div className={"page-theme"}>
             <Row gutter={32}>
                 <Col span={12}>
-                    <Link to={{ pathname: MENU, state: { id: "female" } }}>
-                        <img src="https://i.ibb.co/jMmJs60/Them-Woman-ENG.jpg" alt={"female"} />
+                    <Link to={{ pathname: MENU, state: { id: "Elektronik" } }}>
+                        <img src="https://i.ibb.co/jZvW29Q/teknoloji.jpg" alt={"Elektronik"} />
                     </Link>
                 </Col>
                 <Col span={12}>
-                    <Link to={{ pathname: MENU, state: { id: "male" } }}>
-                        <img src="https://i.ibb.co/mJGKz8c/Them-Man-ENG.jpg" alt={"male"} />
+                    <Link to={{ pathname: MENU, state: { id: "Ev ve Yaşam" } }}>
+                        <img src="https://i.ibb.co/7Vx3mvD/evveyasam.jpg" alt={"Ev ve Yaşam"} />
                     </Link>
                 </Col>
             </Row>

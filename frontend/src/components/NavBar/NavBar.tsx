@@ -35,7 +35,7 @@ const NavBar: FC = (): ReactElement => {
                                     <li>ANA SAYFA</li>
                                 </Link>
                                 <li>
-                                    <Link to={{ pathname: MENU, state: { id: "all" } }}>ÜRÜNLERİMİZ</Link>
+                                    <Link to={{ pathname: MENU, state: { id: "all" } }}>ÜRÜNLER</Link>
                                 </li>
                                 <Link to={CONTACTS}>
                                     <li>İLETİŞİM</li>

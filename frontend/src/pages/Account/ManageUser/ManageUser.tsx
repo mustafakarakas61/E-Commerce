@@ -48,24 +48,24 @@ const ManageUser: FC = (): ReactElement => {
                 <Spinner />
             ) : (
                 <>
-                    <ContentTitle title={`User: ${firstName} ${lastName}`} titleLevel={4} icon={<UserOutlined />} />
+                    <ContentTitle title={`Kullanıcı: ${firstName} ${lastName}`} titleLevel={4} icon={<UserOutlined />} />
                     <Row>
                         <Col span={24}>
                             <Card>
                                 <Row gutter={24}>
                                     <Col span={12}>
-                                        <AccountDataItem title={"User id"} text={id} />
+                                        <AccountDataItem title={"Kullanıcı id"} text={id} />
                                         <AccountDataItem title={"Email"} text={email} />
-                                        <AccountDataItem title={"Role"} text={roles} />
-                                        <AccountDataItem title={"First name"} text={firstName} />
-                                        <AccountDataItem title={"Last name"} text={lastName} />
+                                        <AccountDataItem title={"Rolü"} text={roles} />
+                                        <AccountDataItem title={"Adı"} text={firstName} />
+                                        <AccountDataItem title={"Spyado"} text={lastName} />
                                     </Col>
                                     <Col span={8}>
-                                        <AccountDataItem title={"Provider"} text={provider} />
-                                        <AccountDataItem title={"City"} text={city} />
-                                        <AccountDataItem title={"Address"} text={address} />
-                                        <AccountDataItem title={"Phone number"} text={phoneNumber} />
-                                        <AccountDataItem title={"Post index"} text={postIndex} />
+                                        <AccountDataItem title={"Sağlayıcı"} text={provider} />
+                                        <AccountDataItem title={"Şehir"} text={city} />
+                                        <AccountDataItem title={"Adres"} text={address} />
+                                        <AccountDataItem title={"Telefon"} text={phoneNumber} />
+                                        <AccountDataItem title={"Posta kodu"} text={postIndex} />
                                     </Col>
                                 </Row>
                             </Card>
@@ -73,12 +73,12 @@ const ManageUser: FC = (): ReactElement => {
                                 <Col span={24}>
                                     {userOrders.length === 0 ? (
                                         <div style={{ textAlign: "center" }}>
-                                            <ContentTitle title={"No orders"} titleLevel={4} />
+                                            <ContentTitle title={"Sipariş yok"} titleLevel={4} />
                                         </div>
                                     ) : (
                                         <>
                                             <div style={{ textAlign: "center" }}>
-                                                <ContentTitle title={"Orders"} titleLevel={4} />
+                                                <ContentTitle title={"Siparişler"} titleLevel={4} />
                                             </div>
                                             <Table
                                                 rowKey={"id"}
@@ -90,38 +90,38 @@ const ManageUser: FC = (): ReactElement => {
                                                 dataSource={userOrders}
                                                 columns={[
                                                     {
-                                                        title: "Order №",
+                                                        title: "Sipariş No",
                                                         dataIndex: "id",
                                                         key: "id"
                                                     },
                                                     {
-                                                        title: "Date",
+                                                        title: "Tarih",
                                                         dataIndex: "date",
                                                         key: "date"
                                                     },
                                                     {
-                                                        title: "City",
+                                                        title: "Şehir",
                                                         dataIndex: "city",
                                                         key: "city"
                                                     },
                                                     {
-                                                        title: "Address",
+                                                        title: "Adres",
                                                         dataIndex: "address",
                                                         key: "address"
                                                     },
                                                     {
-                                                        title: "Post index",
+                                                        title: "Posta kodu",
                                                         dataIndex: "postIndex",
                                                         key: "postIndex"
                                                     },
                                                     {
-                                                        title: "Order Summary",
+                                                        title: "Sipariş özeti",
                                                         dataIndex: "totalPrice",
                                                         key: "totalPrice",
-                                                        render: (_, order: OrderResponse) => `${order.totalPrice}.0 $`
+                                                        render: (_, order: OrderResponse) => `${order.totalPrice}.0₺`
                                                     },
                                                     {
-                                                        title: "Actions",
+                                                        title: "Siparişler",
                                                         dataIndex: "actions",
                                                         key: "actions",
                                                         render: (_, order: OrderResponse) => (

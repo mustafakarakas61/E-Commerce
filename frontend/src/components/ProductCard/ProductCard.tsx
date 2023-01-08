@@ -53,7 +53,7 @@ const ProductCard: FC<PropsType> = ({ product, colSpan, edit, onOpenDelete }): R
                         <Typography.Text>{product.reviewsCount} reviews</Typography.Text>
                     </div>
                     <Meta title={product.productTitle} description={product.producer} style={{ textAlign: "center" }} />
-                    <Typography.Text className={"product-card-price"}>${product.price}.00</Typography.Text>
+                    <Typography.Text className={"product-card-price"}>{product.price}.00₺</Typography.Text>
                 </Card>
             </Link>
         </Col>

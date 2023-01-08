@@ -9,7 +9,7 @@ export const sliderItems = [
     {
         id: "2",
         name: "Photo 2",
-        url: "https://www.asus.com/media/Odin/Websites/global/Series/10/P_setting_xxx_0_90_end_185.png?webp"
+        url: "https://i.ibb.co/J3r2jW5/laptop.png"
     },
     {
         id: "14",
@@ -27,7 +27,7 @@ const CarouselImageSlider: FC = (): ReactElement => {
     return (
         <div className={"carousel-item-wrapper"}>
             <Typography.Title level={3} className={"carousel-item-slider-title"}>
-                ÖNE ÇIKARILANLAR
+                ÖNE ÇIKANLAR
             </Typography.Title>
             <Carousel>
                 {sliderItems.map((item) => (

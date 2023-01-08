@@ -8,6 +8,13 @@ type PropType = {
 };
 
 const ReviewItem: FC<PropType> = ({ review }): ReactElement => {
+    const date = new Date(review.date);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+
+    const formattedDate = `${day}/${month}/${year}`;
+
     return (
         <Row>
             <Col span={4}>
@@ -15,7 +22,7 @@ const ReviewItem: FC<PropType> = ({ review }): ReactElement => {
                     <Typography.Text strong>{review.author}</Typography.Text>
                 </div>
                 <div>
-                    <Typography.Text>{review.date}</Typography.Text>
+                    <Typography.Text>{formattedDate}</Typography.Text>
                 </div>
                 <div>
                     <Rate disabled value={review.rating} />

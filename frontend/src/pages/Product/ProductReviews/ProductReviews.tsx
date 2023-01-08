@@ -43,7 +43,7 @@ const ProductReviews: FC<PropType> = ({ reviews, reviewErrors, addReview, form }
                         <Card>
                             <Row gutter={32}>
                                 <Col span={6}>
-                                    <Typography.Text>Your name</Typography.Text>
+                                    <Typography.Text>Ad</Typography.Text>
                                     <Typography.Text type="danger"> *</Typography.Text>
                                     <Form.Item
                                         name={"author"}
@@ -54,7 +54,7 @@ const ProductReviews: FC<PropType> = ({ reviews, reviewErrors, addReview, form }
                                     </Form.Item>
                                 </Col>
                                 <Col span={12}>
-                                    <Typography.Text>Your mark</Typography.Text>
+                                    <Typography.Text>Beğeni</Typography.Text>
                                     <Typography.Text type="danger"> *</Typography.Text>
                                     <div>
                                         <Form.Item
@@ -69,7 +69,7 @@ const ProductReviews: FC<PropType> = ({ reviews, reviewErrors, addReview, form }
                             </Row>
                             <Row className={"product-reviews-wrapper"}>
                                 <Col span={24}>
-                                    <Typography.Text>Message text</Typography.Text>
+                                    <Typography.Text>Yorumunuz</Typography.Text>
                                     <Typography.Text type="danger"> *</Typography.Text>
                                     <Form.Item
                                         name={"message"}
@@ -83,7 +83,7 @@ const ProductReviews: FC<PropType> = ({ reviews, reviewErrors, addReview, form }
                             <Row className={"product-reviews-wrapper"}>
                                 <Col span={24}>
                                     <Button type={"primary"} htmlType={"submit"} icon={<SendOutlined />}>
-                                        Post a review
+                                        Yorumu gönder
                                     </Button>
                                 </Col>
                             </Row>
