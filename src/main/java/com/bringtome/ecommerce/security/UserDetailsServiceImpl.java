@@ -18,9 +18,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserEntity user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("Kullanıcı bulunamadı"));
         if (user.getActivationCode() != null) {
-            throw new LockedException("email not activated");
+            throw new LockedException("Email aktif değil");
         }
         return UserPrincipal.create(user);
     }

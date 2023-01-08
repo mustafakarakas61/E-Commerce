@@ -37,13 +37,13 @@ const ForgotPassword: FC = (): ReactElement => {
 
     return (
         <ContentWrapper>
-            <ContentTitle icon={<KeyOutlined />} title={"FORGOT PASSWORD ?"} />
+            <ContentTitle icon={<KeyOutlined />} title={"ŞİFRENİZİ Mİ UNUTTUNUZ ? 🙄"} />
             <Row gutter={32}>
                 <Col span={12}>
                     <Form form={form} onFinish={onClickSend}>
                         <Divider />
                         <Typography.Text style={{ display: "block", marginBottom: 16 }}>
-                            Enter your email address that you used to create your account.
+                            Hesabınızı oluşturmak için kullandığınız e-posta adresinizi girin.
                         </Typography.Text>
                         {error && <Alert type="error" message={error} />}
                         {success && <Alert type="success" message={success} />}
@@ -53,10 +53,10 @@ const ForgotPassword: FC = (): ReactElement => {
                             titleSpan={8}
                             wrapperSpan={16}
                             name={"email"}
-                            placeholder={"E-mail"}
-                            rule={[{ required: true, message: "Please input your E-mail!" }]}
+                            placeholder={"E-mail adresiniz"}
+                            rule={[{ required: true, message: "Lütfen mail adresinizi girin!" }]}
                         />
-                        <IconButton disabled={isLoading} title={"Send"} icon={<SendOutlined />} />
+                        <IconButton disabled={isLoading} title={"Gönder"} icon={<SendOutlined />} />
                     </Form>
                 </Col>
             </Row>

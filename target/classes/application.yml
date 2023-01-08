@@ -36,7 +36,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: inc.bringtome@gmail.com
-    password: aksacslqtatfxibx
+    password: ldphqhktpbtkhqrr
     properties:
       mail:
         transport:

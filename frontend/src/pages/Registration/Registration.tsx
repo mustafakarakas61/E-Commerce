@@ -45,7 +45,7 @@ const Registration: FC = (): ReactElement => {
 
     return (
         <ContentWrapper>
-            <ContentTitle icon={<UserAddOutlined />} title={"SIGN UP"} />
+            <ContentTitle icon={<UserAddOutlined />} title={"Kayıt Ol"} />
             <Row gutter={32}>
                 <Col span={12}>
                     <Form onFinish={onClickSignIn}>
