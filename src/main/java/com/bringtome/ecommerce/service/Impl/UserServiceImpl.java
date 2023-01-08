@@ -11,6 +11,7 @@ import com.bringtome.ecommerce.service.UserService;
 import graphql.schema.DataFetcher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -41,8 +42,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<UserEntity> getAllUsers(Pageable pageable) {
-        return userRepository.findAllByOrderByIdAsc(pageable);
+    public Page<UserEntity> getAllUsers(PageRequest pageRequest) {
+        return userRepository.findAllByOrderByIdAsc(pageRequest);
     }
 
     @Override

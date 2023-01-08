@@ -13,6 +13,7 @@ import com.bringtome.ecommerce.exception.InputFieldException;
 import com.bringtome.ecommerce.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @Component
 @RequiredArgsConstructor
 public class UserMapper {
@@ -40,8 +41,8 @@ public class UserMapper {
         return commonMapper.convertToResponseList(userService.getCart(productsIds), ProductResponse.class);
     }
 
-    public HeaderResponse<BaseUserResponse> getAllUsers(Pageable pageable) {
-        Page<UserEntity> users = userService.getAllUsers(pageable);
+    public HeaderResponse<BaseUserResponse> getAllUsers(PageRequest pageRequest) {
+        Page<UserEntity> users = userService.getAllUsers(pageRequest);
         return commonMapper.getHeaderResponse(users.getContent(), users.getTotalPages(), users.getTotalElements(), BaseUserResponse.class);
     }
 

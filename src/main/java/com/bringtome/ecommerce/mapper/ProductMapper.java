@@ -8,12 +8,12 @@ import com.bringtome.ecommerce.dto.review.ReviewResponse;
 import com.bringtome.ecommerce.enums.SearchProductEnum;
 import com.bringtome.ecommerce.exception.InputFieldException;
 import com.bringtome.ecommerce.repository.projection.ProductProjection;
-import com.bringtome.ecommerce.service.Impl.MyPageable;
 import com.bringtome.ecommerce.service.ProductService;
 import com.bringtome.ecommerce.dto.product.AllProductResponse;
 import com.bringtome.ecommerce.dto.product.ProductRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @Component
 @RequiredArgsConstructor
 public class ProductMapper {
@@ -42,14 +42,14 @@ public class ProductMapper {
         return commonMapper.convertToResponseList(productService.getProductsByIds(productsId), ProductResponse.class);
     }
 
-    public HeaderResponse<ProductResponse> getAllProducts(MyPageable pageable) {
-        Page<ProductProjection> products = productService.getAllProducts(pageable);
+    public HeaderResponse<ProductResponse> getAllProducts(PageRequest pageRequest) {
+        Page<ProductProjection> products = productService.getAllProducts(pageRequest);
         return commonMapper.getHeaderResponse(products.getContent(), products.getTotalPages(), products.getTotalElements(), ProductResponse.class);
     }
 
-    public HeaderResponse<ProductResponse> findProductsByFilterParams(ProductSearchRequest filter, Pageable pageable) {
+    public HeaderResponse<ProductResponse> findProductsByFilterParams(ProductSearchRequest filter, PageRequest pageRequest) {
         Page<ProductProjection> products = productService.findProductsByFilterParams(filter.getProducers(), filter.getTypes(),
-                filter.getPrices(), filter.getSortByPrice(), pageable);
+                filter.getPrices(), filter.getSortByPrice(), pageRequest);
         return commonMapper.getHeaderResponse(products.getContent(), products.getTotalPages(), products.getTotalElements(), ProductResponse.class);
     }
 
@@ -61,8 +61,8 @@ public class ProductMapper {
         return commonMapper.convertToResponseList(productService.findByProductType(productType), ProductResponse.class);
     }
     
-    public HeaderResponse<ProductResponse> findByInputText(SearchProductEnum searchType, String text, Pageable pageable) {
-        Page<ProductProjection> products = productService.findByInputText(searchType, text, pageable);
+    public HeaderResponse<ProductResponse> findByInputText(SearchProductEnum searchType, String text, PageRequest pageRequest) {
+        Page<ProductProjection> products = productService.findByInputText(searchType, text, pageRequest);
         return commonMapper.getHeaderResponse(products.getContent(), products.getTotalPages(), products.getTotalElements(), ProductResponse.class);
     }
 

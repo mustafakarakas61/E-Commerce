@@ -5,19 +5,20 @@ import com.bringtome.ecommerce.entity.ReviewEntity;
 import com.bringtome.ecommerce.entity.UserEntity;
 import graphql.schema.DataFetcher;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 public interface UserService {
 
     UserEntity getUserById(Long userId);
 
     UserEntity getUserInfo(String email);
     
-    Page<UserEntity> getAllUsers(Pageable pageable);
+    Page<UserEntity> getAllUsers(PageRequest pageRequest);
 
     List<ProductEntity> getCart(List<Long> prodcutIds);
 

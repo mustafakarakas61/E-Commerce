@@ -10,6 +10,7 @@ import com.bringtome.ecommerce.service.ProductService;
 import graphql.schema.DataFetcher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
@@ -35,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductEntity getProductById(Long productId) {
         return productRepository.findById(productId)
-                .orElseThrow(() -> new ApiRequestException("Product not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Ürün bulunamadı.", HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -45,8 +46,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductProjection> getAllProducts(MyPageable pageable) {
-        return productRepository.findAllByOrderByIdAsc(pageable);
+    public Page<ProductProjection> getAllProducts(PageRequest pageRequest) {
+        return productRepository.findAllByOrderByIdAsc(pageRequest);
     }
 
     @Override
@@ -55,9 +56,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductProjection> findProductsByFilterParams(List<String> producers, List<String> genders, List<Integer> prices,
-                                                              boolean sortByPrice, Pageable pageable) {
-        return productRepository.findProductsByFilterParams(producers, genders, prices.get(0), prices.get(1), sortByPrice, pageable);
+    public Page<ProductProjection> findProductsByFilterParams(List<String> producers, List<String> types, List<Integer> prices,
+                                                              boolean sortByPrice, PageRequest pageRequest) {
+        return productRepository.findProductsByFilterParams(producers, types, prices.get(0), prices.get(1), sortByPrice, pageRequest);
     }
 
     @Override
@@ -71,13 +72,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductProjection> findByInputText(SearchProductEnum searchType, String text, Pageable pageable) {
+    public Page<ProductProjection> findByInputText(SearchProductEnum searchType, String text, PageRequest pageRequest) {
         if (searchType.equals(SearchProductEnum.BRAND)) {
-            return productRepository.findByProducer(text, pageable);
+            return productRepository.findByProducer(text, pageRequest);
         } else if (searchType.equals(SearchProductEnum.PRODUCT_TITLE)) {
-            return productRepository.findByProductTitle(text, pageable);
+            return productRepository.findByProductTitle(text, pageRequest);
         } else {
-            return productRepository.findByManufacturerCity(text, pageable);
+            return productRepository.findByManufacturerCity(text, pageRequest);
         }
     }
 

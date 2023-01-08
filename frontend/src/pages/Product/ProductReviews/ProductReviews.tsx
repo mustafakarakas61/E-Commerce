@@ -21,7 +21,7 @@ const ProductReviews: FC<PropType> = ({ reviews, reviewErrors, addReview, form }
         <>
             <Row>
                 <Col span={24} className={"product-reviews-title"}>
-                    <Typography.Title level={3}>Reviews</Typography.Title>
+                    <Typography.Title level={3}>Yorumlar</Typography.Title>
                 </Col>
             </Row>
             <Row>

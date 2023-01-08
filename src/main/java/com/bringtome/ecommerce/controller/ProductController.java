@@ -8,11 +8,10 @@ import com.bringtome.ecommerce.dto.product.ProductSearchRequest;
 import com.bringtome.ecommerce.dto.product.SearchTypeRequest;
 import com.bringtome.ecommerce.dto.review.ReviewResponse;
 import com.bringtome.ecommerce.mapper.ProductMapper;
-import com.bringtome.ecommerce.service.Impl.MyPageable;
 import com.bringtome.ecommerce.service.graphql.GraphQLProvider;
 import graphql.ExecutionResult;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -33,10 +32,9 @@ public class ProductController {
         this.productMapper = productMapper;
         this.graphQLProvider = graphQLProvider;
     }
-
     @GetMapping
-    public ResponseEntity<List<ProductResponse>> getAllProducts(@PageableDefault(size = 15) MyPageable pageable) {
-        HeaderResponse<ProductResponse> response = productMapper.getAllProducts(pageable);
+    public ResponseEntity<List<ProductResponse>> getAllProducts(@PageableDefault(size = 15) @RequestBody PageRequest pageRequest) {
+        HeaderResponse<ProductResponse> response = productMapper.getAllProducts(pageRequest);
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
@@ -57,13 +55,13 @@ public class ProductController {
 
     @PostMapping("/search")
     public ResponseEntity<List<ProductResponse>> findProductsByFilterParams(@RequestBody ProductSearchRequest filter,
-                                                                            @PageableDefault(size = 15) Pageable pageable) {
-        HeaderResponse<ProductResponse> response = productMapper.findProductsByFilterParams(filter, pageable);
+                                                                            @PageableDefault(size = 15) PageRequest pageRequest) {
+        HeaderResponse<ProductResponse> response = productMapper.findProductsByFilterParams(filter, pageRequest);
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
-    @PostMapping("/search/gender")
-    public ResponseEntity<List<ProductResponse>> findByProductGender(@RequestBody ProductSearchRequest filter) {
+    @PostMapping("/search/type")
+    public ResponseEntity<List<ProductResponse>> findByProductType(@RequestBody ProductSearchRequest filter) {
         return ResponseEntity.ok(productMapper.findByProductType(filter.getProductType()));
     }
 
@@ -74,8 +72,8 @@ public class ProductController {
 
     @PostMapping("/search/text")
     public ResponseEntity<List<ProductResponse>> findByInputText(@RequestBody SearchTypeRequest searchType,
-                                                                 @PageableDefault(size = 15) Pageable pageable) {
-        HeaderResponse<ProductResponse> response = productMapper.findByInputText(searchType.getSearchType(), searchType.getText(), pageable);
+                                                                 @PageableDefault(size = 15) PageRequest pageRequest) {
+        HeaderResponse<ProductResponse> response = productMapper.findByInputText(searchType.getSearchType(), searchType.getText(), pageRequest);
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 

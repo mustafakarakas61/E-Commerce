@@ -2,7 +2,7 @@ server:
   port: 8080
 jwt:
   header: Authorization
-  expiration: '86400'
+  expiration: '604800'
   secret: rhodex
 spring:
   mvc:

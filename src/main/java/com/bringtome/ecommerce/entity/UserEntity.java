@@ -68,8 +68,7 @@ public class UserEntity {
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
-        if (object == null || getClass()
-                != object.getClass()) return false;
+        if (object == null || getClass() != object.getClass()) return false;
         UserEntity user = (UserEntity) object;
         return Objects.equals(id, user.id);
     }

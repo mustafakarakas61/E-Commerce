@@ -28,21 +28,21 @@ const ProductInfo: FC<PropsType> = ({ product, reviewsLength, addToCart }): Reac
                 <Row>
                     <Col className={"product-rate"} span={8}>
                         <Rate allowHalf disabled value={product?.productRating} />
-                        <Typography.Text>{reviewsLength} reviews</Typography.Text>
+                        <Typography.Text>{reviewsLength} yorum</Typography.Text>
                     </Col>
                 </Row>
                 <Row>
-                    <Typography.Text type="success">In Stock</Typography.Text>
+                    <Typography.Text type="success">Stokta var</Typography.Text>
                 </Row>
                 <Row style={{ marginTop: 16 }}>
                     <Col span={5}>
                         <Space align={"baseline"}>
-                            <Typography.Text>${product?.price}.00</Typography.Text>
+                            <Typography.Text>{product?.price}.00₺</Typography.Text>
                         </Space>
                     </Col>
                     <Col span={4}>
                         <Button icon={<ShoppingCartOutlined />} onClick={addToCart}>
-                            Add to cart
+                            Sepete ekle
                         </Button>
                     </Col>
                 </Row>

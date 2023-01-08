@@ -51,7 +51,7 @@ const Menu: FC = (): ReactElement => {
                     currentPage: 0
                 })
             );
-            setFilterParams((prevState) => ({ ...prevState, genders: [...prevState.types, productData] }));
+            setFilterParams((prevState) => ({ ...prevState, types: [...prevState.types, productData] }));
         } else if (productData === "all") {
             dispatch(fetchProductsByFilterParams({ ...filterParams, sortByPrice, currentPage: 0 }));
         } else {

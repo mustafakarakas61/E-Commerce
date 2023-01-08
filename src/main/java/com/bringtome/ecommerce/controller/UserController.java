@@ -15,8 +15,8 @@ import com.bringtome.ecommerce.mapper.UserMapper;
 import com.bringtome.ecommerce.security.UserPrincipal;
 import com.bringtome.ecommerce.service.graphql.GraphQLProvider;
 import graphql.ExecutionResult;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -75,8 +75,8 @@ public class UserController {
 
     @GetMapping("/orders")
     public ResponseEntity<List<OrderResponse>> getUserOrders(@AuthenticationPrincipal UserPrincipal user,
-                                                             @PageableDefault(size = 10) Pageable pageable) {
-        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(user.getEmail(), pageable);
+                                                             @PageableDefault(size = 10) PageRequest pageRequest) {
+        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(user.getEmail(), pageRequest);
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 

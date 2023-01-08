@@ -9,6 +9,7 @@ import com.bringtome.ecommerce.exception.InputFieldException;
 import com.bringtome.ecommerce.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @Component
 @RequiredArgsConstructor
 public class OrderMapper {
@@ -32,13 +33,13 @@ public class OrderMapper {
         return commonMapper.convertToResponseList(orderService.getOrderItemsByOrderId(orderId), OrderItemResponse.class);
     }
 
-    public HeaderResponse<OrderResponse> getAllOrders(Pageable pageable) {
-        Page<OrderEntity> orders = orderService.getAllOrders(pageable);
+    public HeaderResponse<OrderResponse> getAllOrders(PageRequest pageRequest) {
+        Page<OrderEntity> orders = orderService.getAllOrders(pageRequest);
         return commonMapper.getHeaderResponse(orders.getContent(), orders.getTotalPages(), orders.getTotalElements(), OrderResponse.class);
     }
 
-    public HeaderResponse<OrderResponse> getUserOrders(String email, Pageable pageable) {
-        Page<OrderEntity> orders = orderService.getUserOrders(email, pageable);
+    public HeaderResponse<OrderResponse> getUserOrders(String email, PageRequest pageRequest) {
+        Page<OrderEntity> orders = orderService.getUserOrders(email, pageRequest);
         return commonMapper.getHeaderResponse(orders.getContent(), orders.getTotalPages(), orders.getTotalElements(), OrderResponse.class);
     }
 

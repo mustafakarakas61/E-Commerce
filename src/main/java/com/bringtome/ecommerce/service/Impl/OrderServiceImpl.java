@@ -14,6 +14,7 @@ import graphql.schema.DataFetcher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @Service
 public class OrderServiceImpl implements OrderService {
 
@@ -55,13 +56,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Page<OrderEntity> getAllOrders(Pageable pageable) {
-        return orderRepository.findAllByOrderByIdAsc(pageable);
+    public Page<OrderEntity> getAllOrders(PageRequest pageRequest) {
+        return orderRepository.findAllByOrderByIdAsc(pageRequest);
     }
 
     @Override
-    public Page<OrderEntity> getUserOrders(String email, Pageable pageable) {
-        return orderRepository.findOrderByEmail(email, pageable);
+    public Page<OrderEntity> getUserOrders(String email, PageRequest pageRequest) {
+        return orderRepository.findOrderByEmail(email, pageRequest);
     }
 
     @Override
