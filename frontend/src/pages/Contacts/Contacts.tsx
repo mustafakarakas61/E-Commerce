@@ -13,19 +13,19 @@ const EmailForm = () => {
         const values = form.getFieldsValue();
 
         // E-mail yollama işlemleri burada yapılacak
-        window.location.href = `mailto:${values.email}?subject=${values.subject}&body=${values.message}`;
+        window.location.href = `mailto:inc.bringtome@gmail.com?subject=${values.subject}&body=${values.message}`;
     };
 
     return (
         <Form form={form}>
-            <Form.Item name="email" label="E-mail" rules={[{ required: true }]}>
-                <Input />
+            <Form.Item name="email" label="Bu adrese mail gönderiyorsunuz:">
+                <Input style={{ backgroundColor: "white", fontWeight: "bold", color: "black", border: "0px", fontSize: "15px", fontStyle: "italic"}} defaultValue="inc.bringtome@gmail.com" disabled/>
             </Form.Item>
-            <Form.Item name="subject" label="Konu" rules={[{ required: true }]}>
-                <Input />
+            <Form.Item name="subject" style={{fontWeight: "bold"}} label="Konu" rules={[{ required: true }]}>
+                <Input style={{fontWeight: "bold", border: "2px solid"  }} />
             </Form.Item>
-            <Form.Item name="message" label="Mesaj" rules={[{ required: true }]}>
-                <Input.TextArea rows={4} />
+            <Form.Item name="message" style={{fontWeight: "bold"}} label="Mesaj" rules={[{ required: true }]}>
+                <Input.TextArea rows={4} style={{border: "2px solid"  }}/>
             </Form.Item>
             <Form.Item>
                 <Button type="primary" onClick={handleSubmit}>
