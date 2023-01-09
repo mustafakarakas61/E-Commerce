@@ -58,7 +58,7 @@ const Order: FC = (): ReactElement => {
 
     const onFormSubmit = (order: OrderFormData): void => {
         const productsId = Object.fromEntries(new Map(JSON.parse(localStorage.getItem("products") as string)));
-        dispatch(addOrder({ order: { ...order, productsId }, history }));
+        dispatch(addOrder({ order: { ...order,  totalPrice, productsId }, history })); // todo buraya totalPrice ekledim ve bu özeliği gönderdim
     };
 
     return (

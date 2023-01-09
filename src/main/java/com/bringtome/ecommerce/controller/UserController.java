@@ -83,6 +83,7 @@ public class UserController {
 
     @PostMapping("/order")
     public ResponseEntity<OrderResponse> postOrder(@Valid @RequestBody OrderRequest order, BindingResult bindingResult) {
+
         return ResponseEntity.ok(orderMapper.postOrder(order, bindingResult));
     }
 

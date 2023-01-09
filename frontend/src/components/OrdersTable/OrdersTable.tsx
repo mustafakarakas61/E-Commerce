@@ -28,6 +28,7 @@ const OrdersTable: FC<PropsType> = ({ orders, loading, fetchOrders }): ReactElem
                 total: totalElements,
                 position: ["bottomRight", "topRight"]
             }}
+
             dataSource={orders}
             columns={[
                 {
@@ -53,7 +54,7 @@ const OrdersTable: FC<PropsType> = ({ orders, loading, fetchOrders }): ReactElem
                     key: "email"
                 },
                 {
-                    title: "Toplam, ₺", //todo toplama bak
+                    title: "Toplam, ₺",
                     dataIndex: "totalPrice",
                     key: "totalPrice",
                     sorter: (a, b) => a.totalPrice - b.totalPrice

@@ -29,7 +29,7 @@ public class ProductRequest {
     @Length(max = 255)
     private String colors;
 
-    @NotBlank(message = "Boş bırakılamaz.")
+   // @NotBlank(message = "Boş bırakılamaz.")
     @Length(max = 255)
     private String product_type;
 

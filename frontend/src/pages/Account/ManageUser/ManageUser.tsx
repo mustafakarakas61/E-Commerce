@@ -126,7 +126,7 @@ const ManageUser: FC = (): ReactElement => {
                                                         key: "actions",
                                                         render: (_, order: OrderResponse) => (
                                                             <Link to={`${ACCOUNT_USER_ORDERS}/${order.id}`}>
-                                                                Show more
+                                                                Daha fazla
                                                             </Link>
                                                         )
                                                     }
