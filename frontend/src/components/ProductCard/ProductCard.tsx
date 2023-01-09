@@ -35,22 +35,22 @@ const ProductCard: FC<PropsType> = ({ product, colSpan, edit, onOpenDelete }): R
                         edit
                             ? [
                                   <Link to={`${ACCOUNT_ADMIN_PRODUCTS}/${product.id}`}>
-                                      <Button icon={<EditOutlined />}>Edit</Button>
+                                      <Button icon={<EditOutlined />}>Düzenle</Button>
                                   </Link>,
                                   <Button icon={<DeleteOutlined />} onClick={() => onOpenDelete!(product)} danger>
-                                      Delete
+                                      Sil
                                   </Button>
                               ]
                             : [
                                   <Button icon={<ShoppingCartOutlined />} onClick={onClickAddToCart}>
-                                      Add to cart
+                                      Sepete ekle
                                   </Button>
                               ]
                     }
                 >
                     <div className={"product-card-rate"}>
-                        <Rate defaultValue={product.productRating === 0 ? 5 : product.productRating} disabled />
-                        <Typography.Text>{product.reviewsCount} reviews</Typography.Text>
+                        <Rate defaultValue={product.productRating === 0 ? 0 : product.productRating} disabled />
+                        <Typography.Text>{product.reviewsCount} yorum</Typography.Text>
                     </div>
                     <Meta title={product.productTitle} description={product.producer} style={{ textAlign: "center" }} />
                     <Typography.Text className={"product-card-price"}>{product.price}.00₺</Typography.Text>

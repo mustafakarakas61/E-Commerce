@@ -1,6 +1,6 @@
 import React, { FC, ReactElement, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Col, Layout, Pagination, RadioChangeEvent, Row, Typography } from "antd";
+import {Button, Col, Layout, Pagination, RadioChangeEvent, Row, Typography} from "antd";
 import { CheckboxValueType } from "antd/lib/checkbox/Group";
 import { useLocation } from "react-router-dom";
 
@@ -33,26 +33,19 @@ const Menu: FC = (): ReactElement => {
     const [filterParams, setFilterParams] = useState<FilterParamsType>({
         types: [],
         productTypes: [],
+        page:0,
+        perPage:5,
         prices: [1, 999]
     });
     const [sortByPrice, setSortByPrice] = useState<boolean>(false);
     const { currentPage, totalElements, handleChangePagination, resetPagination } = usePagination();
+
+
     const { searchValue, searchTypeValue, resetFields, form, onSearch, handleChangeSelect } = useSearch();
 
     useEffect(() => {
         const productData = location.state.id;
-
-        if (productData === "female" || productData === "male") {
-            dispatch(
-                fetchProductsByFilterParams({
-                    ...filterParams,
-                    types: [...filterParams.types, productData],
-                    sortByPrice,
-                    currentPage: 0
-                })
-            );
-            setFilterParams((prevState) => ({ ...prevState, types: [...prevState.types, productData] }));
-        } else if (productData === "all") {
+        if (productData === "all") {
             dispatch(fetchProductsByFilterParams({ ...filterParams, sortByPrice, currentPage: 0 }));
         } else {
             dispatch(
@@ -93,6 +86,19 @@ const Menu: FC = (): ReactElement => {
         resetFields();
     };
 
+    const changePagination = (page: number, pageSize: number): void => {
+         if (searchValue) {
+             filterParams.perPage = pageSize
+             filterParams.page = page
+             dispatch( fetchProductsByInputText({ searchType: searchTypeValue, text: searchValue, currentPage: page - 1 }));
+         } else {
+             filterParams.perPage = pageSize
+             filterParams.page = page
+             dispatch(fetchProductsByFilterParams({ ...filterParams, sortByPrice, currentPage: page - 1 }));
+         }
+         handleChangePagination(page, pageSize);
+    };
+
     const onChangeRadio = (event: RadioChangeEvent): void => {
         setFilterParams((prevState) => {
             const filter = { ...prevState, prices: event.target.value };
@@ -108,16 +114,6 @@ const Menu: FC = (): ReactElement => {
         resetFields();
     };
 
-    const changePagination = (page: number, pageSize: number): void => {
-        if (searchValue) {
-            dispatch(
-                fetchProductsByInputText({ searchType: searchTypeValue, text: searchValue, currentPage: page - 1 })
-            );
-        } else {
-            dispatch(fetchProductsByFilterParams({ ...filterParams, sortByPrice, currentPage: page - 1 }));
-        }
-        handleChangePagination(page, pageSize);
-    };
 
     return (
         <Layout>
@@ -154,11 +150,14 @@ const Menu: FC = (): ReactElement => {
                             <Col span={16}>
                                 <Pagination
                                     current={currentPage}
-                                    pageSize={MAX_PAGE_VALUE}
                                     total={totalElements}
-                                    showSizeChanger={false}
+                                    defaultCurrent={0}
+                                    defaultPageSize={5}
+                                    pageSizeOptions={[5,10,15]}
+                                    showSizeChanger={true}
                                     onChange={changePagination}
                                 />
+
                             </Col>
                             <Col span={8}>
                                 <MenuSorter onChange={handleChangeSortPrice} sortByPrice={sortByPrice} />

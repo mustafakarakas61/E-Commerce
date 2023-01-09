@@ -8,6 +8,7 @@ import com.bringtome.ecommerce.dto.product.ProductSearchRequest;
 import com.bringtome.ecommerce.dto.product.SearchTypeRequest;
 import com.bringtome.ecommerce.dto.review.ReviewResponse;
 import com.bringtome.ecommerce.mapper.ProductMapper;
+import com.bringtome.ecommerce.model.PrmSearch;
 import com.bringtome.ecommerce.service.graphql.GraphQLProvider;
 import graphql.ExecutionResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,16 @@ public class ProductController {
         this.graphQLProvider = graphQLProvider;
     }
     @GetMapping
-    public ResponseEntity<List<ProductResponse>> getAllProducts() {
-        HeaderResponse<ProductResponse> response = productMapper.getAllProducts(PageRequest.of(0, 10));
+    public ResponseEntity<List<ProductResponse>> getAllProducts(PrmSearch prmSearch) {
+           /*
+    Page<ProductProjection> products = productService.getAllProducts(pageable);
+        products.getTotalElements();
+     */
+
+
+        HeaderResponse<ProductResponse> response = productMapper.getAllProducts(PageRequest.of(prmSearch.getPage(), prmSearch.getPerPage()));
+        System.out.println(response.getItems().size());
+        //System.out.println(response.toString());
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
@@ -54,8 +63,8 @@ public class ProductController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<List<ProductResponse>> findProductsByFilterParams(@RequestBody ProductSearchRequest filter) {
-        HeaderResponse<ProductResponse> response = productMapper.findProductsByFilterParams(filter, PageRequest.of(0, 10));
+    public ResponseEntity<List<ProductResponse>> findProductsByFilterParams(@RequestBody ProductSearchRequest filter, PrmSearch prmSearch) {
+        HeaderResponse<ProductResponse> response = productMapper.findProductsByFilterParams(filter, PageRequest.of(prmSearch.getPage(), prmSearch.getPerPage()));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
@@ -71,8 +80,8 @@ public class ProductController {
 
     @PostMapping("/search/text")
     public ResponseEntity<List<ProductResponse>> findByInputText(@RequestBody SearchTypeRequest searchType,
-                                                                 @PageableDefault(size = 15) Pageable pageable) {
-        HeaderResponse<ProductResponse> response = productMapper.findByInputText(searchType.getSearchType(), searchType.getText(), pageable);
+                                                                 PrmSearch prmSearch) {
+        HeaderResponse<ProductResponse> response = productMapper.findByInputText(searchType.getSearchType(), searchType.getText(),  PageRequest.of(prmSearch.getPage(), prmSearch.getPerPage()));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 

@@ -35,7 +35,7 @@ export const fetchProductsByIds = createAsyncThunk<Array<ProductResponse>, Array
 export const fetchProductsByFilterParams = createAsyncThunk<HeaderResponse<ProductResponse>, FilterParamsType>(
     "products/fetchProductsByFilterParams",
     async (filter) => {
-        const response = await RequestService.post(`${PRODUCTS_SEARCH}?page=${filter.currentPage}`, filter);
+        const response = await RequestService.post(`${PRODUCTS_SEARCH}?page=${filter.currentPage}&perPage=${filter.perPage}`, filter);
         return {
             items: response.data,
             pagesCount: parseInt(response.headers["page-total-count"]),

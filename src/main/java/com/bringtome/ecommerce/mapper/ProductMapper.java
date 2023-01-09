@@ -44,6 +44,7 @@ public class ProductMapper {
 
     public HeaderResponse<ProductResponse> getAllProducts(Pageable pageable) {
         Page<ProductProjection> products = productService.getAllProducts(pageable);
+        //products.getTotalElements();
         return commonMapper.getHeaderResponse(products.getContent(), products.getTotalPages(), products.getTotalElements(), ProductResponse.class);
     }
 

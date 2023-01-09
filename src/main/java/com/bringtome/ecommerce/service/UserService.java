@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "http://localhost:3000")
 public interface UserService {
 
     UserEntity getUserById(Long userId);

@@ -178,6 +178,8 @@ export interface FilterParamsType {
     prices: Array<number>;
     currentPage?: number;
     sortByPrice?: boolean;
+    page:number
+    perPage:number
 }
 
 export interface ProductPrice {

@@ -53,7 +53,7 @@ const OrdersTable: FC<PropsType> = ({ orders, loading, fetchOrders }): ReactElem
                     key: "email"
                 },
                 {
-                    title: "Toplam, ₺",
+                    title: "Toplam, ₺", //todo toplama bak
                     dataIndex: "totalPrice",
                     key: "totalPrice",
                     sorter: (a, b) => a.totalPrice - b.totalPrice

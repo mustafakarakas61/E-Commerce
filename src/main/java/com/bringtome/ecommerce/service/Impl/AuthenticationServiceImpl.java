@@ -163,7 +163,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Transactional
     public String activateUser(String code) {
         UserEntity user = userRepository.findByActivationCode(code)
-                .orElseThrow(() -> new ApiRequestException("Activation code not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Aktivasyon kodu bulunamadı.", HttpStatus.NOT_FOUND));
         user.setActivationCode(null);
         user.setActive(true);
         userRepository.save(user);

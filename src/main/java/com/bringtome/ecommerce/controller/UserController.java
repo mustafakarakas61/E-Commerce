@@ -12,6 +12,7 @@ import com.bringtome.ecommerce.dto.user.UpdateUserRequest;
 import com.bringtome.ecommerce.dto.user.UserResponse;
 import com.bringtome.ecommerce.mapper.OrderMapper;
 import com.bringtome.ecommerce.mapper.UserMapper;
+import com.bringtome.ecommerce.model.PrmSearch;
 import com.bringtome.ecommerce.security.UserPrincipal;
 import com.bringtome.ecommerce.service.graphql.GraphQLProvider;
 import graphql.ExecutionResult;
@@ -75,8 +76,8 @@ public class UserController {
 
     @GetMapping("/orders")
     public ResponseEntity<List<OrderResponse>> getUserOrders(@AuthenticationPrincipal UserPrincipal user,
-                                                             @PageableDefault(size = 10) Pageable pageable) {
-        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(user.getEmail(), pageable);
+                                                             PrmSearch prmSearch) {
+        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(user.getEmail(), PageRequest.of(prmSearch.getPage(), prmSearch.getPerPage()));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
