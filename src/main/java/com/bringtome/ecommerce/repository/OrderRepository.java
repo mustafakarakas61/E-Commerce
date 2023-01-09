@@ -16,9 +16,9 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
 
     List<OrderEntity> findAllByOrderByIdAsc();
 
-    Page<OrderEntity> findAllByOrderByIdAsc(PageRequest pageRequest);
+    Page<OrderEntity> findAllByOrderByIdAsc(Pageable pageable);
 
     List<OrderEntity> findOrderByEmail(String email);
 
-    Page<OrderEntity> findOrderByEmail(String email, PageRequest pageRequest);
+    Page<OrderEntity> findOrderByEmail(String email, Pageable pageable);
 }

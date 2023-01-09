@@ -19,18 +19,18 @@ public interface ProductService {
 
     ProductEntity getProductById(Long productId);
 
-    Page<ProductProjection> getAllProducts(PageRequest pageRequest);
+    Page<ProductProjection> getAllProducts(Pageable pageable);
 
     List<ProductProjection> getProductsByIds(List<Long> productsId);
 
     Page<ProductProjection> findProductsByFilterParams(List<String> producers, List<String> types, List<Integer> prices,
-                                                       boolean sortByPrice, PageRequest pageRequest);
+                                                       boolean sortByPrice, Pageable pageable);
 
     List<ProductEntity> findByProducer(String producer);
 
     List<ProductEntity> findByProductType(String productType);
 
-    Page<ProductProjection> findByInputText(SearchProductEnum searchType, String text, PageRequest pageRequest);
+    Page<ProductProjection> findByInputText(SearchProductEnum searchType, String text, Pageable pageable);
 
     ProductEntity saveProduct(ProductEntity product, MultipartFile file);
 

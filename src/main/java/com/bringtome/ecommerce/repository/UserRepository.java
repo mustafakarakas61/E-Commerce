@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     List<UserEntity> findAllByOrderByIdAsc();
 
-    Page<UserEntity> findAllByOrderByIdAsc(PageRequest pageRequest);
+    Page<UserEntity> findAllByOrderByIdAsc(Pageable pageable);
 
     Optional<UserEntity> findByActivationCode(String code);
 

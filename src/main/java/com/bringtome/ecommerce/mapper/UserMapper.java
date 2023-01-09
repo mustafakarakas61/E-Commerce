@@ -41,8 +41,8 @@ public class UserMapper {
         return commonMapper.convertToResponseList(userService.getCart(productsIds), ProductResponse.class);
     }
 
-    public HeaderResponse<BaseUserResponse> getAllUsers(PageRequest pageRequest) {
-        Page<UserEntity> users = userService.getAllUsers(pageRequest);
+    public HeaderResponse<BaseUserResponse> getAllUsers(Pageable pageable) {
+        Page<UserEntity> users = userService.getAllUsers(pageable);
         return commonMapper.getHeaderResponse(users.getContent(), users.getTotalPages(), users.getTotalElements(), BaseUserResponse.class);
     }
 

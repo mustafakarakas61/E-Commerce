@@ -18,9 +18,9 @@ public interface OrderService {
 
     List<OrderItemEntity> getOrderItemsByOrderId(Long orderId);
     
-    Page<OrderEntity> getAllOrders(PageRequest pageRequest);
+    Page<OrderEntity> getAllOrders(Pageable pageable);
 
-    Page<OrderEntity> getUserOrders(String email, PageRequest pageRequest);
+    Page<OrderEntity> getUserOrders(String email, Pageable pageable);
 
     OrderEntity postOrder(OrderEntity validOrder, Map<Long, Long> productsId);
 

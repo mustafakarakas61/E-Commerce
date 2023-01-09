@@ -46,8 +46,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductProjection> getAllProducts(PageRequest pageRequest) {
-        return productRepository.findAllByOrderByIdAsc(pageRequest);
+    public Page<ProductProjection> getAllProducts(Pageable pageable) {
+        return productRepository.findAllByOrderByIdAsc(pageable);
     }
 
     @Override
@@ -57,8 +57,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<ProductProjection> findProductsByFilterParams(List<String> producers, List<String> types, List<Integer> prices,
-                                                              boolean sortByPrice, PageRequest pageRequest) {
-        return productRepository.findProductsByFilterParams(producers, types, prices.get(0), prices.get(1), sortByPrice, pageRequest);
+                                                              boolean sortByPrice, Pageable pageable) {
+        return productRepository.findProductsByFilterParams(producers, types, prices.get(0), prices.get(1), sortByPrice, pageable);
     }
 
     @Override
@@ -72,13 +72,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductProjection> findByInputText(SearchProductEnum searchType, String text, PageRequest pageRequest) {
+    public Page<ProductProjection> findByInputText(SearchProductEnum searchType, String text, Pageable pageable) {
         if (searchType.equals(SearchProductEnum.BRAND)) {
-            return productRepository.findByProducer(text, pageRequest);
+            return productRepository.findByProducer(text, pageable);
         } else if (searchType.equals(SearchProductEnum.PRODUCT_TITLE)) {
-            return productRepository.findByProductTitle(text, pageRequest);
+            return productRepository.findByProductTitle(text, pageable);
         } else {
-            return productRepository.findByManufacturerCity(text, pageRequest);
+            return productRepository.findByManufacturerCity(text, pageable);
         }
     }
 

@@ -56,13 +56,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Page<OrderEntity> getAllOrders(PageRequest pageRequest) {
-        return orderRepository.findAllByOrderByIdAsc(pageRequest);
+    public Page<OrderEntity> getAllOrders(Pageable pageable) {
+        return orderRepository.findAllByOrderByIdAsc(pageable);
     }
 
     @Override
-    public Page<OrderEntity> getUserOrders(String email, PageRequest pageRequest) {
-        return orderRepository.findOrderByEmail(email, pageRequest);
+    public Page<OrderEntity> getUserOrders(String email, Pageable pageable) {
+        return orderRepository.findOrderByEmail(email, pageable);
     }
 
     @Override

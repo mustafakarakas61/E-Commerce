@@ -18,7 +18,7 @@ public interface UserService {
 
     UserEntity getUserInfo(String email);
     
-    Page<UserEntity> getAllUsers(PageRequest pageRequest);
+    Page<UserEntity> getAllUsers(Pageable pageable);
 
     List<ProductEntity> getCart(List<Long> prodcutIds);
 

@@ -13,7 +13,6 @@ import com.bringtome.ecommerce.mapper.UserMapper;
 import com.bringtome.ecommerce.service.graphql.GraphQLProvider;
 import graphql.ExecutionResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -64,15 +63,15 @@ public class AdminController {
     }
 
     @GetMapping("/orders")
-    public ResponseEntity<List<OrderResponse>> getAllOrders(@PageableDefault(size = 10) PageRequest pageRequest) {
-        HeaderResponse<OrderResponse> response = orderMapper.getAllOrders(pageRequest);
+    public ResponseEntity<List<OrderResponse>> getAllOrders(@PageableDefault(size = 10) Pageable pageable) {
+        HeaderResponse<OrderResponse> response = orderMapper.getAllOrders(pageable);
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
     @GetMapping("/order/{userEmail}")
     public ResponseEntity<List<OrderResponse>> getUserOrdersByEmail(@PathVariable String userEmail, 
-                                                                    @PageableDefault(size = 10) PageRequest pageRequest) {
-        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(userEmail, pageRequest);
+                                                                    @PageableDefault(size = 10) Pageable pageable) {
+        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(userEmail, pageable);
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
@@ -87,8 +86,8 @@ public class AdminController {
     }
 
     @GetMapping("/user/all")
-    public ResponseEntity<List<BaseUserResponse>> getAllUsers(@PageableDefault(size = 10) PageRequest pageRequest) {
-        HeaderResponse<BaseUserResponse> response = userMapper.getAllUsers(pageRequest);
+    public ResponseEntity<List<BaseUserResponse>> getAllUsers(@PageableDefault(size = 10) Pageable pageable) {
+        HeaderResponse<BaseUserResponse> response = userMapper.getAllUsers(pageable);
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 

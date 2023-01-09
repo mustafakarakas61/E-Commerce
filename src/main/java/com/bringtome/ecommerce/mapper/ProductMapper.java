@@ -42,14 +42,14 @@ public class ProductMapper {
         return commonMapper.convertToResponseList(productService.getProductsByIds(productsId), ProductResponse.class);
     }
 
-    public HeaderResponse<ProductResponse> getAllProducts(PageRequest pageRequest) {
-        Page<ProductProjection> products = productService.getAllProducts(pageRequest);
+    public HeaderResponse<ProductResponse> getAllProducts(Pageable pageable) {
+        Page<ProductProjection> products = productService.getAllProducts(pageable);
         return commonMapper.getHeaderResponse(products.getContent(), products.getTotalPages(), products.getTotalElements(), ProductResponse.class);
     }
 
-    public HeaderResponse<ProductResponse> findProductsByFilterParams(ProductSearchRequest filter, PageRequest pageRequest) {
+    public HeaderResponse<ProductResponse> findProductsByFilterParams(ProductSearchRequest filter, Pageable pageable) {
         Page<ProductProjection> products = productService.findProductsByFilterParams(filter.getProducers(), filter.getTypes(),
-                filter.getPrices(), filter.getSortByPrice(), pageRequest);
+                filter.getPrices(), filter.getSortByPrice(), pageable);
         return commonMapper.getHeaderResponse(products.getContent(), products.getTotalPages(), products.getTotalElements(), ProductResponse.class);
     }
 
@@ -61,8 +61,8 @@ public class ProductMapper {
         return commonMapper.convertToResponseList(productService.findByProductType(productType), ProductResponse.class);
     }
     
-    public HeaderResponse<ProductResponse> findByInputText(SearchProductEnum searchType, String text, PageRequest pageRequest) {
-        Page<ProductProjection> products = productService.findByInputText(searchType, text, pageRequest);
+    public HeaderResponse<ProductResponse> findByInputText(SearchProductEnum searchType, String text, Pageable pageable) {
+        Page<ProductProjection> products = productService.findByInputText(searchType, text, pageable);
         return commonMapper.getHeaderResponse(products.getContent(), products.getTotalPages(), products.getTotalElements(), ProductResponse.class);
     }
 

@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<UserEntity> getAllUsers(PageRequest pageRequest) {
-        return userRepository.findAllByOrderByIdAsc(pageRequest);
+    public Page<UserEntity> getAllUsers(Pageable pageable) {
+        return userRepository.findAllByOrderByIdAsc(pageable);
     }
 
     @Override

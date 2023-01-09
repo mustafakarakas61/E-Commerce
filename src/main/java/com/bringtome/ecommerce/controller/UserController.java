@@ -75,8 +75,8 @@ public class UserController {
 
     @GetMapping("/orders")
     public ResponseEntity<List<OrderResponse>> getUserOrders(@AuthenticationPrincipal UserPrincipal user,
-                                                             @PageableDefault(size = 10) PageRequest pageRequest) {
-        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(user.getEmail(), pageRequest);
+                                                             @PageableDefault(size = 10) Pageable pageable) {
+        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(user.getEmail(), pageable);
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 

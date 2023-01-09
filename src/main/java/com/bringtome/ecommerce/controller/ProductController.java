@@ -33,8 +33,8 @@ public class ProductController {
         this.graphQLProvider = graphQLProvider;
     }
     @GetMapping
-    public ResponseEntity<List<ProductResponse>> getAllProducts(@PageableDefault(size = 15) @RequestBody PageRequest pageRequest) {
-        HeaderResponse<ProductResponse> response = productMapper.getAllProducts(pageRequest);
+    public ResponseEntity<List<ProductResponse>> getAllProducts() {
+        HeaderResponse<ProductResponse> response = productMapper.getAllProducts(PageRequest.of(0, 10));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
@@ -54,9 +54,8 @@ public class ProductController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<List<ProductResponse>> findProductsByFilterParams(@RequestBody ProductSearchRequest filter,
-                                                                            @PageableDefault(size = 15) PageRequest pageRequest) {
-        HeaderResponse<ProductResponse> response = productMapper.findProductsByFilterParams(filter, pageRequest);
+    public ResponseEntity<List<ProductResponse>> findProductsByFilterParams(@RequestBody ProductSearchRequest filter) {
+        HeaderResponse<ProductResponse> response = productMapper.findProductsByFilterParams(filter, PageRequest.of(0, 10));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
@@ -72,8 +71,8 @@ public class ProductController {
 
     @PostMapping("/search/text")
     public ResponseEntity<List<ProductResponse>> findByInputText(@RequestBody SearchTypeRequest searchType,
-                                                                 @PageableDefault(size = 15) PageRequest pageRequest) {
-        HeaderResponse<ProductResponse> response = productMapper.findByInputText(searchType.getSearchType(), searchType.getText(), pageRequest);
+                                                                 @PageableDefault(size = 15) Pageable pageable) {
+        HeaderResponse<ProductResponse> response = productMapper.findByInputText(searchType.getSearchType(), searchType.getText(), pageable);
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 

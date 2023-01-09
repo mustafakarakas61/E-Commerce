@@ -19,7 +19,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     List<ProductProjection> findAllByOrderByIdAsc();
     
     @Query("SELECT product FROM ProductEntity product ORDER BY product.id ASC")
-    Page<ProductProjection> findAllByOrderByIdAsc(PageRequest pageRequest);
+    Page<ProductProjection> findAllByOrderByIdAsc(Pageable pageable);
 
     List<ProductEntity> findByProducerOrderByPriceDesc(String producer);
 
@@ -41,20 +41,20 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
             Integer priceStart, 
             Integer priceEnd, 
             boolean sortByPrice,
-            PageRequest pageRequest);
+            Pageable pageable);
 
     @Query("SELECT product FROM ProductEntity product " +
             "WHERE UPPER(product.producer) LIKE UPPER(CONCAT('%',:text,'%')) " +
             "ORDER BY product.price DESC")
-    Page<ProductProjection> findByProducer(String text, PageRequest pageRequest);
+    Page<ProductProjection> findByProducer(String text, Pageable pageable);
 
     @Query("SELECT product FROM ProductEntity product " +
             "WHERE UPPER(product.productTitle) LIKE UPPER(CONCAT('%',:text,'%')) " +
             "ORDER BY product.price DESC")
-    Page<ProductProjection> findByProductTitle(String text, PageRequest pageRequest);
+    Page<ProductProjection> findByProductTitle(String text, Pageable pageable);
 
     @Query("SELECT product FROM ProductEntity product " +
             "WHERE UPPER(product.city) LIKE UPPER(CONCAT('%',:text,'%')) " +
             "ORDER BY product.price DESC")
-    Page<ProductProjection> findByManufacturerCity(String text, PageRequest pageRequest);
+    Page<ProductProjection> findByManufacturerCity(String text, Pageable pageable);
 }
