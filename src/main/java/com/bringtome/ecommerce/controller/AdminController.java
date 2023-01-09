@@ -46,17 +46,16 @@ public class AdminController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<AllProductResponse> addProduct(@RequestPart(name = "file", required = false) MultipartFile file,
-                                                         @RequestPart("product") @Valid ProductRequest product,
+    public ResponseEntity<AllProductResponse> addProduct(@RequestPart("product") @Valid ProductRequest product,
                                                          BindingResult bindingResult) {
-        return ResponseEntity.ok(productMapper.saveProduct(product, file, bindingResult));
+        return ResponseEntity.ok(productMapper.saveProduct(product, bindingResult));
     }
 
     @PostMapping("/edit")
-    public ResponseEntity<AllProductResponse> updateProduct(@RequestPart(name = "file", required = false) MultipartFile file,
+    public ResponseEntity<AllProductResponse> updateProduct(
                                                             @RequestPart("product") @Valid ProductRequest product,
                                                             BindingResult bindingResult) {
-        return ResponseEntity.ok(productMapper.saveProduct(product, file, bindingResult));
+        return ResponseEntity.ok(productMapper.saveProduct(product, bindingResult));
     }
 
     @DeleteMapping("/delete/{productId}")
@@ -66,14 +65,14 @@ public class AdminController {
 
     @GetMapping("/orders")
     public ResponseEntity<List<OrderResponse>> getAllOrders(PrmSearch prmSearch) {
-        HeaderResponse<OrderResponse> response = orderMapper.getAllOrders(PageRequest.of(0,10));
+        HeaderResponse<OrderResponse> response = orderMapper.getAllOrders(PageRequest.of(0,15));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
     @GetMapping("/order/{userEmail}")
     public ResponseEntity<List<OrderResponse>> getUserOrdersByEmail(@PathVariable String userEmail,
                                                                     PrmSearch prmSearch) {
-        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(userEmail, PageRequest.of(0,10));
+        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(userEmail, PageRequest.of(0,15));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
@@ -89,7 +88,7 @@ public class AdminController {
 
     @GetMapping("/user/all")
     public ResponseEntity<List<BaseUserResponse>> getAllUsers(PrmSearch prmSearch) {
-        HeaderResponse<BaseUserResponse> response = userMapper.getAllUsers(PageRequest.of(0,10));
+        HeaderResponse<BaseUserResponse> response = userMapper.getAllUsers(PageRequest.of(0,15));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 

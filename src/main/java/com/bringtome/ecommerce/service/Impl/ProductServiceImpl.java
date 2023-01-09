@@ -73,29 +73,19 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<ProductProjection> findByInputText(SearchProductEnum searchType, String text, Pageable pageable) {
-        if (searchType.equals(SearchProductEnum.BRAND)) {
-            return productRepository.findByProducer(text, pageable);
+        if (searchType.equals(SearchProductEnum.PRODUCT_TYPE)) {
+            return productRepository.findByProductType(text, pageable);
         } else if (searchType.equals(SearchProductEnum.PRODUCT_TITLE)) {
             return productRepository.findByProductTitle(text, pageable);
         } else {
-            return productRepository.findByManufacturerCity(text, pageable);
+            return productRepository.findByType(text, pageable);
         }
     }
 
     @Override
     @Transactional
-    public ProductEntity saveProduct(ProductEntity product, MultipartFile multipartFile) {
-        if (multipartFile == null) {
-        } else {
-            File file = new File(multipartFile.getOriginalFilename());
-            try (FileOutputStream fos = new FileOutputStream(file)) {
-                fos.write(multipartFile.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            String fileName = UUID.randomUUID().toString() + "." + multipartFile.getOriginalFilename();
-            file.delete();
-        }
+    public ProductEntity saveProduct(ProductEntity product) {
+
         return productRepository.save(product);
     }
 

@@ -16,10 +16,13 @@ import ContentTitle from "../../../components/ContentTitle/ContentTitle";
 import AddFormInput from "./AddFormInput";
 import AddFormSelect from "./AddFormSelect";
 import IconButton from "../../../components/IconButton/IconButton";
+import {selectTotalPrice} from "../../../redux-toolkit/cart/cart-selector";
+import {selectFilename} from "../../../redux-toolkit/products/products-selector";
 
 type AddProductData = {
     productTitle: string;
     producer: string;
+    description: string;
     year: string;
     city: string;
     type: string;
@@ -47,8 +50,8 @@ const AddProduct: FC = (): ReactElement => {
         if (isProductAdded) {
             window.scrollTo(0, 0);
             notification.success({
-                message: "Product added",
-                description: "Product successfully added!"
+                message: "Ürün eklendi",
+                description: "Ürün başarıyla eklendi!"
             });
             dispatch(resetAdminState(LoadingStatus.SUCCESS));
         }
@@ -57,10 +60,10 @@ const AddProduct: FC = (): ReactElement => {
     const onFormSubmit = (data: AddProductData): void => {
         const bodyFormData: FormData = new FormData();
         // @ts-ignore
-        bodyFormData.append("file", { file });
+       // bodyFormData.append("file", { file });
         bodyFormData.append(
             "product",
-            new Blob([JSON.stringify({ ...data, productRating: 0 })], { type: "application/json" })
+            new Blob([JSON.stringify({ ...data, productRating:0 })], { type: "application/json" })
         );
 
         dispatch(addProduct(bodyFormData));
@@ -84,27 +87,25 @@ const AddProduct: FC = (): ReactElement => {
                             disabled={ispProductLoading}
                         />
                         <AddFormInput
+                            title={"Ürün açıklaması"}
+                            name={"description"}
+                            placeholder={"Ürün açıklamasını giriniz"}
+                            disabled={ispProductLoading}
+                        />
+                        <AddFormInput
                             title={"Üretim yılı"}
                             name={"year"}
                             error={productErrors.yearError}
                             placeholder={"Üretim yılını giriniz"}
                             disabled={ispProductLoading}
                         />
-                        <AddFormSelect
+                        <AddFormInput
                             title={"Ürün Kategorisi"}
-                            name={"type"}
-                            error={productErrors.typeError}
+                            name={"productType"}
+                           // error={productErrors.typeError}
                             placeholder={"Elektrikli ev aletleri"}
                             disabled={ispProductLoading}
-                            values={['Elektrikli ev aletleri', 'Elektronik', 'Ev ve Yaşam', 'Giyim', 'Hediyelik', 'Kitaplar', 'Kozmetik', 'Spor']}
-                        />
-                        <AddFormSelect
-                            title={"Ürün tipi"}
-                            name={"productType"}
-                            error={productErrors.productTypeError}
-                            placeholder={"Ayakkabı"}
-                            disabled={ispProductLoading}
-                            values={["Ayakkabı", "Bilgisayar", "Buzdolabı", "Çamaşır makinesi"]}
+                            //values={['Elektrikli ev aletleri', 'Elektronik', 'Ev ve Yaşam', 'Giyim', 'Hediyelik', 'Kitaplar', 'Kozmetik', 'Spor']}
                         />
                         <AddFormInput
                             title={"Renkler"}
@@ -136,11 +137,12 @@ const AddProduct: FC = (): ReactElement => {
                             placeholder={"Şehir giriniz"}
                             disabled={ispProductLoading}
                         />
-                        <Upload name={"file"} onChange={handleUpload} beforeUpload={() => false}>
-                            <Button icon={<UploadOutlined />} style={{ marginTop: 22 }}>
-                                Yüklemek için tıklayınız
-                            </Button>
-                        </Upload>
+                        <AddFormInput
+                            title={"Resim URL giriniz"}
+                            name={"filename"}
+                            placeholder={"Resim URL giriniz"}
+                            disabled={ispProductLoading}
+                        />
                     </Col>
                 </Row>
                 <IconButton title={"Ekle"} icon={<PlusSquareFilled />} />

@@ -32,7 +32,7 @@ public interface ProductService {
 
     Page<ProductProjection> findByInputText(SearchProductEnum searchType, String text, Pageable pageable);
 
-    ProductEntity saveProduct(ProductEntity product, MultipartFile file);
+    ProductEntity saveProduct(ProductEntity product);
 
     String deleteProduct(Long productId);
 

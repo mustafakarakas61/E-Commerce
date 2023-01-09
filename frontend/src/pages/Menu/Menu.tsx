@@ -140,28 +140,7 @@ const Menu: FC = (): ReactElement => {
                             </Col>
                         </Row>
                         <Row style={{ marginTop: 16, marginBottom: 16 }}>
-                            <Col span={16}>
-                                <Pagination
-                                    current={currentPage}
-                                    itemRender={(page, type, originalElement) => {
-                                        if (type === 'page') {
-                                            return (
-                                                <a href={`/menu`}>
-                                                    {page}
-                                                </a>
-                                            );
-                                        }
-                                        return originalElement;
-                                    }}
-                                    total={totalElements}
-                                    defaultCurrent={0}
-                                    defaultPageSize={5}
-                                    pageSizeOptions={[5,10,15]}
-                                    showSizeChanger={true}
-                                    onChange={changePagination}
-                                />
-
-                            </Col>
+                           
                             <Col span={8}>
                                 <MenuSorter onChange={handleChangeSortPrice} sortByPrice={sortByPrice} />
                             </Col>
@@ -174,15 +153,6 @@ const Menu: FC = (): ReactElement => {
                                     <ProductCard key={product.id} product={product} colSpan={8} />
                                 ))
                             )}
-                        </Row>
-                        <Row style={{ marginTop: 16, marginBottom: 16 }}>
-                            <Pagination
-                                current={currentPage}
-                                pageSize={MAX_PAGE_VALUE}
-                                total={totalElements}
-                                showSizeChanger={false}
-                                onChange={changePagination}
-                            />
                         </Row>
                     </Col>
                 </Row>

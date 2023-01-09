@@ -91,15 +91,7 @@ const ProductList: FC = (): ReactElement => {
                     ) : (
                         <>
                             <Row style={{ marginTop: 16, marginBottom: 16 }}>
-                                <Col span={16}>
-                                    <Pagination
-                                        current={currentPage}
-                                        pageSize={MAX_PAGE_VALUE}
-                                        total={totalElements}
-                                        showSizeChanger={false}
-                                        onChange={changePagination}
-                                    />
-                                </Col>
+
                             </Row>
                             <Row gutter={[32, 32]}>
                                 {products.map((product) => (
@@ -112,15 +104,7 @@ const ProductList: FC = (): ReactElement => {
                                     />
                                 ))}
                             </Row>
-                            <Row style={{ marginTop: 16, marginBottom: 16 }}>
-                                <Pagination
-                                    current={currentPage}
-                                    pageSize={MAX_PAGE_VALUE}
-                                    total={totalElements}
-                                    showSizeChanger={false}
-                                    onChange={changePagination}
-                                />
-                            </Row>
+
                         </>
                     )}
                 </Col>

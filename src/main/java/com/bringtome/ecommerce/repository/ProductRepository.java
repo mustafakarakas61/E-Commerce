@@ -44,9 +44,9 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
             Pageable pageable);
 
     @Query("SELECT product FROM ProductEntity product " +
-            "WHERE UPPER(product.producer) LIKE UPPER(CONCAT('%',:text,'%')) " +
+            "WHERE UPPER(product.productType) LIKE UPPER(CONCAT('%',:text,'%')) " +
             "ORDER BY product.price DESC")
-    Page<ProductProjection> findByProducer(String text, Pageable pageable);
+    Page<ProductProjection> findByProductType(String text, Pageable pageable);
 
     @Query("SELECT product FROM ProductEntity product " +
             "WHERE UPPER(product.productTitle) LIKE UPPER(CONCAT('%',:text,'%')) " +
@@ -54,7 +54,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     Page<ProductProjection> findByProductTitle(String text, Pageable pageable);
 
     @Query("SELECT product FROM ProductEntity product " +
-            "WHERE UPPER(product.city) LIKE UPPER(CONCAT('%',:text,'%')) " +
+            "WHERE UPPER(product.type) LIKE UPPER(CONCAT('%',:text,'%')) " +
             "ORDER BY product.price DESC")
-    Page<ProductProjection> findByManufacturerCity(String text, Pageable pageable);
+    Page<ProductProjection> findByType(String text, Pageable pageable);
 }

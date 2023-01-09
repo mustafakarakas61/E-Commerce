@@ -11,10 +11,16 @@ public class ProductRequest {
 
     private Long id;
 
+    //@NotBlank(message = "Boş bırakılamaz.")
+    @Length(max = 255)
+    private String description;
+
     @NotBlank(message = "Boş bırakılamaz.")
     @Length(max = 255)
     private String city;
 
+    @NotBlank(message = "Boş bırakılamaz.")
+    @Length(max = 255)
     private String filename;
 
     @NotBlank(message = "Boş bırakılamaz.")
@@ -36,7 +42,7 @@ public class ProductRequest {
     @NotNull(message = "Boş bırakılamaz.")
     private Integer price;
 
-    @NotBlank(message = "Boş bırakılamaz.")
+    //@NotBlank(message = "Boş bırakılamaz.")
     @Length(max = 255)
     private String type;
 

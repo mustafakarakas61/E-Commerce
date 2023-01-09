@@ -15,13 +15,15 @@ export interface ProductsState {
     pagesCount: number;
     totalElements: number;
     loadingState: LoadingStatus;
+    filename: string;
 }
 
 export const initialState: ProductsState = {
     products: [],
     pagesCount: 1,
     totalElements: 0,
-    loadingState: LoadingStatus.LOADING
+    loadingState: LoadingStatus.LOADING,
+    filename: ""
 };
 
 export const productsSlice = createSlice({

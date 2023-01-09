@@ -3,9 +3,9 @@ import { Select } from "antd";
 import {SearchProduct} from "../../types/types";
 
 const searchByData = [
-    { label: "Kategori", value: SearchProduct.TYPE },
+    { label: "Kategori", value: SearchProduct.PRODUCT_TYPE },
     { label: "Ürün adı", value: SearchProduct.PRODUCT_TITLE },
-    { label: "Ürün tipi", value: SearchProduct.PRODUCT_TYPE }
+    { label: "Ürün tipi", value: SearchProduct.TYPE }
 ];
 
 type PropsType = {

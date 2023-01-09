@@ -67,12 +67,12 @@ public class ProductMapper {
         return commonMapper.getHeaderResponse(products.getContent(), products.getTotalPages(), products.getTotalElements(), ProductResponse.class);
     }
 
-    public AllProductResponse saveProduct(ProductRequest productRequest, MultipartFile file, BindingResult bindingResult) {
+    public AllProductResponse saveProduct(ProductRequest productRequest, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             throw new InputFieldException(bindingResult);
         }
         ProductEntity product = commonMapper.convertToEntity(productRequest, ProductEntity.class);
-        return commonMapper.convertToResponse(productService.saveProduct(product, file), AllProductResponse.class);
+        return commonMapper.convertToResponse(productService.saveProduct(product), AllProductResponse.class);
     }
 
     public String deleteProduct(Long productId) {

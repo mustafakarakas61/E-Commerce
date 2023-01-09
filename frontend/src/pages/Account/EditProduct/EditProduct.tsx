@@ -25,6 +25,7 @@ type EditProductData = {
     productTitle: string;
     producer: string;
     year: string;
+    description: string
     city: string;
     type: string;
     productType: string;
@@ -61,8 +62,8 @@ const EditProduct: FC = (): ReactElement => {
         if (isProductEdited) {
             window.scrollTo(0, 0);
             notification.success({
-                message: "Product edited",
-                description: "Product successfully edited!"
+                message: "Ürün düzeltildi.",
+                description: "Ürün başarıyla düzeltildi!"
             });
             dispatch(resetAdminState(LoadingStatus.SUCCESS));
         }
