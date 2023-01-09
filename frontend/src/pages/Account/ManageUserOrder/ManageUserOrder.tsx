@@ -56,14 +56,14 @@ const ManageUserOrder: FC = (): ReactElement => {
                                 <Row gutter={32}>
                                     <Col span={12}>
                                         <InfoCircleOutlined className={"manage-user-icon"} />
-                                        <ContentTitle title={"Customer information"} titleLevel={5} />
-                                        <AccountDataItem title={"First name"} text={firstName} />
-                                        <AccountDataItem title={"Last name"} text={lastName} />
-                                        <AccountDataItem title={"City"} text={city} />
-                                        <AccountDataItem title={"Address"} text={address} />
+                                        <ContentTitle title={"Müşteri Bilgisi"} titleLevel={5} />
+                                        <AccountDataItem title={"Ad"} text={firstName} />
+                                        <AccountDataItem title={"Soyad"} text={lastName} />
+                                        <AccountDataItem title={"Şehir"} text={city} />
+                                        <AccountDataItem title={"Adres"} text={address} />
                                         <AccountDataItem title={"Email"} text={email} />
-                                        <AccountDataItem title={"Phone number"} text={phoneNumber} />
-                                        <AccountDataItem title={"Post index"} text={postIndex} />
+                                        <AccountDataItem title={"Telefon"} text={phoneNumber} />
+                                        <AccountDataItem title={"Posta kodu"} text={postIndex} />
                                     </Col>
                                     <Col span={12}>
                                         <InfoCircleOutlined className={"manage-user-icon"} />

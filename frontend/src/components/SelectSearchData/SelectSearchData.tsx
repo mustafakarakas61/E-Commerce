@@ -4,8 +4,8 @@ import {SearchProduct} from "../../types/types";
 
 const searchByData = [
     { label: "Kategori", value: SearchProduct.TYPE },
-    { label: "Ürün Adı", value: SearchProduct.PRODUCT_TITLE },
-    { label: "Ürün Tipi", value: SearchProduct.PRODUCT_TYPE }
+    { label: "Ürün adı", value: SearchProduct.PRODUCT_TITLE },
+    { label: "Ürün tipi", value: SearchProduct.PRODUCT_TYPE }
 ];
 
 type PropsType = {

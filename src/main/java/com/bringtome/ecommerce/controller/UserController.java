@@ -77,7 +77,7 @@ public class UserController {
     @GetMapping("/orders")
     public ResponseEntity<List<OrderResponse>> getUserOrders(@AuthenticationPrincipal UserPrincipal user,
                                                              PrmSearch prmSearch) {
-        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(user.getEmail(), PageRequest.of(prmSearch.getPage(), prmSearch.getPerPage()));
+        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(user.getEmail(), PageRequest.of(0,10));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 

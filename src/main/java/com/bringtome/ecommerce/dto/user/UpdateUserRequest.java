@@ -8,6 +8,8 @@ import javax.validation.constraints.NotBlank;
 public class UpdateUserRequest {
     private Long id;
 
+    private String email;
+
     @NotBlank(message = "Lütfen adınızı giriniz.")
     private String firstName;
 

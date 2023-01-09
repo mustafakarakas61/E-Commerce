@@ -41,8 +41,7 @@ public class ProductController {
      */
 
 
-        HeaderResponse<ProductResponse> response = productMapper.getAllProducts(PageRequest.of(prmSearch.getPage(), prmSearch.getPerPage()));
-        System.out.println(response.getItems().size());
+        HeaderResponse<ProductResponse> response = productMapper.getAllProducts(PageRequest.of(0,10));
         //System.out.println(response.toString());
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
@@ -64,7 +63,7 @@ public class ProductController {
 
     @PostMapping("/search")
     public ResponseEntity<List<ProductResponse>> findProductsByFilterParams(@RequestBody ProductSearchRequest filter, PrmSearch prmSearch) {
-        HeaderResponse<ProductResponse> response = productMapper.findProductsByFilterParams(filter, PageRequest.of(prmSearch.getPage(), prmSearch.getPerPage()));
+        HeaderResponse<ProductResponse> response = productMapper.findProductsByFilterParams(filter, PageRequest.of(0,10));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
@@ -81,7 +80,7 @@ public class ProductController {
     @PostMapping("/search/text")
     public ResponseEntity<List<ProductResponse>> findByInputText(@RequestBody SearchTypeRequest searchType,
                                                                  PrmSearch prmSearch) {
-        HeaderResponse<ProductResponse> response = productMapper.findByInputText(searchType.getSearchType(), searchType.getText(),  PageRequest.of(prmSearch.getPage(), prmSearch.getPerPage()));
+        HeaderResponse<ProductResponse> response = productMapper.findByInputText(searchType.getSearchType(), searchType.getText(),  PageRequest.of(0,10));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 

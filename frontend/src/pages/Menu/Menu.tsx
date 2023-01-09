@@ -128,13 +128,6 @@ const Menu: FC = (): ReactElement => {
                             category={CheckboxCategoryFilter.TYPES}
                             selectedValues={filterParams.types}
                         />
-                        <MenuCheckboxSection
-                            title={"Ürün Tipi"}
-                            onChange={onChangeCheckbox}
-                            data={productTypes}
-                            category={CheckboxCategoryFilter.PRODUCTTYPES}
-                            selectedValues={filterParams.productTypes}
-                        />
                         <MenuRadioSection title={"Fiyat"} onChange={onChangeRadio} data={price} />
                     </Col>
                     <Col span={18}>
@@ -150,6 +143,16 @@ const Menu: FC = (): ReactElement => {
                             <Col span={16}>
                                 <Pagination
                                     current={currentPage}
+                                    itemRender={(page, type, originalElement) => {
+                                        if (type === 'page') {
+                                            return (
+                                                <a href={`/menu`}>
+                                                    {page}
+                                                </a>
+                                            );
+                                        }
+                                        return originalElement;
+                                    }}
                                     total={totalElements}
                                     defaultCurrent={0}
                                     defaultPageSize={5}

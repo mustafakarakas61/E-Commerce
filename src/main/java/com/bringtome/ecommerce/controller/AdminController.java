@@ -26,7 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.util.List;
 
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @PreAuthorize("hasAuthority('ADMIN')")
 @RequestMapping("/api/v1/admin")
@@ -66,14 +66,14 @@ public class AdminController {
 
     @GetMapping("/orders")
     public ResponseEntity<List<OrderResponse>> getAllOrders(PrmSearch prmSearch) {
-        HeaderResponse<OrderResponse> response = orderMapper.getAllOrders(PageRequest.of(prmSearch.getPage(), prmSearch.getPerPage()));
+        HeaderResponse<OrderResponse> response = orderMapper.getAllOrders(PageRequest.of(0,10));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
     @GetMapping("/order/{userEmail}")
     public ResponseEntity<List<OrderResponse>> getUserOrdersByEmail(@PathVariable String userEmail,
                                                                     PrmSearch prmSearch) {
-        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(userEmail, PageRequest.of(prmSearch.getPage(), prmSearch.getPerPage()));
+        HeaderResponse<OrderResponse> response = orderMapper.getUserOrders(userEmail, PageRequest.of(0,10));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
@@ -89,7 +89,7 @@ public class AdminController {
 
     @GetMapping("/user/all")
     public ResponseEntity<List<BaseUserResponse>> getAllUsers(PrmSearch prmSearch) {
-        HeaderResponse<BaseUserResponse> response = userMapper.getAllUsers(PageRequest.of(prmSearch.getPage(), prmSearch.getPerPage()));
+        HeaderResponse<BaseUserResponse> response = userMapper.getAllUsers(PageRequest.of(0,10));
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 

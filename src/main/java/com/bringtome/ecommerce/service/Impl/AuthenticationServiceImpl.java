@@ -68,7 +68,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             UserEntity user = userRepository.findByEmail(email)
                     .orElseThrow(() -> new ApiRequestException("Email bulunamadı.", HttpStatus.NOT_FOUND));
             String userRole = user.getRoles().iterator().next().name();
-            String token = jwtProvider.createToken(email, userRole);
+                String token = jwtProvider.createToken(email, userRole);
             Map<String, Object> response = new HashMap<>();
             response.put("user", user);
             response.put("token", token);

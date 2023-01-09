@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserEntity updateUserInfo(String email, UserEntity user) {
-        UserEntity userFromDb = userRepository.findByEmail(email)
+        UserEntity userFromDb = userRepository.findByEmail(user.getEmail())
                 .orElseThrow(() -> new ApiRequestException("Email bulunamadı.", HttpStatus.NOT_FOUND));
         userFromDb.setFirstName(user.getFirstName());
         userFromDb.setLastName(user.getLastName());

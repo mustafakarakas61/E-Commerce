@@ -12,6 +12,7 @@ import { updateUserInfo } from "../../../redux-toolkit/user/user-thunks";
 import { resetInputForm } from "../../../redux-toolkit/user/user-slice";
 
 interface PersonalData {
+    email: string;
     firstName: string;
     lastName: string;
     city: string;
@@ -67,6 +68,16 @@ const PersonalData: FC = (): ReactElement => {
                 <Col span={12}>
                     {showUserData && (
                         <Form onFinish={onFormSubmit} form={form}>
+
+                            <FormInput
+                                title={"Email:"}
+                                titleSpan={6}
+                                wrapperSpan={18}
+                                disabled={true}
+                                name={"email"}
+                                error={firstNameError}
+                                placeholder={"Email"}
+                            />
                             <FormInput
                                 title={"Ad:"}
                                 titleSpan={6}

@@ -86,7 +86,7 @@ const EditProduct: FC = (): ReactElement => {
 
     return (
         <div>
-            <ContentTitle title={"Edit product"} titleLevel={4} icon={<EditOutlined />} />
+            <ContentTitle title={"Ürün düzenle"} titleLevel={4} icon={<EditOutlined />} />
             <Form onFinish={onFormSubmit} form={form}>
                 <Row gutter={32}>
                     <Col span={12}>
@@ -162,7 +162,7 @@ const EditProduct: FC = (): ReactElement => {
                     </Col>
                     <Col span={12}>
                         <Upload name={"file"} onChange={handleUpload} beforeUpload={() => false}>
-                            <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                            <Button icon={<UploadOutlined />}>Yükle</Button>
                         </Upload>
                         <div className={"edit-product-image-wrapper"}>
                             <img
@@ -173,7 +173,7 @@ const EditProduct: FC = (): ReactElement => {
                         </div>
                     </Col>
                 </Row>
-                <IconButton title={"Edit"} icon={<EditOutlined />} disabled={isLoading} />
+                <IconButton title={"Düzenle"} icon={<EditOutlined />} disabled={isLoading} />
             </Form>
         </div>
     );
