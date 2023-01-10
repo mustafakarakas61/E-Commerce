@@ -7,7 +7,7 @@ import { Affix, Badge, Col, Row, Space } from "antd";
 import { selectUserFromUserState } from "../../redux-toolkit/user/user-selector";
 import { selectCartItemsCount } from "../../redux-toolkit/cart/cart-selector";
 import { logoutSuccess } from "../../redux-toolkit/user/user-slice";
-import { ACCOUNT, BASE, CONTACTS, LOGIN, MENU, REGISTRATION } from "../../constants/routeConstants";
+import {ACCOUNT, ACCOUNT_USER_INFO, BASE, CONTACTS, LOGIN, MENU, REGISTRATION} from "../../constants/routeConstants";
 import { CART } from "../../constants/urlConstants";
 import "./NavBar.scss";
 
@@ -53,7 +53,7 @@ const NavBar: FC = (): ReactElement => {
                                 </li>
                                 {usersData ? (
                                     <>
-                                        <Link to={ACCOUNT}>
+                                        <Link to={ACCOUNT_USER_INFO}>
                                             <li>
                                                 <UserOutlined />
                                                 HESABIM

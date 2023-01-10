@@ -53,7 +53,7 @@ Sepet  |  Boş Sepet
 :------------------------:|:-------------------------:
 ![](https://i.ibb.co/Jn99fr2/sepet.png)  |  ![](https://i.ibb.co/Jn8CBJ7/sepetbo.png)
 
-Email  |  Email şifre doğrulama
+Ürünler Listesi  |  Kullanıcılar Listesi
 :------------------------:|:-------------------------:
 ![]()  |  ![]()
 
