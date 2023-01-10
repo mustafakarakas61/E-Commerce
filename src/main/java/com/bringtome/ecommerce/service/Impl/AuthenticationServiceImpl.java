@@ -138,7 +138,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setPasswordResetCode(UUID.randomUUID().toString());
         userRepository.save(user);
 
-        sendEmail(user, "Password reset", "password-reset-template", "resetUrl", "/reset/" + user.getPasswordResetCode());
+        sendEmail(user, "Şifre yenileme", "password-reset-template", "resetUrl", "/reset/" + user.getPasswordResetCode());
         return "Şifre değiştirme kodunuz mailinize gönderildi.";
     }
 
