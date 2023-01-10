@@ -21,4 +21,4 @@ INSERT INTO orders_order_items (order_entity_id, order_items_id) VALUES (2, 3);
 INSERT INTO orders_order_items (order_entity_id, order_items_id) VALUES (2, 4);
 INSERT INTO orders_order_items (order_entity_id, order_items_id) VALUES (3, 5);
 
-UPDATE product SET filename = 'https://i.ibb.co/dBWbnNG/iphone.jpg' WHERE id = 7;
+UPDATE users SET provider = 'LOCAL' WHERE id = 36;
